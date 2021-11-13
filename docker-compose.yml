@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      target: 'dev-stage'
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./backend:/lyrian_web
+      - cargo-cache:/usr/local/cargo/registry
+      - target-cache:/lyrian_web/target
+    command: /bin/sh -c "cargo watch -x run"
+
+volumes:
+  cargo-cache:
+  target-cache:
