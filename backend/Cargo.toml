@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 actix-web = "3"
+lyrian = { git = "https://github.com/LyrianBot/lyrian.git", branch = "main" }
