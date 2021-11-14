@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章入れろや</title>
+</head>
+<body>
+    <h2>文章入れろや</h2>
+        <label for="contents">コンテンツ:</label>
+        <input type="text" name="contents" id="contents">
+        <button onclick="request()">送信</button>
+    <div id="result"></div>
+
+    <script>
+        function request() {
+            let contents = document.getElementById("contents");
+
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = () => {
+                let result = document.getElementById("result");
+                if (xhr.readyState == 4 || xhr.status == 200) {
+                    result.innerText = xhr.responseText;
+                } else {
+                    result.innerText = "待てや";
+                }
+            };
+            xhr.open("POST", "/api/create_model", true);
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+            xhr.send(`contents=${encodeURIComponent(contents.value)}`);
+        }
+    </script>
+</body>
+</html>
