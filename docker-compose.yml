@@ -1,10 +1,20 @@
 version: '3.7'
 
 services:
+  frontend:
+    build:
+      context: ./frontend
+      target: "dev-stage"
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./frontend:/lyrian_web"
+      - modules-cache:/lyrian_web/node_modules
+    command: /bin/sh -c "yarn start"
   backend:
     build:
       context: ./backend
-      target: 'dev-stage'
+      target: "dev-stage"
     ports:
       - "8088:8088"
     volumes:
@@ -14,5 +24,6 @@ services:
     command: /bin/sh -c "cargo watch -x run"
 
 volumes:
+  modules-cache:
   cargo-cache:
   target-cache:
