@@ -1,15 +1,20 @@
 import React from "react";
 import { LyricsState, MarkovState, LyricsMsg, MarkovMsg } from "../hooks";
 
-export const LyricsStateContext = React.createContext<LyricsState | undefined>(
-  undefined
-);
-export const MarkovStateContext = React.createContext<MarkovState | undefined>(
-  undefined
-);
-export const LycDispatchContext = React.createContext<
-  React.Dispatch<LyricsMsg> | undefined
+interface LyricsContextValues {
+  state: LyricsState;
+  dispatch: React.Dispatch<LyricsMsg>;
+}
+
+interface MarkovContextValues {
+  state: MarkovState;
+  dispatch: React.Dispatch<MarkovMsg>;
+}
+
+export const LyricsContext = React.createContext<
+  LyricsContextValues | undefined
 >(undefined);
-export const MkvDispatchContext = React.createContext<
-  React.Dispatch<MarkovMsg> | undefined
+
+export const MarkovContext = React.createContext<
+  MarkovContextValues | undefined
 >(undefined);

@@ -1,12 +1,7 @@
 import React from "react";
 import { useReducer } from "react";
 
-import {
-  MarkovStateContext,
-  MkvDispatchContext,
-  LyricsStateContext,
-  LycDispatchContext,
-} from "./context";
+import { MarkovContext, LyricsContext } from "./context";
 import { lyricsUpdate, markovUpdate } from "../hooks";
 
 const markovInitValue = {
@@ -30,14 +25,10 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [lyrics, lyrDispatch] = useReducer(lyricsUpdate, lyricsInitValue);
 
   return (
-    <MarkovStateContext.Provider value={markov}>
-      <MkvDispatchContext.Provider value={mkvDispatch}>
-        <LyricsStateContext.Provider value={lyrics}>
-          <LycDispatchContext.Provider value={lyrDispatch}>
-            {children}
-          </LycDispatchContext.Provider>
-        </LyricsStateContext.Provider>
-      </MkvDispatchContext.Provider>
-    </MarkovStateContext.Provider>
+    <MarkovContext.Provider value={{ state: markov, dispatch: mkvDispatch }}>
+      <LyricsContext.Provider value={{ state: lyrics, dispatch: lyrDispatch }}>
+        {children}
+      </LyricsContext.Provider>
+    </MarkovContext.Provider>
   );
 };
