@@ -28,8 +28,7 @@ export const markovUpdate = (state: MarkovState, msg: MarkovMsg) => {
     case "TokenUpdatedMsg":
       let newTokens = state.tokens;
       newTokens[msg.index] = msg.token;
-      const newState = { ...state, tokens: newTokens };
-      return newState;
+      return { ...state, tokens: newTokens };
   }
 };
 
