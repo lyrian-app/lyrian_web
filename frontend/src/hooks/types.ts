@@ -11,7 +11,7 @@ export interface Token {
 /**
  * A table of Walker's Alias Method.
  */
-interface AliasTable {
+interface WalkerTable {
   aliases: Int32Array;
   probs: Float32Array;
 }
@@ -21,7 +21,7 @@ interface AliasTable {
  */
 export interface MarkovState {
   tokens: Token[];
-  stateSpace: AliasTable[];
+  probsTable: WalkerTable[];
   length: number;
 }
 
