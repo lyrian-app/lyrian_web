@@ -1,0 +1,10 @@
+node_module/
+package.json
+yarn.lock
+
+dist/
+.cache/
+
+.vscode/
+
+src/assets/fontello/
