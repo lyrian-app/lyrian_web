@@ -16,9 +16,9 @@ type LyricsGeneretedMsg = {
   lyrics: string;
 };
 
-type MarkovMsg = MarkovGeneratedMsg | TokenFixedMsg;
+export type MarkovMsg = MarkovGeneratedMsg | TokenFixedMsg;
 
-type LyricsMsg = LyricsGeneretedMsg;
+export type LyricsMsg = LyricsGeneretedMsg;
 
 export const markovUpdate = (state: MarkovState, msg: MarkovMsg) => {
   switch (msg.type) {
@@ -36,6 +36,6 @@ export const markovUpdate = (state: MarkovState, msg: MarkovMsg) => {
 export const lyricsUpdate = (_state: LyricsState, msg: LyricsMsg) => {
   switch (msg.type) {
     case "LyricsGeneratedMsg":
-      return msg.lyrics;
+      return { contents: msg.lyrics };
   }
 };
