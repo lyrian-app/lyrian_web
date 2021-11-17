@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import "./assets/scss/reset.scss";
+import "./assets/fontello/css/fontello.css";
 
 ReactDOM.render(
   <React.StrictMode>
