@@ -1,6 +1,7 @@
 import React from "react";
 
 import { RectBtn, ScrollBtn } from "../../ui/buttons";
+import { H1, H2 } from "../../ui/text";
 import style from "./style.module.scss";
 
 export const LandingPage = () => {
@@ -9,7 +10,7 @@ export const LandingPage = () => {
   return (
     <div className="l-lp">
       <div className={style.top}>
-        <h1 className={style.title}>Lyrian Web</h1>
+        <H1>Lyrian Web</H1>
         <p className={style.description}>日本語の歌詞生成アプリケーション</p>
         <RectBtn value="はじめる" size="large" />
         <div className={style.scrollBtn}>
@@ -18,6 +19,7 @@ export const LandingPage = () => {
       </div>
 
       <div className={style.whatIs} ref={whatIsRef}>
+        <H2>Lyrianとは？</H2>
         <div className="description"></div>
         <div className="l-feature">
           <div className="feat box"></div>
