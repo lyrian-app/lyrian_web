@@ -4,8 +4,8 @@
 .rectBtn__medium,
 .rectBtn__large {
   position: relative;
-  border: 2px solid orange;
-  color: orange;
+  border: 2px solid $red;
+  color: $red;
   background: none;
   transition: 0.2s ease-in-out;
   cursor: pointer;
@@ -18,7 +18,7 @@
     height: 100%;
     content: "";
     transform: translateX(-100%);
-    background-color: orange;
+    background-color: $red;
     transition: 0.2s ease-in-out;
     z-index: -1;
   }
