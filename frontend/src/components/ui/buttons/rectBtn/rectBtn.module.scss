@@ -1,8 +1,6 @@
 @import "../../../../assets/scss/var";
 
-.rectBtn__small,
-.rectBtn__medium,
-.rectBtn__large {
+[class^="rectBtn"] {
   position: relative;
   border: 2px solid $red;
   color: $red;
