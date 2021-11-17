@@ -1,0 +1,22 @@
+@import "../../../../assets/scss/var";
+
+[class^="iconBtn"] {
+  cursor: pointer;
+  transition: 0.1s;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+.iconBtn__small {
+  font-size: $font-s;
+}
+
+.iconBtn__medium {
+  font-size: $font-m;
+}
+
+.iconBtn__large {
+  font-size: $font-l;
+}
