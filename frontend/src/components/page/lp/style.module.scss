@@ -1,0 +1,22 @@
+@import "../../../assets/scss/var";
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+
+  & .title {
+    font-size: $font-xxl;
+  }
+
+  & .description {
+    font-size: $font-m;
+    margin-bottom: $font-m;
+  }
+}
+
+.whatIs {
+}
