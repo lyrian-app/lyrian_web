@@ -86,14 +86,6 @@
     font-size: $font-xs;
     margin: 0.5rem 0 1rem 0;
 
-    .link {
-      transition: 0.1s;
-
-      &:hover {
-        color: $red;
-      }
-    }
-
     .bar {
       margin: 0 1rem;
       user-select: none;

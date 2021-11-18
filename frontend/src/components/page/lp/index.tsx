@@ -57,25 +57,15 @@ export const LandingPage = () => {
           <IconBtn iconName="icon-github-circled" size="large" />
         </div>
         <div className={style.links}>
-          <a href="#" className={style.link}>
-            ドキュメント
-          </a>
+          <a href="#">ドキュメント</a>
           <span className={style.bar}>|</span>
-          <a href="#" className={style.link}>
-            Q & A
-          </a>
+          <a href="#">Q & A</a>
           <span className={style.bar}>|</span>
-          <a href="#" className={style.link}>
-            リリースノート
-          </a>
+          <a href="#">リリースノート</a>
           <span className={style.bar}>|</span>
-          <a href="#" className={style.link}>
-            お問い合わせ
-          </a>
+          <a href="#">お問い合わせ</a>
           <span className={style.bar}>|</span>
-          <a href="#" className={style.link}>
-            利用規約
-          </a>
+          <a href="#">利用規約</a>
         </div>
         <p className={style.copyright}>
           Copyright © 2021 Ichi Hazuki and the Lyrian Project contributors.
