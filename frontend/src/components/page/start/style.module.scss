@@ -1,0 +1,41 @@
+@import "../../../assets/scss/var";
+
+.start {
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  color: $black;
+}
+
+.discription {
+  width: 60%;
+  font-size: $font-s;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.textarea {
+  width: 70%;
+  height: 40vh;
+  font-size: $font-s;
+  margin-bottom: 1rem;
+}
+
+.notice {
+  width: 67%;
+  font-size: $font-xs;
+  color: $gray;
+  margin-bottom: 1rem;
+}
+
+.genModelBtn {
+  margin-bottom: 1rem;
+}
