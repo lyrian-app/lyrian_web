@@ -1,6 +1,7 @@
 import React from "react";
 
-import { RectBtn, ScrollBtn, IconBtn } from "../../ui/buttons";
+import { RectBtn, ScrollBtn } from "../../ui/buttons";
+import { Footer } from "../../ui/footer";
 import { Grid } from "../../ui/grid";
 import { H1, H2 } from "../../ui/text";
 import style from "./style.module.scss";
@@ -51,26 +52,7 @@ export const LandingPage = () => {
         </div>
       </div>
 
-      <footer className={style.footer}>
-        <div className={style.iconBtns}>
-          <IconBtn iconName="icon-twitter" size="large" />
-          <IconBtn iconName="icon-github-circled" size="large" />
-        </div>
-        <div className={style.links}>
-          <a href="#">ドキュメント</a>
-          <span className={style.bar}>|</span>
-          <a href="#">Q & A</a>
-          <span className={style.bar}>|</span>
-          <a href="#">リリースノート</a>
-          <span className={style.bar}>|</span>
-          <a href="#">お問い合わせ</a>
-          <span className={style.bar}>|</span>
-          <a href="#">利用規約</a>
-        </div>
-        <p className={style.copyright}>
-          Copyright © 2021 Ichi Hazuki and the Lyrian Project contributors.
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };

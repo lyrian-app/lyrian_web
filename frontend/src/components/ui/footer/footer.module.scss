@@ -1,0 +1,32 @@
+@import "../../../assets/scss/var";
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem 0;
+  color: $white;
+  background-color: $black;
+
+  .iconBtns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .links {
+    font-size: $font-xs;
+    margin: 0.5rem 0 1rem 0;
+
+    .bar {
+      margin: 0 1rem;
+      user-select: none;
+    }
+  }
+
+  .copyright {
+    font-size: $font-xs;
+  }
+}
