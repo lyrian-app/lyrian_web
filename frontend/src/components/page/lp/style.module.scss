@@ -34,17 +34,13 @@
   }
 
   .usageBox {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
     width: 70%;
-    height: 60%;
     margin-top: $font-m;
     border: 1px solid #000;
 
     .usageItem {
       width: 100%;
-      height: 100%;
+      height: 20vh;
       border: 1px solid #000;
     }
   }
@@ -52,17 +48,13 @@
 
 .feature {
   .featBox {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 2rem;
     width: 70%;
-    height: 60%;
     margin-top: $font-m;
     border: 1px solid #000;
 
     .featItem {
       width: 100%;
-      height: 100%;
+      height: 60vh;
       border: 1px solid #000;
     }
   }

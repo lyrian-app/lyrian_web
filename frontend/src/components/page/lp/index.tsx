@@ -1,6 +1,7 @@
 import React from "react";
 
 import { RectBtn, ScrollBtn, IconBtn } from "../../ui/buttons";
+import { Grid } from "../../ui/grid";
 import { H1, H2 } from "../../ui/text";
 import style from "./style.module.scss";
 
@@ -25,17 +26,21 @@ export const LandingPage = () => {
           お気に入りの文章を学習させることで、その文章に近い雰囲気の歌詞を生成することができます。
         </p>
         <div className={style.usageBox}>
-          <div className={style.usageItem}></div>
-          <div className={style.usageItem}></div>
-          <div className={style.usageItem}></div>
+          <Grid gap="2rem">
+            <div className={style.usageItem}></div>
+            <div className={style.usageItem}></div>
+            <div className={style.usageItem}></div>
+          </Grid>
         </div>
       </div>
 
       <div className={style.feature}>
         <H2>特徴</H2>
         <div className={style.featBox}>
-          <div className={style.featItem}></div>
-          <div className={style.featItem}></div>
+          <Grid cols={2} gap="2rem">
+            <div className={style.featItem}></div>
+            <div className={style.featItem}></div>
+          </Grid>
         </div>
       </div>
 
