@@ -2,8 +2,8 @@
 
 .rectBtn {
   position: relative;
-  border: 2px solid $red;
-  color: $red;
+  border: 2px solid $main-color;
+  color: $main-color;
   background: none;
   transition: 0.2s ease-in-out;
   cursor: pointer;
@@ -16,7 +16,7 @@
     height: 100%;
     content: "";
     transform: translateX(-100%);
-    background-color: $red;
+    background-color: $main-color;
     transition: 0.2s ease-in-out;
     z-index: -1;
   }
