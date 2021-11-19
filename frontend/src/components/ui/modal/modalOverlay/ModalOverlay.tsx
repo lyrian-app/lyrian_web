@@ -9,7 +9,7 @@ interface ModalProps {
 }
 
 export const ModalOverlay = ({ isOpen, onClick, children }: ModalProps) => {
-  const className = `${style.modal} ${style[isOpen ? "isOpen" : ""]}`;
+  const className = `${style.modalOverlay} ${style[isOpen ? "isOpen" : ""]}`;
 
   return (
     <div className={className} onClick={onClick}>
