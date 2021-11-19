@@ -4,11 +4,16 @@ import style from "./modalOverlay.module.scss";
 
 interface ModalProps {
   isOpen: boolean;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
   children?: React.ReactNode;
 }
 
-export const ModalOverlay = ({ isOpen, children }: ModalProps) => {
+export const ModalOverlay = ({ isOpen, onClick, children }: ModalProps) => {
   const className = `${style.modal} ${style[isOpen ? "isOpen" : ""]}`;
 
-  return <div className={className}>{children}</div>;
+  return (
+    <div className={className} onClick={onClick}>
+      {children}
+    </div>
+  );
 };
