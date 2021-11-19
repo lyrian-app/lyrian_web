@@ -1,2 +1,2 @@
-export * from "./modal/ModalOverlay";
+export * from "./modalOverlay/ModalOverlay";
 export * from "./modalContent/ModalContent";
