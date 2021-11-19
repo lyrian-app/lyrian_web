@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { RectBtn, ScrollBtn } from "../../ui/buttons";
 import { Footer } from "../../ui/footer";
@@ -9,12 +10,15 @@ import style from "./style.module.scss";
 export const LandingPage = () => {
   let whatIsRef = React.createRef<HTMLDivElement>();
 
+  const navigate = useNavigate();
+  const toStartPage = () => navigate("/start");
+
   return (
     <div className="l-lp">
       <div className={style.top}>
         <H1>Lyrian Web</H1>
         <p className={style.description}>日本語の歌詞生成アプリケーション</p>
-        <RectBtn value="はじめる" size="large" />
+        <RectBtn value="はじめる" size="large" onClick={toStartPage} />
         <div className={style.scrollBtn}>
           <ScrollBtn jumpToRef={whatIsRef} arrow="down" />
         </div>
@@ -48,7 +52,7 @@ export const LandingPage = () => {
       <div className={style.bottom}>
         <H2>さあ、はじめよう。</H2>
         <div className={style.startBtn}>
-          <RectBtn value="はじめる" size="large" />
+          <RectBtn value="はじめる" size="large" onClick={toStartPage} />
         </div>
       </div>
 
