@@ -1,6 +1,6 @@
 @import "../../../../assets/scss/var";
 
-[class^="rectBtn"] {
+.rectBtn {
   position: relative;
   border: 2px solid $red;
   color: $red;
@@ -28,31 +28,31 @@
       transform: translateX(0);
     }
   }
-}
 
-.rectBtn__small {
-  font-size: $font-s;
-  padding: 0 $font-s;
+  &.small {
+    font-size: $font-s;
+    padding: 0 $font-s;
 
-  &::before {
-    margin-left: -$font-s;
+    &::before {
+      margin-left: -$font-s;
+    }
   }
-}
 
-.rectBtn__medium {
-  font-size: $font-m;
-  padding: 0 $font-m;
+  &.medium {
+    font-size: $font-m;
+    padding: 0 $font-m;
 
-  &::before {
-    margin-left: -$font-m;
+    &::before {
+      margin-left: -$font-m;
+    }
   }
-}
 
-.rectBtn__large {
-  font-size: $font-l;
-  padding: 0 $font-l;
+  &.large {
+    font-size: $font-l;
+    padding: 0 $font-l;
 
-  &::before {
-    margin-left: -$font-l;
+    &::before {
+      margin-left: -$font-l;
+    }
   }
 }

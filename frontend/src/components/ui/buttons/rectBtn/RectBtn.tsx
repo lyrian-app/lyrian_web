@@ -11,11 +11,11 @@ interface RectBtnProps {
 }
 
 export const RectBtn = (props: RectBtnProps) => {
-  const className = `rectBtn__${props.size}`;
+  const className = `${style.rectBtn} ${style[props.size]}`;
 
   return (
     <button
-      className={style[className]}
+      className={className}
       id={props.id}
       name={props.name}
       onClick={props.onClick}
