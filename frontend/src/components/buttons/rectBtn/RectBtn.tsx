@@ -7,6 +7,7 @@ interface RectBtnProps {
   value?: string;
   id?: "";
   name?: "";
+  type?: "button" | "reset" | "submit";
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -19,6 +20,7 @@ export const RectBtn = (props: RectBtnProps) => {
       id={props.id}
       name={props.name}
       onClick={props.onClick}
+      type={props.type}
     >
       {props.value}
     </button>
