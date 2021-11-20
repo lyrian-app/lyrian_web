@@ -1,0 +1,31 @@
+@import "../../../styles/var";
+
+.toast {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  color: $white;
+  padding: 1rem;
+
+  &.ok {
+    background-color: $green;
+  }
+
+  &.warning {
+    background-color: $orange;
+  }
+
+  &.error {
+    background-color: $red;
+  }
+}
+
+.icon {
+  font-size: $font-m;
+  margin-left: -0.6rem;
+  margin-right: 0.3rem;
+}
+
+.discription {
+  font-size: $font-s;
+}
