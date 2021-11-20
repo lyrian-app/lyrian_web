@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import "./assets/scss/reset.scss";
+import "./styles/reset.scss";
 import "./assets/fontello/css/fontello.css";
 
 if (process.env.NODE_ENV === "development") {
