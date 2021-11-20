@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import { RectBtn, StrBtn } from "../../ui/buttons";
-import { Footer } from "../../ui/footer";
-import { Textarea } from "../../ui/form";
-import { Modal, ModalOverlay, ModalContent } from "../../ui/modal";
-import { H2, H3 } from "../../ui/text";
+import { RectBtn, StrBtn } from "../../components/buttons";
+import { Footer } from "../../components/footer";
+import { Textarea } from "../../components/form";
+import { Modal, ModalOverlay, ModalContent } from "../../components/modal";
+import { H2, H3 } from "../../components/text";
 import style from "./style.module.scss";
 
 const useModalState = (initValue: boolean): [boolean, () => void] => {

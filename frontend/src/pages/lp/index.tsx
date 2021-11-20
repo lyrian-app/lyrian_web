@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { RectBtn, ScrollBtn } from "../../ui/buttons";
-import { Footer } from "../../ui/footer";
-import { Grid } from "../../ui/grid";
-import { H1, H2 } from "../../ui/text";
+import { RectBtn, ScrollBtn } from "../../components/buttons";
+import { Footer } from "../../components/footer";
+import { Grid } from "../../components/grid";
+import { H1, H2 } from "../../components/text";
 import style from "./style.module.scss";
 
 export const LandingPage = () => {
