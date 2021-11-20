@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchMarkovModel } from "../../api";
 import { MarkovContext } from "../../providers";
 import { MarkovState } from "../../hooks";
+import { errorAlert } from "../../utils/errorAlert";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -29,12 +30,13 @@ export const Start = () => {
   };
 
   const onSubmit = async () => {
-    await fetchMarkovModel(learningData).then((text) => {
-      const model: MarkovState = JSON.parse(text);
-      dispatch({ type: "MarkovGeneratedMsg", model: model });
-      navigate("/fix");
-    });
-    // TODO: Error handling of invalid response
+    await fetchMarkovModel(learningData)
+      .then((text) => {
+        const model: MarkovState = JSON.parse(text);
+        dispatch({ type: "MarkovGeneratedMsg", model: model });
+        navigate("/fix");
+      })
+      .catch((status) => errorAlert(status));
 
     return false;
   };
