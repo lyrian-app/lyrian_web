@@ -7,7 +7,9 @@ interface TextareaProps {
   ref?: React.RefObject<HTMLTextAreaElement>;
   value?: string;
   placeholder?: string;
+  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
   readOnly?: boolean;
+  required?: boolean;
 }
 
 export const Textarea = (props: TextareaProps) => {
@@ -19,7 +21,9 @@ export const Textarea = (props: TextareaProps) => {
         ref={props.ref}
         value={props.value}
         placeholder={props.placeholder}
+        onChange={props.onChange}
         readOnly={props.readOnly}
+        required={props.required}
       />
     </div>
   );
