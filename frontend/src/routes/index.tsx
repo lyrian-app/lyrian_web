@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Edit } from "../components/page/edit";
-import { Fix } from "../components/page/fix";
-import { LandingPage } from "../components/page/lp";
-import { Lyrics } from "../components/page/lyrics";
-import { Save } from "../components/page/save";
-import { Start } from "../components/page/start";
+import { Edit } from "../pages/edit";
+import { Fix } from "../pages/fix";
+import { LandingPage } from "../pages/lp";
+import { Lyrics } from "../pages/lyrics";
+import { Save } from "../pages/save";
+import { Start } from "../pages/start";
 
 export const AppRoute = () => {
   return (
