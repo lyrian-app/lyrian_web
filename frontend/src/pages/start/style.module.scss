@@ -21,11 +21,23 @@
   text-align: center;
 }
 
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
 .textarea {
   width: 70%;
   height: 40vh;
   font-size: $font-s;
   margin-bottom: 1rem;
+}
+
+.iframe {
+  display: none;
 }
 
 .notice {
