@@ -9,7 +9,7 @@ import { errorAlert } from "../../utils/errorAlert";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
-import { Textarea } from "../../components/form";
+import { Form, Textarea } from "../../components/form";
 import { Modal, ModalOverlay, ModalContent } from "../../components/modal";
 import { H2, H3 } from "../../components/text";
 import style from "./style.module.scss";
@@ -71,7 +71,7 @@ export const Start = () => {
           制作している楽曲の雰囲気に合わせた文章を入力することで、その雰囲気に近い歌詞を生成します。
         </p>
 
-        <form className={style.form} target="avoid" onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit}>
           <div className={style.textarea}>
             <Textarea
               placeholder="文章を入力してください。"
@@ -88,7 +88,7 @@ export const Start = () => {
           <div className={style.genModelBtn}>
             <RectBtn value="作成" size="large" type="submit" />
           </div>
-        </form>
+        </Form>
 
         <StrBtn value="既にモデルをお持ちの方はこちら" onClick={toggleModal} />
       </div>
@@ -100,16 +100,14 @@ export const Start = () => {
           <p className={style.discription}>
             作成したモデルファイルを選択してください。
           </p>
-          <form className={style.form} target="avoid" onSubmit={readJson}>
+          <Form onSubmit={readJson}>
             <div className={style.fileInput}>
               <input type="file" accept=".json" ref={jsonRef} required={true} />
             </div>
             <RectBtn value="読み込み" size="medium" type="submit" />
-          </form>
+          </Form>
         </ModalContent>
       </Modal>
-
-      <iframe className={style.iframe} name="avoid" />
 
       <Footer />
     </div>

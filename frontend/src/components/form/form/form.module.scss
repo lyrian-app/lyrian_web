@@ -1,0 +1,14 @@
+@import "../../../styles/var";
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.avoid {
+  display: none;
+  border: 0;
+}
