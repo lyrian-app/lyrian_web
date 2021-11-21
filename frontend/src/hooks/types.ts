@@ -1,7 +1,7 @@
 /**
  * A token of morphological analysis.
  */
-export interface StateSpace {
+export interface Token {
   word: string;
   mora: string;
   syllable: string;
@@ -41,7 +41,7 @@ export interface WaTable {
  * A state of Markov chain model.
  */
 export interface MarkovState {
-  state_space: StateSpace[];
+  state_space: Token[];
   wa_table: WaTable[];
   prev_index: number;
 }
