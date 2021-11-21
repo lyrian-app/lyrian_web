@@ -26,6 +26,7 @@ export enum PartOfSpeech {
   フィラー = "フィラー",
   その他 = "その他",
   未知語 = "未知語",
+  unknown = "unknown",
 }
 
 /**

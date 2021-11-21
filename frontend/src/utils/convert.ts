@@ -212,5 +212,6 @@ const typeMap: any = {
     "フィラー",
     "その他",
     "未知語",
+    "unknown",
   ],
 };
