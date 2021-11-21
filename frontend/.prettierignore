@@ -8,3 +8,4 @@ dist/
 .vscode/
 
 src/assets/fontello/
+src/mocks/sample_model.json.js
