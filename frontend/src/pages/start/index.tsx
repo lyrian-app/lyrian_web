@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchMarkovModel } from "../../api";
 import { MarkovContext } from "../../providers";
 import { MarkovState } from "../../hooks";
+import { Convert } from "../../utils/convert";
 import { errorAlert } from "../../utils/errorAlert";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
@@ -22,6 +23,7 @@ const useModalState = (initValue: boolean): [boolean, () => void] => {
 export const Start = () => {
   const [isOpen, toggleModal] = useModalState(false);
   const [learningData, setText] = useState("");
+  const jsonRef: React.RefObject<HTMLInputElement> = React.createRef();
   const navigate = useNavigate();
   const dispatch = useContext(MarkovContext)!.dispatch;
 
@@ -41,6 +43,23 @@ export const Start = () => {
     return false;
   };
 
+  const readJson = () => {
+    let fr = new FileReader();
+    fr.addEventListener("load", (e) => {
+      try {
+        const model = Convert.toMarkovState(e.target?.result as string);
+        dispatch({ type: "MarkovGeneratedMsg", model: model });
+        navigate("/fix");
+      } catch (e) {
+        alert(`不正なファイルが入力されました。\n${e}`);
+      }
+    });
+
+    const target = jsonRef.current as HTMLInputElement;
+    fr.readAsText(target.files![0]);
+    return false;
+  };
+
   return (
     <div className={style.start}>
       <div className={style.main}>
@@ -52,7 +71,7 @@ export const Start = () => {
           制作している楽曲の雰囲気に合わせた文章を入力することで、その雰囲気に近い歌詞を生成します。
         </p>
 
-        <form className={style.form} target="create" onSubmit={onSubmit}>
+        <form className={style.form} target="avoid" onSubmit={onSubmit}>
           <div className={style.textarea}>
             <Textarea
               placeholder="文章を入力してください。"
@@ -71,8 +90,6 @@ export const Start = () => {
           </div>
         </form>
 
-        <iframe className={style.iframe} name="create" />
-
         <StrBtn value="既にモデルをお持ちの方はこちら" onClick={toggleModal} />
       </div>
 
@@ -83,12 +100,16 @@ export const Start = () => {
           <p className={style.discription}>
             作成したモデルファイルを選択してください。
           </p>
-          <div className={style.fileInput}>
-            <input type="file" name="" id="" accept=".json" />
-          </div>
-          <RectBtn value="読み込み" size="medium" />
+          <form className={style.form} target="avoid" onSubmit={readJson}>
+            <div className={style.fileInput}>
+              <input type="file" accept=".json" ref={jsonRef} required={true} />
+            </div>
+            <RectBtn value="読み込み" size="medium" type="submit" />
+          </form>
         </ModalContent>
       </Modal>
+
+      <iframe className={style.iframe} name="avoid" />
 
       <Footer />
     </div>
