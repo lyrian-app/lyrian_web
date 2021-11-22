@@ -2,14 +2,14 @@ import React from "react";
 import { useReducer } from "react";
 
 import { MarkovContext, LyricsContext } from "./context";
-import { lyricsUpdate, markovUpdate } from "../hooks";
+import { lyricsUpdate, markovUpdate, PartOfSpeech } from "../hooks";
 
 const markovInitValue = {
-  tokens: [{ word: "", mora: "", syllable: "", partOfSpeech: "" }],
-  probsTable: [
-    { aliases: Int32Array.from([0]), probs: Float32Array.from([0.0]) },
+  state_space: [
+    { word: "", mora: "", syllable: "", part_of_speech: PartOfSpeech.unknown },
   ],
-  length: 1,
+  wa_table: [{ aliases: [0], probs: [0.0] }],
+  prev_index: 1,
 };
 
 const lyricsInitValue = {
