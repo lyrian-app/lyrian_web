@@ -1,0 +1,9 @@
+@import "../../../styles/var";
+
+.tokenCard {
+  padding: 2rem;
+  border: 1px solid $gray;
+  border-radius: 1rem;
+  font-size: $font-s;
+  text-align: center;
+}
