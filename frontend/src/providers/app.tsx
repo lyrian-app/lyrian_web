@@ -25,8 +25,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [lyrics, lyrDispatch] = useReducer(lyricsUpdate, lyricsInitValue);
 
   return (
-    <MarkovContext.Provider value={{ state: markov, dispatch: mkvDispatch }}>
-      <LyricsContext.Provider value={{ state: lyrics, dispatch: lyrDispatch }}>
+    <MarkovContext.Provider value={{ markov: markov, dispatch: mkvDispatch }}>
+      <LyricsContext.Provider value={{ lyrics: lyrics, dispatch: lyrDispatch }}>
         {children}
       </LyricsContext.Provider>
     </MarkovContext.Provider>

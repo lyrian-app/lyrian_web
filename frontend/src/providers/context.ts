@@ -2,12 +2,12 @@ import React from "react";
 import { LyricsState, MarkovState, LyricsMsg, MarkovMsg } from "../hooks";
 
 interface LyricsContextValues {
-  state: LyricsState;
+  lyrics: LyricsState;
   dispatch: React.Dispatch<LyricsMsg>;
 }
 
 interface MarkovContextValues {
-  state: MarkovState;
+  markov: MarkovState;
   dispatch: React.Dispatch<MarkovMsg>;
 }
 
