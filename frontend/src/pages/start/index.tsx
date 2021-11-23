@@ -10,6 +10,7 @@ import { errorAlert } from "../../utils/errorAlert";
 import { RectBtn, StrBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
 import { Form, Textarea } from "../../components/form";
+import { Main } from "../../components/layout";
 import { Modal, ModalOverlay, ModalContent } from "../../components/modal";
 import { H2, H3 } from "../../components/text";
 import style from "./style.module.scss";
@@ -62,7 +63,7 @@ export const Start = () => {
 
   return (
     <div className={style.start}>
-      <div className={style.main}>
+      <Main>
         <H2>モデルの作成</H2>
 
         <p className={style.discription}>
@@ -91,7 +92,7 @@ export const Start = () => {
         </Form>
 
         <StrBtn value="既にモデルをお持ちの方はこちら" onClick={toggleModal} />
-      </div>
+      </Main>
 
       <Modal isOpen={isOpen}>
         <ModalOverlay onClick={toggleModal} />

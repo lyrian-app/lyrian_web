@@ -5,17 +5,6 @@
   height: 100%;
 }
 
-.main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100vh;
-  padding: 3rem 0;
-  color: $black;
-}
-
 .discription {
   font-size: $font-s;
   margin-bottom: 1rem;

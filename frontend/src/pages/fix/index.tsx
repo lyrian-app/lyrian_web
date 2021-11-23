@@ -9,6 +9,7 @@ import { getUnknownTokenIdxs } from "./utils";
 import { RectBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
 import { Form, TokenCard } from "../../components/form";
+import { Main } from "../../components/layout";
 import { H2 } from "../../components/text";
 import style from "./style.module.scss";
 
@@ -76,7 +77,7 @@ export const Fix = () => {
 
   return (
     <div className={style.fix}>
-      <div className={style.main}>
+      <Main>
         <H2>言葉の読み方を教えてください。</H2>
         <p className={style.discription}>
           読みや発音、品詞が不明な単語が見つかりました。
@@ -104,7 +105,7 @@ export const Fix = () => {
 
           <RectBtn value="決定" size="large" type="submit" />
         </Form>
-      </div>
+      </Main>
 
       <Footer />
     </div>
