@@ -10,7 +10,7 @@ import { RectBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
 import { Form, TokenCard } from "../../components/form";
 import { Main } from "../../components/layout";
-import { H2 } from "../../components/text";
+import { Discription, H2 } from "../../components/text";
 import style from "./style.module.scss";
 
 export const Fix = () => {
@@ -79,13 +79,13 @@ export const Fix = () => {
     <div className={style.fix}>
       <Main>
         <H2>言葉の読み方を教えてください。</H2>
-        <p className={style.discription}>
+        <Discription>
           読みや発音、品詞が不明な単語が見つかりました。
           <br />
           以下の例に従って情報を追記してください。
           <br />
           例：大空 → 読み「オオゾラ」、発音「オーゾラ」、品詞「名詞」
-        </p>
+        </Discription>
 
         <Form onSubmit={onFix}>
           <div className={style.tokenList}>

@@ -12,7 +12,7 @@ import { Footer } from "../../components/footer";
 import { Form, Textarea } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalOverlay, ModalContent } from "../../components/modal";
-import { H2, H3 } from "../../components/text";
+import { Discription, H2, H3 } from "../../components/text";
 import style from "./style.module.scss";
 
 const useModalState = (initValue: boolean): [boolean, () => void] => {
@@ -66,11 +66,11 @@ export const Start = () => {
       <Main>
         <H2>モデルの作成</H2>
 
-        <p className={style.discription}>
+        <Discription>
           Lyrianに学習させる文章を入力してください。
           <br />
           制作している楽曲の雰囲気に合わせた文章を入力することで、その雰囲気に近い歌詞を生成します。
-        </p>
+        </Discription>
 
         <Form onSubmit={onSubmit}>
           <div className={style.textarea}>
