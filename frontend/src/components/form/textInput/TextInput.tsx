@@ -1,8 +1,8 @@
 import React from "react";
 
-import style from "./inputText.module.scss";
+import style from "./textInput.module.scss";
 
-interface InputTextProps {
+interface TextInputProps {
   defaultValue?: string;
   ref?: React.MutableRefObject<HTMLInputElement>;
   placeholder?: string;
@@ -10,10 +10,10 @@ interface InputTextProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export const InputText = (props: InputTextProps) => {
+export const TextInput = (props: TextInputProps) => {
   return (
     <input
-      className={style.inputText}
+      className={style.textInput}
       ref={props.ref}
       type="text"
       defaultValue={props.defaultValue}

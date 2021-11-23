@@ -2,7 +2,7 @@ import React from "react";
 
 import { PartOfSpeech } from "../../../hooks";
 
-import { InputText, Option, Select } from "..";
+import { TextInput, Option, Select } from "..";
 import { Grid } from "../../layout";
 import style from "./tokenCard.module.scss";
 
@@ -29,12 +29,12 @@ export const TokenCard = (props: TokenCardProps) => {
         <p>発音</p>
         <p>品詞</p>
         <p>{props.word}</p>
-        <InputText
+        <TextInput
           required={true}
           defaultValue={props.mora}
           onChange={props.onMoraChange}
         />
-        <InputText
+        <TextInput
           required={true}
           defaultValue={props.syllable}
           onChange={props.onSyllableChange}
