@@ -7,5 +7,5 @@ interface DiscriptionProps {
 }
 
 export const Discription = ({ children }: DiscriptionProps) => {
-  return <p className={style.discription}>{children}</p>
+  return <p className={style.discription}>{children}</p>;
 };
