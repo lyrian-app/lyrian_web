@@ -3,7 +3,7 @@ import React from "react";
 import { PartOfSpeech } from "../../../hooks";
 
 import { InputText, Option, Select } from "..";
-import { Grid } from "../../grid";
+import { Grid } from "../../layout";
 import style from "./tokenCard.module.scss";
 
 interface TokenCardProps {

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { RectBtn, ScrollBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
-import { Grid } from "../../components/grid";
+import { Grid } from "../../components/layout";
 import { H1, H2 } from "../../components/text";
 import style from "./style.module.scss";
 
