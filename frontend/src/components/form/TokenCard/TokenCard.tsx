@@ -40,7 +40,7 @@ export const TokenCard = (props: TokenCardProps) => {
           onChange={props.onSyllableChange}
         />
         <Select
-          defaultValue="名詞"
+          defaultValue={props.partOfSpeech}
           onChange={props.onPartChange}
           required={true}
         >

@@ -17,10 +17,15 @@ export const Fix = () => {
   const navigate = useNavigate();
 
   const idxes = getUnknownTokenIdxs(markov);
-  const empty: string[] = new Array(idxes.length).fill("");
-  const [moras, setMoras] = React.useState(empty);
-  const [syllables, setSyllables] = React.useState(empty);
-  const [parts, setParts] = React.useState(empty);
+  const [moras, setMoras] = React.useState(
+    Array<string>(idxes.length).fill("")
+  );
+  const [syllables, setSyllables] = React.useState(
+    Array<string>(idxes.length).fill("")
+  );
+  const [parts, setParts] = React.useState(
+    Array<string>(idxes.length).fill("名詞")
+  );
 
   const onMoraChange =
     (i: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
