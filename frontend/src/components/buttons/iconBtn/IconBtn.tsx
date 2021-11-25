@@ -9,11 +9,11 @@ interface IconBtnProps {
 }
 
 export const IconBtn = (props: IconBtnProps) => {
-  const className = `iconBtn__${props.size}`;
+  const className = `${style.iconBtn} ${style[props.size]}`;
 
   return (
-    <div className={style[className]}>
+    <button className={className} onClick={props.onClick}>
       <i className={props.iconName} />
-    </div>
+    </button>
   );
 };
