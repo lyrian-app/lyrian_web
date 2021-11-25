@@ -46,6 +46,7 @@ export const LyricCard = (props: LyricCardProps) => {
         <IconBtn
           iconName="icon-arrows-cw"
           size="medium"
+          color="black"
           onClick={props.onLyricGenerate}
         />
 
@@ -63,13 +64,19 @@ export const LyricCard = (props: LyricCardProps) => {
         <TextInput defaultValue={props.lyric} onChange={props.onLyricChange} />
 
         <div className={style.accordionBtn}>
-          <IconBtn iconName={iconName} size="small" onClick={toggle} />
+          <IconBtn
+            iconName={iconName}
+            size="small"
+            color="black"
+            onClick={toggle}
+          />
         </div>
 
         <div className={style.close}>
           <IconBtn
             iconName="icon-cancel"
             size="small"
+            color="black"
             onClick={props.onClose}
           />
         </div>
