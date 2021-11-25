@@ -3,6 +3,7 @@ import React from "react";
 import style from "./numberInput.module.scss";
 
 interface NumberInputProps {
+  name?: string;
   defaultValue?: number;
   max?: number;
   min?: number;
@@ -14,6 +15,7 @@ export const NumberInput = (props: NumberInputProps) => {
   return (
     <input
       className={style.numberInput}
+      name={props.name}
       type="number"
       defaultValue={props.defaultValue}
       max={props.max}
