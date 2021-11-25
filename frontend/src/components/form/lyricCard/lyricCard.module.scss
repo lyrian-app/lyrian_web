@@ -16,7 +16,8 @@
   color: $gray;
   font-size: $font-s;
   transition: 0.1s;
-  
+  cursor: pointer;
+
   &:hover {
     color: $dark-gray;
   }
@@ -38,7 +39,7 @@
   border: 1px solid $gray;
   border-radius: 1rem;
   width: 100%;
-  padding: 2rem;
+  padding: 3rem;
   gap: 1rem;
   background-color: $white;
   z-index: 1000;
@@ -62,10 +63,16 @@
   z-index: 0;
 
   &.isOpen {
-    bottom: calc(-3rem - $font-s);
+    bottom: calc(-4rem - $font-s);
   }
 }
 
 .label {
   white-space: nowrap;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
