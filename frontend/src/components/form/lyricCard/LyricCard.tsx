@@ -4,7 +4,12 @@ import { IconBtn } from "../../buttons";
 import { TextInput, Select, Option, NumberInput } from "..";
 import style from "./lyricCard.module.scss";
 
+export type MoraOrSyllable = "モーラ" | "シラブル";
+
 interface LyricCardProps {
+  lyric?: string;
+  notes?: number;
+  unit?: MoraOrSyllable;
   onLyricGenerate?: React.MouseEventHandler<HTMLButtonElement>;
   onNotesChange?: React.ChangeEventHandler<HTMLInputElement>;
   onLyricChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -28,7 +33,7 @@ export const LyricCard = (props: LyricCardProps) => {
       <div className={bottomClass}>
         <label htmlFor="unit">割り当て単位: </label>
         <Select
-          defaultValue="シラブル"
+          defaultValue={props.unit}
           name="unit"
           onChange={props.onUnitChange}
         >
@@ -44,18 +49,18 @@ export const LyricCard = (props: LyricCardProps) => {
           onClick={props.onLyricGenerate}
         />
 
-        <label className={style.label} htmlFor="numInput">
+        <label className={style.label} htmlFor="notes">
           音数
         </label>
         <NumberInput
-          name="numInput"
-          defaultValue={3}
+          name="notes"
+          defaultValue={props.notes}
           max={20}
           min={1}
           onChange={props.onNotesChange}
         />
 
-        <TextInput onChange={props.onLyricChange} />
+        <TextInput defaultValue={props.lyric} onChange={props.onLyricChange} />
 
         <div className={style.accordionBtn}>
           <IconBtn iconName={iconName} size="small" onClick={toggle} />
