@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { fetchMarkovModel } from "../../api";
 import { MarkovContext } from "../../providers";
-import { MarkovState } from "../../hooks";
+import { MarkovState, useBoolState } from "../../hooks";
 import { Convert } from "../../utils/convert";
 import { errorAlert } from "../../utils/errorAlert";
 
@@ -15,14 +15,8 @@ import { Modal, ModalOverlay, ModalContent } from "../../components/modal";
 import { Discription, H2, H3 } from "../../components/text";
 import style from "./style.module.scss";
 
-const useModalState = (initValue: boolean): [boolean, () => void] => {
-  const [isOpen, setIsOpen] = useState(initValue);
-  const toggleModal = () => setIsOpen(!isOpen);
-  return [isOpen, toggleModal];
-};
-
 export const Start = () => {
-  const [isOpen, toggleModal] = useModalState(false);
+  const [isOpen, toggleModal] = useBoolState(false);
   const [learningData, setText] = useState("");
   const jsonRef: React.RefObject<HTMLInputElement> = React.createRef();
   const navigate = useNavigate();

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useBoolState } from "../../../hooks";
+
 import { IconBtn } from "../../buttons";
 import { TextInput, Select, Option, NumberInput } from "..";
 import style from "./lyricCard.module.scss";
@@ -17,14 +19,8 @@ interface LyricCardProps {
   onClose?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const useOpenState = (initValue: boolean): [boolean, () => void] => {
-  const [isOpen, setIsOpen] = React.useState(initValue);
-  const toggle = () => setIsOpen(!isOpen);
-  return [isOpen, toggle];
-};
-
 export const LyricCard = (props: LyricCardProps) => {
-  const [isOpen, toggle] = useOpenState(false);
+  const [isOpen, toggleModal] = useBoolState(false);
   const iconName = isOpen ? " icon-up-open" : " icon-down-open";
   const bottomClass = `${style.bottom} ${isOpen ? style.isOpen : ""}`;
 
@@ -68,7 +64,7 @@ export const LyricCard = (props: LyricCardProps) => {
             iconName={iconName}
             size="small"
             color="black"
-            onClick={toggle}
+            onClick={toggleModal}
           />
         </div>
 
