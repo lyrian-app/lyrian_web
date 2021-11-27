@@ -13,7 +13,7 @@ export const Form = (props: FormProps) => {
       <form className={style.form} target="avoid" onSubmit={props.onSubmit}>
         {props.children}
       </form>
-      <iframe className={style.avoid} name="avoid" />
+      <iframe className={style.avoid} name="avoid" title="avoid" />
     </>
   );
 };
