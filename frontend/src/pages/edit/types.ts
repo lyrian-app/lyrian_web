@@ -23,6 +23,6 @@ export const getInitialLyric = () => ({
 
 export const getInitialSection = () => ({
   key: generateUniqueKey(),
-  name: "セクション",
+  name: "",
   lyrics: [getInitialLyric()],
 });
