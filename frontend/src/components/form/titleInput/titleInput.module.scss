@@ -1,0 +1,31 @@
+@import "../../../styles/var";
+
+.titleInput {
+  position: relative;
+  width: 100%;
+  height: $font-l;
+  margin-bottom: 1rem;
+}
+
+.input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border: 1px solid rgba($color: $dark-gray, $alpha: 0);
+  outline: 0;
+  font-size: $font-l;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 1rem;
+  transition: 0.1s;
+
+  &:hover {
+    border: 1px solid $dark-gray;
+  }
+
+  &:focus {
+    border: 1px solid $main-color;
+    box-shadow: 0 0 1px 1px $main-color;
+  }
+}
