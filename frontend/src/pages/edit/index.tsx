@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useBoolState } from "../../hooks";
 import { MarkovContext, LyricsContext } from "../../providers";
-import { getInitialSection } from "./types";
+import { getInitialSection, Section } from "./types";
 import { updateSections } from "./hooks";
 
 import { IconBtn, RectBtn } from "../../components/buttons";
@@ -19,13 +19,19 @@ import { Modal, ModalContent, ModalOverlay } from "../../components/modal";
 import { Discription, H2, H3 } from "../../components/text";
 import style from "./style.module.scss";
 
+const getSectionName = (sections: Section[], index: number | null) => {
+  if (index === null) return "";
+  if (sections[index].name === "") return "無名のセクション";
+  return `${sections[index].name}セクション`
+};
+
 export const Edit = () => {
   const { markov } = useContext(MarkovContext)!;
   const { lyrics, dispatch } = useContext(LyricsContext)!;
   const [sections, sectionDispatch] = useReducer(updateSections, [
     getInitialSection(),
   ]);
-  const [delTarget, setDelTarget] = useState(0);
+  const [delTarget, setDelTarget] = useState<number | null>(0);
   const [isOpen, toggleModal] = useBoolState(false);
   const navigate = useNavigate();
 
@@ -99,7 +105,8 @@ export const Edit = () => {
   };
 
   const deleteSection = () => {
-    sectionDispatch({ type: "SectionRemovedMsd", sectionIdx: delTarget });
+    sectionDispatch({ type: "SectionRemovedMsd", sectionIdx: delTarget! });
+    setDelTarget(null);
     toggleModal();
   };
 
@@ -173,7 +180,7 @@ export const Edit = () => {
       <Modal isOpen={isOpen}>
         <ModalOverlay onClick={toggleModal} />
         <ModalContent>
-          <H3>対象のセクションを削除しますか？</H3>
+          <H3>{getSectionName(sections, delTarget)}を削除しますか？</H3>
           <Discription>
             一度削除した要素を復元することはできません。
           </Discription>
