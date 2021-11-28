@@ -91,9 +91,10 @@ export const Edit = () => {
 
   const onSubmit = () => {
     const newLyrics = sections.reduce<string>((sectionAcc, sectionCur) => {
-      const newLyric = sectionCur.lyrics.reduce<string>((lyricAcc, lyricCur) => 
-        lyricAcc + lyricCur.value + "\n"
-      , "");
+      const newLyric = sectionCur.lyrics.reduce<string>(
+        (lyricAcc, lyricCur) => lyricAcc + lyricCur.value + "\n",
+        ""
+      );
       return sectionAcc + newLyric + "\n";
     }, "");
     dispatch({ type: "LyricsGeneratedMsg", lyrics: newLyrics });

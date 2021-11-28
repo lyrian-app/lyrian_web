@@ -92,9 +92,7 @@ export const Start = () => {
         <ModalOverlay onClick={toggleModal} />
         <ModalContent>
           <H3>モデルのインポート</H3>
-          <Discription>
-            作成したモデルファイルを選択してください。
-          </Discription>
+          <Discription>作成したモデルファイルを選択してください。</Discription>
           <Form onSubmit={readJson}>
             <div className={style.fileInput}>
               <input type="file" accept=".json" ref={jsonRef} required={true} />
