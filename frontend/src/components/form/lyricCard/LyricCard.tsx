@@ -58,7 +58,7 @@ export const LyricCard = (props: LyricCardProps) => {
           onChange={props.onNotesChange}
         />
 
-        <TextInput defaultValue={props.lyric} onChange={props.onLyricChange} />
+        <TextInput value={props.lyric} onChange={props.onLyricChange} />
 
         <div className={style.accordionBtn}>
           <IconBtn
