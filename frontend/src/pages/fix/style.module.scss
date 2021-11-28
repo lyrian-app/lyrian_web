@@ -8,9 +8,8 @@
 .tokenList {
   width: 70%;
   padding: 1rem;
-  margin-bottom: 1rem;
 
-  & > div {
-    margin-bottom: 1rem;
+  & > div ~ div {
+    margin-top: 1rem;
   }
 }
