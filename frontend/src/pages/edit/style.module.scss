@@ -1,0 +1,24 @@
+@import "../../styles/var";
+
+.edit {
+  width: 100%;
+  height: 100%;
+}
+
+.lyricList {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 60%;
+  border: 1px solid $gray;
+  border-radius: 1rem;
+  padding: 3rem;
+}
+
+.sectionClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
