@@ -7,7 +7,7 @@ export class MarkovChain {
 
   constructor(markov: MarkovState) {
     this.markov = markov;
-    this.prevIdx = markov.prev_index;
+    this.prevIdx = markov.state_space.length;
   }
 
   public next() {
