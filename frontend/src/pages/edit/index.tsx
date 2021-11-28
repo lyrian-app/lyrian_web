@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useBoolState } from "../../hooks";
 import { MarkovContext, LyricsContext } from "../../providers";
 import { updateSections } from "./hooks";
-import { getSectionName, getInitialSection } from "./util";
+import { getSectionName, getInitialSection, LyricGenerator } from "./util";
 
 import { IconBtn, RectBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -30,12 +30,18 @@ export const Edit = () => {
   const navigate = useNavigate();
 
   const onLyricGenerate = (i: number) => (j: number) => () => {
-    sectionDispatch({
-      type: "LyricValueChangedMsg",
-      sectionIdx: i,
-      lyricIdx: j,
-      newValue: "hoge",
-    });
+    try {
+      let generator = new LyricGenerator(sections[i].lyrics[j], markov);
+      const newValue = generator.generate();
+      sectionDispatch({
+        type: "LyricValueChangedMsg",
+        sectionIdx: i,
+        lyricIdx: j,
+        newValue: newValue,
+      });
+    } catch (e) {
+      alert(e);
+    }
   };
 
   const onLyricChange =
