@@ -27,7 +27,7 @@ const getSectionName = (sections: Section[], index: number | null) => {
 
 export const Edit = () => {
   const { markov } = useContext(MarkovContext)!;
-  const { lyrics, dispatch } = useContext(LyricsContext)!;
+  const { dispatch } = useContext(LyricsContext)!;
   const [sections, sectionDispatch] = useReducer(updateSections, [
     getInitialSection(),
   ]);
