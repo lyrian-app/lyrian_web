@@ -1,5 +1,4 @@
 import { MoraOrSyllable } from "../../components/form";
-import { generateUniqueKey } from "../../utils/key";
 
 export interface Lyric {
   key: string;
@@ -13,16 +12,3 @@ export interface Section {
   name: string;
   lyrics: Lyric[];
 }
-
-export const getInitialLyric = () => ({
-  key: generateUniqueKey(),
-  value: "",
-  notes: 3,
-  unit: "シラブル" as MoraOrSyllable,
-});
-
-export const getInitialSection = () => ({
-  key: generateUniqueKey(),
-  name: "",
-  lyrics: [getInitialLyric()],
-});

@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { useBoolState } from "../../hooks";
 import { MarkovContext, LyricsContext } from "../../providers";
-import { getInitialSection, Section } from "./types";
 import { updateSections } from "./hooks";
+import { getSectionName, getInitialSection } from "./util";
 
 import { IconBtn, RectBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -18,12 +18,6 @@ import { Main } from "../../components/layout";
 import { Modal, ModalContent, ModalOverlay } from "../../components/modal";
 import { Discription, H2, H3 } from "../../components/text";
 import style from "./style.module.scss";
-
-const getSectionName = (sections: Section[], index: number | null) => {
-  if (index === null) return "";
-  if (sections[index].name === "") return "無名のセクション";
-  return `${sections[index].name}セクション`;
-};
 
 export const Edit = () => {
   const { markov } = useContext(MarkovContext)!;

@@ -1,6 +1,7 @@
 import { MoraOrSyllable } from "../../components/form";
 
-import { getInitialLyric, getInitialSection, Section } from "./types";
+import { Section } from "./types";
+import { getInitialLyric, getInitialSection } from "./util";
 
 type NewLyricAddedMsg = {
   type: "NewLyricAddedMsg";
