@@ -22,7 +22,7 @@ import style from "./style.module.scss";
 const getSectionName = (sections: Section[], index: number | null) => {
   if (index === null) return "";
   if (sections[index].name === "") return "無名のセクション";
-  return `${sections[index].name}セクション`
+  return `${sections[index].name}セクション`;
 };
 
 export const Edit = () => {
