@@ -67,7 +67,7 @@ export const Fix = () => {
           token: summary.token,
         })
       );
-      navigate("/save");
+      navigate("/edit");
     } catch (e) {
       alert(`エラーが発生しました。\n${e}`);
     } finally {
