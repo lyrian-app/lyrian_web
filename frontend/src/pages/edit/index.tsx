@@ -8,7 +8,12 @@ import { updateSections } from "./hooks";
 
 import { IconBtn, RectBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
-import { Form, LyricCard, MoraOrSyllable } from "../../components/form";
+import {
+  Form,
+  LyricCard,
+  MoraOrSyllable,
+  TitleInput,
+} from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalContent, ModalOverlay } from "../../components/modal";
 import { Discription, H2, H3 } from "../../components/text";
@@ -79,6 +84,15 @@ export const Edit = () => {
     sectionDispatch({ type: "SectionAddedMsg" });
   };
 
+  const onSectionNameChanged =
+    (i: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      sectionDispatch({
+        type: "SectionRenamedMsd",
+        sectionIdx: i,
+        newName: e.currentTarget.value,
+      });
+    };
+
   const onSectionClose = (i: number) => () => {
     setDelTarget(i);
     toggleModal();
@@ -110,7 +124,10 @@ export const Edit = () => {
         <Form onSubmit={onSubmit}>
           {sections.map((section, i) => (
             <div className={style.lyricList} key={section.key}>
-              <H3>{section.name}</H3>
+              <TitleInput
+                defaultValue={section.name}
+                onChange={onSectionNameChanged(i)}
+              />
               {section.lyrics.map((lyric, j) => (
                 <LyricCard
                   key={lyric.key}
