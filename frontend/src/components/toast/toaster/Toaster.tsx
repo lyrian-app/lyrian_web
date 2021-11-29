@@ -1,17 +1,17 @@
 import React from "react";
 
-import { ToastCard } from "../../../hooks";
+import { ToastDough } from "../../../hooks";
 
 import { Toast } from "..";
 import style from "./toaster.module.scss";
 
 interface ToasterProps {
-  tousts: ToastCard[];
-  eat: (card: ToastCard) => void;
+  tousts: ToastDough[];
+  eat: (card: ToastDough) => void;
 }
 
 export const Toaster = (props: ToasterProps) => {
-  const onToastClick = (card: ToastCard) => () => props.eat(card);
+  const onToastClick = (card: ToastDough) => () => props.eat(card);
 
   return (
     <div className={style.toaster}>
