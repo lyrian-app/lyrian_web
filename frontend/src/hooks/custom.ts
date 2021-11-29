@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { ToastDough } from ".";
 import { generateUniqueKey } from "../utils/key";
 
 export const useBoolState = (initValue: boolean): [boolean, () => void] => {
@@ -7,12 +8,6 @@ export const useBoolState = (initValue: boolean): [boolean, () => void] => {
   const toggle = () => setBool(!bool);
   return [bool, toggle];
 };
-
-export interface ToastDough {
-  key?: string;
-  type: "ok" | "warning" | "error";
-  value: string;
-}
 
 export const useToast = () => {
   const [toasts, setToasts] = useState<ToastDough[]>([]);

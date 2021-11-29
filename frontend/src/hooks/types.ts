@@ -52,3 +52,9 @@ export interface MarkovState {
 export interface LyricsState {
   contents: string;
 }
+
+export interface ToastDough {
+  key?: string;
+  type: "ok" | "warning" | "error";
+  value: string;
+}
