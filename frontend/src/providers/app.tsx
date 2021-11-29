@@ -1,8 +1,10 @@
 import React from "react";
 import { useReducer } from "react";
 
-import { MarkovContext, LyricsContext } from "./context";
-import { lyricsUpdate, markovUpdate, PartOfSpeech } from "../hooks";
+import { MarkovContext, LyricsContext, ToasterContext } from "./context";
+import { lyricsUpdate, markovUpdate, PartOfSpeech, useToast } from "../hooks";
+
+import { Toaster } from "../components/toast";
 
 const markovInitValue = {
   state_space: [
@@ -23,11 +25,15 @@ type AppProviderProps = {
 export const AppProvider = ({ children }: AppProviderProps) => {
   const [markov, mkvDispatch] = useReducer(markovUpdate, markovInitValue);
   const [lyrics, lyrDispatch] = useReducer(lyricsUpdate, lyricsInitValue);
+  const { toasts, bake, eat } = useToast();
 
   return (
     <MarkovContext.Provider value={{ markov: markov, dispatch: mkvDispatch }}>
       <LyricsContext.Provider value={{ lyrics: lyrics, dispatch: lyrDispatch }}>
-        {children}
+        <ToasterContext.Provider value={{ bake: bake }}>
+          {children}
+          <Toaster toasts={toasts} eat={eat} />
+        </ToasterContext.Provider>
       </LyricsContext.Provider>
     </MarkovContext.Provider>
   );
