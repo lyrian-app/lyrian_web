@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useToast } from "../../hooks";
 import { LyricsContext } from "../../providers";
 import { generateUniqueKey } from "../../utils/key";
 
@@ -9,7 +10,7 @@ import { Footer } from "../../components/footer";
 import { Textarea } from "../../components/form";
 import { Main } from "../../components/layout";
 import { H2 } from "../../components/text";
-import { Toaster, useToast } from "../../components/toast";
+import { Toaster } from "../../components/toast";
 import style from "./style.module.scss";
 
 export const Lyrics = () => {

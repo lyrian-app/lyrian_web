@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ToastCard } from "../hooks";
+import { ToastCard } from "../../../hooks";
 
 import { Toast } from "..";
 import style from "./toaster.module.scss";
