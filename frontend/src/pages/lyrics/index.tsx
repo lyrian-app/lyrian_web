@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useToast } from "../../hooks";
-import { LyricsContext } from "../../providers";
+import { LyricsContext, ToasterContext } from "../../providers";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -14,7 +14,7 @@ import style from "./style.module.scss";
 
 export const Lyrics = () => {
   const { lyrics } = useContext(LyricsContext)!;
-  const { toasts, bake, eat } = useToast();
+  const { bake } = useContext(ToasterContext)!;
   const navigate = useNavigate();
 
   const onCopyClick = () => {
@@ -41,8 +41,6 @@ export const Lyrics = () => {
       </Main>
 
       <Footer />
-
-      <Toaster toasts={toasts} eat={eat} />
     </div>
   );
 };
