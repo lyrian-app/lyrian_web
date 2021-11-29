@@ -6,7 +6,7 @@ import { Toast } from "..";
 import style from "./toaster.module.scss";
 
 interface ToasterProps {
-  tousts: ToastDough[];
+  toasts: ToastDough[];
   eat: (card: ToastDough) => void;
 }
 
@@ -15,7 +15,7 @@ export const Toaster = (props: ToasterProps) => {
 
   return (
     <div className={style.toaster}>
-      {props.tousts.map((t) => (
+      {props.toasts.map((t) => (
         <Toast
           key={t.key}
           type={t.type}

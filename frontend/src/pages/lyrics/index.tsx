@@ -42,7 +42,7 @@ export const Lyrics = () => {
 
       <Footer />
 
-      <Toaster tousts={toasts} eat={eat} />
+      <Toaster toasts={toasts} eat={eat} />
     </div>
   );
 };
