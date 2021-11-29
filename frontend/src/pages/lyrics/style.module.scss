@@ -1,0 +1,17 @@
+@import "../../styles/var";
+
+.lyrics {
+  width: 100%;
+  height: 100%;
+}
+
+.textarea {
+  width: 70%;
+  height: 40vh;
+  font-size: $font-s;
+  margin: 2rem 0;
+}
+
+.back {
+  margin-top: 1rem;
+}
