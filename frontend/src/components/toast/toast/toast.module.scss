@@ -5,7 +5,19 @@
   align-items: center;
   border-radius: 0.5rem;
   color: $white;
+  user-select: none;
   padding: 1rem;
+  box-shadow: 5px 5px 10px 0 rgba($color: #000000, $alpha: 0.4);
+  cursor: pointer;
+  transition: 0.1s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 
   &.ok {
     background-color: $green;
@@ -21,11 +33,11 @@
 }
 
 .icon {
-  font-size: $font-m;
+  font-size: $font-l;
   margin-left: -0.6rem;
   margin-right: 0.3rem;
 }
 
 .discription {
-  font-size: $font-s;
+  font-size: $font-m;
 }

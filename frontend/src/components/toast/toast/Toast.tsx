@@ -5,6 +5,7 @@ import style from "./toast.module.scss";
 interface ToastProps {
   type: "ok" | "warning" | "error";
   value?: string;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 export const Toast = (props: ToastProps) => {
@@ -12,7 +13,7 @@ export const Toast = (props: ToastProps) => {
   const iconClass = `icon-${props.type} ${style.icon}`;
 
   return (
-    <div className={toastClass}>
+    <div className={toastClass} onClick={props.onClick}>
       <i className={iconClass} />
       <p className={style.discription}>{props.value}</p>
     </div>
