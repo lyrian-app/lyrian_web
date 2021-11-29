@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { useToast } from "../../hooks";
 import { LyricsContext } from "../../providers";
-import { generateUniqueKey } from "../../utils/key";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -21,7 +20,6 @@ export const Lyrics = () => {
   const onCopyClick = () => {
     navigator.clipboard.writeText(lyrics.contents);
     bake({
-      key: generateUniqueKey(),
       type: "ok",
       value: "コピーしました！",
     });

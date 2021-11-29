@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { generateUniqueKey } from "../utils/key";
+
 export const useBoolState = (initValue: boolean): [boolean, () => void] => {
   const [bool, setBool] = useState(initValue);
   const toggle = () => setBool(!bool);
@@ -7,7 +9,7 @@ export const useBoolState = (initValue: boolean): [boolean, () => void] => {
 };
 
 export interface ToastDough {
-  key: string;
+  key?: string;
   type: "ok" | "warning" | "error";
   value: string;
 }
@@ -17,7 +19,7 @@ export const useToast = () => {
 
   const bake = (card: ToastDough) => {
     let newToasts = toasts.map((t) => t);
-    newToasts.push(card);
+    newToasts.push({ ...card, key: generateUniqueKey() });
     setToasts(newToasts);
   };
 
