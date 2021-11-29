@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useBoolState } from "../../hooks";
 import { MarkovContext, LyricsContext } from "../../providers";
 import { updateSections } from "./hooks";
-import { getSectionName, getInitialSection, LyricGenerator } from "./util";
+import { getSectionName, getInitialSection, LyricValueGenerator } from "./util";
 
 import { IconBtn, RectBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -31,7 +31,7 @@ export const Edit = () => {
 
   const onLyricGenerate = (i: number) => (j: number) => () => {
     try {
-      let generator = new LyricGenerator(sections[i].verse[j], markov);
+      let generator = new LyricValueGenerator(sections[i].verse[j], markov);
       const newValue = generator.generate();
       sectionDispatch({
         type: "LyricValueChangedMsg",

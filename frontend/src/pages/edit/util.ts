@@ -25,7 +25,7 @@ export const getSectionName = (sections: Section[], index: number | null) => {
   return `${sections[index].name}セクション`;
 };
 
-export class LyricGenerator {
+export class LyricValueGenerator {
   private lyric: Lyric;
   private chain: MarkovChain;
 
