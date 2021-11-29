@@ -2,19 +2,29 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { LyricsContext } from "../../providers";
+import { generateUniqueKey } from "../../utils/key";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
 import { Textarea } from "../../components/form";
 import { Main } from "../../components/layout";
 import { H2 } from "../../components/text";
+import { Toaster, useToast } from "../../components/toast";
 import style from "./style.module.scss";
 
 export const Lyrics = () => {
   const { lyrics } = useContext(LyricsContext)!;
+  const { toasts, bake, eat } = useToast();
   const navigate = useNavigate();
 
-  const onCopyClick = () => navigator.clipboard.writeText(lyrics.contents);
+  const onCopyClick = () => {
+    navigator.clipboard.writeText(lyrics.contents);
+    bake({
+      key: generateUniqueKey(),
+      type: "ok",
+      value: "コピーしました！",
+    });
+  };
 
   const onBackClick = () => navigate(-1);
 
@@ -32,6 +42,8 @@ export const Lyrics = () => {
       </Main>
 
       <Footer />
+
+      <Toaster tousts={toasts} eat={eat} />
     </div>
   );
 };
