@@ -65,22 +65,6 @@
         }
       }
 
-      .img {
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-
-        &.model {
-          background-image: url("../../assets/imgs/matrix.svg");
-        }
-        &.pen {
-          background-image: url("../../assets/imgs/pen.svg");
-        }
-        &.lyrics {
-          background-image: url("../../assets/imgs/lyrics.svg");
-        }
-      }
-
       &:nth-of-type(1) {
         background-color: $blue;
       }
@@ -96,13 +80,57 @@
 
 .feature {
   .featBox {
-    width: 100%;
-    border: 1px solid #000;
+    width: 70%;
+    margin-top: 2rem;
 
     .featItem {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 2rem;
       width: 100%;
-      height: 60vh;
-      border: 1px solid #000;
+
+      .featIcon {
+        width: 12vw;
+        height: 12vw;
+        padding: 3rem;
+        border-radius: 50%;
+
+        &.first {
+          background-color: $purple;
+        }
+        &.last {
+          background-color: $yellow;
+        }
+      }
+
+      .discription {
+        font-size: $font-s;
+      }
     }
+  }
+}
+
+.svgImg {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &.model {
+    background-image: url("../../assets/imgs/matrix.svg");
+  }
+  &.pen {
+    background-image: url("../../assets/imgs/pen.svg");
+  }
+  &.lyrics {
+    background-image: url("../../assets/imgs/lyrics.svg");
+  }
+  &.random {
+    background-image: url("../../assets/imgs/random.svg");
+  }
+  &.rhythm {
+    background-image: url("../../assets/imgs/rhythm.svg");
   }
 }

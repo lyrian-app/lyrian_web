@@ -33,7 +33,7 @@ export const LandingPage = () => {
         <div className={style.usageBox}>
           <Grid gap="2rem">
             <div className={style.usageItem}>
-              <div className={`${style.img} ${style.model}`} />
+              <div className={`${style.svgImg} ${style.model}`} />
               <div className={style.explain}>
                 <H3>モデル作成</H3>
                 <p>
@@ -44,7 +44,7 @@ export const LandingPage = () => {
               </div>
             </div>
             <div className={style.usageItem}>
-              <div className={`${style.img} ${style.pen}`} />
+              <div className={`${style.svgImg} ${style.pen}`} />
               <div className={style.explain}>
                 <H3>作詞</H3>
                 <p>
@@ -55,7 +55,7 @@ export const LandingPage = () => {
               </div>
             </div>
             <div className={style.usageItem}>
-              <div className={`${style.img} ${style.lyrics}`} />
+              <div className={`${style.svgImg} ${style.lyrics}`} />
               <div className={style.explain}>
                 <H3>完成</H3>
                 <p>
@@ -71,9 +71,28 @@ export const LandingPage = () => {
       <div className={style.feature}>
         <H2>特徴</H2>
         <div className={style.featBox}>
-          <Grid cols={2} gap="2rem">
-            <div className={style.featItem}></div>
-            <div className={style.featItem}></div>
+          <Grid cols={2} gap="3rem">
+            <div className={style.featItem}>
+              <div className={`${style.featIcon} ${style.first}`}>
+                <div className={`${style.svgImg} ${style.random}`} />
+              </div>
+              <H3>ランダム性</H3>
+              <p className={style.discription}>
+                Lyrian はマルコフ連鎖を用いて歌詞を生成するため、単語同士の組み合わせはランダムに決定します。
+                これにより、入力した文章の雰囲気を継承しつつ、通常では思いつかないユニークなフレーズを作成することに長けています。
+              </p>
+            </div>
+            <div className={style.featItem}>
+              <div className={`${style.featIcon} ${style.last}`}>
+                <div className={`${style.svgImg} ${style.rhythm}`} />
+              </div>
+              <H3>リズミカル</H3>
+              <p className={style.discription}>
+                日本語で歌詞を作成する場合、その言語の特性上、歌ったときのリズムが平坦になりやすいという特徴があります。
+                Lyrian では音符に言葉を割り当てる際に、その音節や無声音などを考慮することで、
+                歌ったときにリズミカルな歌詞が生成されやすくなっています（設定によって平坦にすることも可能です）。
+              </p>
+            </div>
           </Grid>
         </div>
       </div>
