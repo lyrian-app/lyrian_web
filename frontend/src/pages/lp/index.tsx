@@ -9,6 +9,8 @@ import style from "./style.module.scss";
 
 export const LandingPage = () => {
   let whatIsRef = React.createRef<HTMLDivElement>();
+  let feat = React.createRef<HTMLDivElement>();
+  let bottom = React.createRef<HTMLDivElement>();
 
   const navigate = useNavigate();
   const toStartPage = () => navigate("/start");
@@ -66,9 +68,10 @@ export const LandingPage = () => {
             </div>
           </Grid>
         </div>
+        <ScrollBtn jumpToRef={feat} arrow="down" />
       </div>
 
-      <div className={style.feature}>
+      <div className={style.feature} ref={feat}>
         <H2>特徴</H2>
         <div className={style.featBox}>
           <Grid cols={2} gap="3rem">
@@ -95,9 +98,10 @@ export const LandingPage = () => {
             </div>
           </Grid>
         </div>
+        <ScrollBtn jumpToRef={bottom} arrow="down" />
       </div>
 
-      <div className={style.bottom}>
+      <div className={style.bottom} ref={bottom}>
         <H2>さあ、はじめよう。</H2>
         <RectBtn value="はじめる" size="large" onClick={toStartPage} />
       </div>
