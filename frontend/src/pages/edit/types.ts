@@ -7,7 +7,7 @@ export interface Lyric {
   unit: MoraOrSyllable;
 }
 
-export interface Section {
+export interface Verse {
   key: string;
   name: string;
   values: Lyric[];

@@ -1,54 +1,54 @@
 import { MoraOrSyllable } from "../../components/form";
 
-import { Section } from "./types";
-import { getInitialLyric, getInitialSection } from "./util";
+import { Verse } from "./types";
+import { getInitialLyric, getInitialVerse } from "./util";
 
 type NewLyricAddedMsg = {
   type: "NewLyricAddedMsg";
-  sectionIdx: number;
+  verseIdx: number;
   newLyricIdx: number;
 };
 
 type LyricValueChangedMsg = {
   type: "LyricValueChangedMsg";
-  sectionIdx: number;
+  verseIdx: number;
   lyricIdx: number;
   newValue: string;
 };
 
 type NotesChangedMsg = {
   type: "NotesChangedMsg";
-  sectionIdx: number;
+  verseIdx: number;
   lyricIdx: number;
   newNotes: number;
 };
 
 type UnitChagedMsg = {
   type: "UnitChangedMsg";
-  sectionIdx: number;
+  verseIdx: number;
   lyricIdx: number;
   newUnit: MoraOrSyllable;
 };
 
 type LyricRemovedMsg = {
   type: "LyricRemovedMsg";
-  sectionIdx: number;
+  verseIdx: number;
   key: string;
 };
 
-type SectionAddedMsg = {
-  type: "SectionAddedMsg";
+type VerseAddedMsg = {
+  type: "VerseAddedMsg";
 };
 
-type SectionRenamedMsg = {
-  type: "SectionRenamedMsd";
-  sectionIdx: number;
+type VerseRenamedMsg = {
+  type: "VerseRenamedMsd";
+  verseIdx: number;
   newName: string;
 };
 
-type SectionRemovedMsg = {
-  type: "SectionRemovedMsd";
-  sectionIdx: number;
+type VerseRemovedMsg = {
+  type: "VerseRemovedMsd";
+  verseIdx: number;
 };
 
 type Msg =
@@ -57,48 +57,48 @@ type Msg =
   | NotesChangedMsg
   | UnitChagedMsg
   | LyricRemovedMsg
-  | SectionAddedMsg
-  | SectionRenamedMsg
-  | SectionRemovedMsg;
+  | VerseAddedMsg
+  | VerseRenamedMsg
+  | VerseRemovedMsg;
 
-export const updateSections = (state: Section[], msg: Msg) => {
+export const updateVerses = (state: Verse[], msg: Msg) => {
   let newState = [...state];
 
   switch (msg.type) {
     case "NewLyricAddedMsg":
-      if (msg.newLyricIdx === newState[msg.sectionIdx].values.length) {
-        newState[msg.sectionIdx].values.push(getInitialLyric());
+      if (msg.newLyricIdx === newState[msg.verseIdx].values.length) {
+        newState[msg.verseIdx].values.push(getInitialLyric());
       }
       break;
 
     case "LyricValueChangedMsg":
-      newState[msg.sectionIdx].values[msg.lyricIdx].value = msg.newValue;
+      newState[msg.verseIdx].values[msg.lyricIdx].value = msg.newValue;
       break;
 
     case "NotesChangedMsg":
-      newState[msg.sectionIdx].values[msg.lyricIdx].notes = msg.newNotes;
+      newState[msg.verseIdx].values[msg.lyricIdx].notes = msg.newNotes;
       break;
 
     case "UnitChangedMsg":
-      newState[msg.sectionIdx].values[msg.lyricIdx].unit = msg.newUnit;
+      newState[msg.verseIdx].values[msg.lyricIdx].unit = msg.newUnit;
       break;
 
     case "LyricRemovedMsg":
-      newState[msg.sectionIdx].values = newState[msg.sectionIdx].values.filter(
+      newState[msg.verseIdx].values = newState[msg.verseIdx].values.filter(
         (lyric) => lyric.key !== msg.key
       );
       break;
 
-    case "SectionAddedMsg":
-      newState.push(getInitialSection());
+    case "VerseAddedMsg":
+      newState.push(getInitialVerse());
       break;
 
-    case "SectionRenamedMsd":
-      newState[msg.sectionIdx].name = msg.newName;
+    case "VerseRenamedMsd":
+      newState[msg.verseIdx].name = msg.newName;
       break;
 
-    case "SectionRemovedMsd":
-      newState.splice(msg.sectionIdx, 1);
+    case "VerseRemovedMsd":
+      newState.splice(msg.verseIdx, 1);
       break;
   }
 

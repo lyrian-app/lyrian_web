@@ -1,4 +1,4 @@
-import { Lyric, Section } from "./types";
+import { Lyric, Verse } from "./types";
 import { generateUniqueKey } from "../../utils/key";
 import { MoraOrSyllable } from "../../components/form";
 import { MarkovState, PartOfSpeech } from "../../hooks/markov";
@@ -13,16 +13,16 @@ export const getInitialLyric = () => ({
   unit: "シラブル" as MoraOrSyllable,
 });
 
-export const getInitialSection = () => ({
+export const getInitialVerse = () => ({
   key: generateUniqueKey(),
   name: "",
   values: [getInitialLyric()],
 });
 
-export const getSectionName = (sections: Section[], index: number | null) => {
+export const getVerseName = (verses: Verse[], index: number | null) => {
   if (index === null) return "";
-  if (sections[index].name === "") return "無名のセクション";
-  return `${sections[index].name}セクション`;
+  if (verses[index].name === "") return "無名のセクション";
+  return `${verses[index].name}セクション`;
 };
 
 export class LyricValueGenerator {

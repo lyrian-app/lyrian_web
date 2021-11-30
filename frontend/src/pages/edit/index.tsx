@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { useBoolState } from "../../hooks";
 import { MarkovContext, LyricsContext } from "../../providers";
-import { updateSections } from "./hooks";
-import { getSectionName, getInitialSection, LyricValueGenerator } from "./util";
+import { updateVerses } from "./hooks";
+import { getVerseName, getInitialVerse, LyricValueGenerator } from "./util";
 
 import { IconBtn, RectBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -22,8 +22,8 @@ import style from "./style.module.scss";
 export const Edit = () => {
   const { markov } = useContext(MarkovContext)!;
   const { dispatch } = useContext(LyricsContext)!;
-  const [sections, sectionDispatch] = useReducer(updateSections, [
-    getInitialSection(),
+  const [verses, verseDispatch] = useReducer(updateVerses, [
+    getInitialVerse(),
   ]);
   const [delTarget, setDelTarget] = useState<number | null>(0);
   const [isOpen, toggleModal] = useBoolState(false);
@@ -31,11 +31,11 @@ export const Edit = () => {
 
   const onLyricGenerate = (i: number) => (j: number) => () => {
     try {
-      let generator = new LyricValueGenerator(sections[i].values[j], markov);
+      let generator = new LyricValueGenerator(verses[i].values[j], markov);
       const newValue = generator.generate();
-      sectionDispatch({
+      verseDispatch({
         type: "LyricValueChangedMsg",
-        sectionIdx: i,
+        verseIdx: i,
         lyricIdx: j,
         newValue: newValue,
       });
@@ -46,9 +46,9 @@ export const Edit = () => {
 
   const onLyricChange =
     (i: number) => (j: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      sectionDispatch({
+      verseDispatch({
         type: "LyricValueChangedMsg",
-        sectionIdx: i,
+        verseIdx: i,
         lyricIdx: j,
         newValue: e.currentTarget.value,
       });
@@ -56,9 +56,9 @@ export const Edit = () => {
 
   const onNotesChange =
     (i: number) => (j: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      sectionDispatch({
+      verseDispatch({
         type: "NotesChangedMsg",
-        sectionIdx: i,
+        verseIdx: i,
         lyricIdx: j,
         newNotes: Number(e.currentTarget.value),
       });
@@ -66,57 +66,57 @@ export const Edit = () => {
 
   const onUnitChange =
     (i: number) => (j: number) => (e: React.ChangeEvent<HTMLSelectElement>) => {
-      sectionDispatch({
+      verseDispatch({
         type: "UnitChangedMsg",
-        sectionIdx: i,
+        verseIdx: i,
         lyricIdx: j,
         newUnit: e.currentTarget.value as MoraOrSyllable,
       });
     };
 
   const onCardClose = (i: number) => (key: string) => () => {
-    sectionDispatch({ type: "LyricRemovedMsg", sectionIdx: i, key: key });
+    verseDispatch({ type: "LyricRemovedMsg", verseIdx: i, key: key });
   };
 
   const addNewLyricCard = (i: number) => () => {
-    sectionDispatch({
+    verseDispatch({
       type: "NewLyricAddedMsg",
-      sectionIdx: i,
-      newLyricIdx: sections[i].values.length,
+      verseIdx: i,
+      newLyricIdx: verses[i].values.length,
     });
   };
 
-  const addNewSection = () => {
-    sectionDispatch({ type: "SectionAddedMsg" });
+  const addNewVerse = () => {
+    verseDispatch({ type: "VerseAddedMsg" });
   };
 
-  const onSectionNameChanged =
+  const onVerseNameChanged =
     (i: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      sectionDispatch({
-        type: "SectionRenamedMsd",
-        sectionIdx: i,
+      verseDispatch({
+        type: "VerseRenamedMsd",
+        verseIdx: i,
         newName: e.currentTarget.value,
       });
     };
 
-  const onSectionClose = (i: number) => () => {
+  const onVerseClose = (i: number) => () => {
     setDelTarget(i);
     toggleModal();
   };
 
-  const deleteSection = () => {
-    sectionDispatch({ type: "SectionRemovedMsd", sectionIdx: delTarget! });
+  const deleteVerse = () => {
+    verseDispatch({ type: "VerseRemovedMsd", verseIdx: delTarget! });
     setDelTarget(null);
     toggleModal();
   };
 
   const onSubmit = () => {
-    const newLyrics = sections.reduce<string>((sectionAcc, sectionCur) => {
-      const newLyric = sectionCur.values.reduce<string>(
+    const newLyrics = verses.reduce<string>((verseAcc, verseCur) => {
+      const newLyric = verseCur.values.reduce<string>(
         (lyricAcc, lyricCur) => lyricAcc + lyricCur.value + "\n",
         ""
       );
-      return sectionAcc + newLyric + "\n";
+      return verseAcc + newLyric + "\n";
     }, "");
     dispatch({ type: "LyricsGeneratedMsg", lyrics: newLyrics });
     navigate("/lyrics");
@@ -129,13 +129,13 @@ export const Edit = () => {
         <H2>歌詞作成</H2>
         <Discription>hogehoge</Discription>
         <Form onSubmit={onSubmit}>
-          {sections.map((section, i) => (
-            <div className={style.lyricList} key={section.key}>
+          {verses.map((verse, i) => (
+            <div className={style.lyricList} key={verse.key}>
               <TitleInput
-                defaultValue={section.name}
-                onChange={onSectionNameChanged(i)}
+                defaultValue={verse.name}
+                onChange={onVerseNameChanged(i)}
               />
-              {section.values.map((lyric, j) => (
+              {verse.values.map((lyric, j) => (
                 <LyricCard
                   key={lyric.key}
                   lyric={lyric.value}
@@ -155,13 +155,13 @@ export const Edit = () => {
                 color="black"
                 onClick={addNewLyricCard(i)}
               />
-              <div className={style.sectionClose}>
+              <div className={style.verseClose}>
                 <IconBtn
                   iconName="icon-cancel"
                   type="button"
                   size="small"
                   color="black"
-                  onClick={onSectionClose(i)}
+                  onClick={onVerseClose(i)}
                 />
               </div>
             </div>
@@ -171,7 +171,7 @@ export const Edit = () => {
             type="button"
             size="medium"
             color="black"
-            onClick={addNewSection}
+            onClick={addNewVerse}
           />
           <RectBtn value="hoge" size="medium" type="submit" />
         </Form>
@@ -180,11 +180,11 @@ export const Edit = () => {
       <Modal isOpen={isOpen}>
         <ModalOverlay onClick={toggleModal} />
         <ModalContent>
-          <H3>{getSectionName(sections, delTarget)}を削除しますか？</H3>
+          <H3>{getVerseName(verses, delTarget)}を削除しますか？</H3>
           <Discription>
             一度削除した要素を復元することはできません。
           </Discription>
-          <RectBtn value="削除" size="medium" onClick={deleteSection} />
+          <RectBtn value="削除" size="medium" onClick={deleteVerse} />
         </ModalContent>
       </Modal>
 
