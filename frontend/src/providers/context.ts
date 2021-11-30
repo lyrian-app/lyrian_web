@@ -5,12 +5,12 @@ import { LyricsState, LyricsMsg } from "../hooks/lyrics";
 
 interface LyricsContextValues {
   lyrics: LyricsState;
-  dispatch: React.Dispatch<LyricsMsg>;
+  lyrDispatch: React.Dispatch<LyricsMsg>;
 }
 
 interface MarkovContextValues {
   markov: MarkovState;
-  dispatch: React.Dispatch<MarkovMsg>;
+  mkvDispatch: React.Dispatch<MarkovMsg>;
 }
 
 interface ToasterContextValue {

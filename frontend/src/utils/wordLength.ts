@@ -1,5 +1,5 @@
-import { MoraOrSyllable } from "../components/form";
 import { Token } from "../hooks/markov";
+import { MoraOrSyllable } from "../hooks/lyrics";
 import { LOWER_CASE, SYLLABLE_CHARS, SYMBOLS } from "./chars";
 
 export const calcWordLen = (token: Token, unit: MoraOrSyllable) => {

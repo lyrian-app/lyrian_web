@@ -2,18 +2,13 @@ import React, { useContext, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useBoolState } from "../../hooks";
+import { MoraOrSyllable } from "../../hooks/lyrics";
 import { MarkovContext, LyricsContext } from "../../providers";
-import { updateVerses } from "./hooks";
-import { getVerseName, getInitialVerse, LyricValueGenerator } from "./util";
+import { getVerseName, LyricValueGenerator } from "./util";
 
 import { IconBtn, RectBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
-import {
-  Form,
-  LyricCard,
-  MoraOrSyllable,
-  TitleInput,
-} from "../../components/form";
+import { Form, LyricCard, TitleInput } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalContent, ModalOverlay } from "../../components/modal";
 import { Discription, H2, H3 } from "../../components/text";
@@ -21,19 +16,19 @@ import style from "./style.module.scss";
 
 export const Edit = () => {
   const { markov } = useContext(MarkovContext)!;
-  const { dispatch } = useContext(LyricsContext)!;
-  const [verses, verseDispatch] = useReducer(updateVerses, [
-    getInitialVerse(),
-  ]);
+  const { lyrics, lyrDispatch } = useContext(LyricsContext)!;
   const [delTarget, setDelTarget] = useState<number | null>(0);
   const [isOpen, toggleModal] = useBoolState(false);
   const navigate = useNavigate();
 
   const onLyricGenerate = (i: number) => (j: number) => () => {
     try {
-      let generator = new LyricValueGenerator(verses[i].values[j], markov);
+      let generator = new LyricValueGenerator(
+        lyrics.verses[i].values[j],
+        markov
+      );
       const newValue = generator.generate();
-      verseDispatch({
+      lyrDispatch({
         type: "LyricValueChangedMsg",
         verseIdx: i,
         lyricIdx: j,
@@ -46,7 +41,7 @@ export const Edit = () => {
 
   const onLyricChange =
     (i: number) => (j: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      verseDispatch({
+      lyrDispatch({
         type: "LyricValueChangedMsg",
         verseIdx: i,
         lyricIdx: j,
@@ -56,7 +51,7 @@ export const Edit = () => {
 
   const onNotesChange =
     (i: number) => (j: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      verseDispatch({
+      lyrDispatch({
         type: "NotesChangedMsg",
         verseIdx: i,
         lyricIdx: j,
@@ -66,7 +61,7 @@ export const Edit = () => {
 
   const onUnitChange =
     (i: number) => (j: number) => (e: React.ChangeEvent<HTMLSelectElement>) => {
-      verseDispatch({
+      lyrDispatch({
         type: "UnitChangedMsg",
         verseIdx: i,
         lyricIdx: j,
@@ -75,24 +70,24 @@ export const Edit = () => {
     };
 
   const onCardClose = (i: number) => (key: string) => () => {
-    verseDispatch({ type: "LyricRemovedMsg", verseIdx: i, key: key });
+    lyrDispatch({ type: "LyricRemovedMsg", verseIdx: i, key: key });
   };
 
   const addNewLyricCard = (i: number) => () => {
-    verseDispatch({
+    lyrDispatch({
       type: "NewLyricAddedMsg",
       verseIdx: i,
-      newLyricIdx: verses[i].values.length,
+      newLyricIdx: lyrics.verses[i].values.length,
     });
   };
 
   const addNewVerse = () => {
-    verseDispatch({ type: "VerseAddedMsg" });
+    lyrDispatch({ type: "VerseAddedMsg", newVerseIdx: lyrics.verses.length });
   };
 
   const onVerseNameChanged =
     (i: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      verseDispatch({
+      lyrDispatch({
         type: "VerseRenamedMsd",
         verseIdx: i,
         newName: e.currentTarget.value,
@@ -105,20 +100,16 @@ export const Edit = () => {
   };
 
   const deleteVerse = () => {
-    verseDispatch({ type: "VerseRemovedMsd", verseIdx: delTarget! });
+    lyrDispatch({
+      type: "VerseRemovedMsd",
+      key: lyrics.verses[delTarget!].key,
+    });
     setDelTarget(null);
     toggleModal();
   };
 
   const onSubmit = () => {
-    const newLyrics = verses.reduce<string>((verseAcc, verseCur) => {
-      const newLyric = verseCur.values.reduce<string>(
-        (lyricAcc, lyricCur) => lyricAcc + lyricCur.value + "\n",
-        ""
-      );
-      return verseAcc + newLyric + "\n";
-    }, "");
-    dispatch({ type: "LyricsGeneratedMsg", lyrics: newLyrics });
+    lyrDispatch({ type: "LyricsGeneratedMsg" });
     navigate("/lyrics");
     return false;
   };
@@ -129,7 +120,7 @@ export const Edit = () => {
         <H2>歌詞作成</H2>
         <Discription>hogehoge</Discription>
         <Form onSubmit={onSubmit}>
-          {verses.map((verse, i) => (
+          {lyrics.verses.map((verse, i) => (
             <div className={style.lyricList} key={verse.key}>
               <TitleInput
                 defaultValue={verse.name}
@@ -180,7 +171,7 @@ export const Edit = () => {
       <Modal isOpen={isOpen}>
         <ModalOverlay onClick={toggleModal} />
         <ModalContent>
-          <H3>{getVerseName(verses, delTarget)}を削除しますか？</H3>
+          <H3>{getVerseName(lyrics.verses, delTarget)}を削除しますか？</H3>
           <Discription>
             一度削除した要素を復元することはできません。
           </Discription>

@@ -1,23 +1,8 @@
-import { Lyric, Verse } from "./types";
-import { generateUniqueKey } from "../../utils/key";
-import { MoraOrSyllable } from "../../components/form";
+import { Lyric, Verse } from "../../hooks/lyrics";
 import { MarkovState, PartOfSpeech } from "../../hooks/markov";
 import { calcWordLen } from "../../utils/wordLength";
 import { MarkovChain } from "../../utils/markov";
 import { SYMBOLS } from "../../utils/chars";
-
-export const getInitialLyric = () => ({
-  key: generateUniqueKey(),
-  value: "",
-  notes: 3,
-  unit: "シラブル" as MoraOrSyllable,
-});
-
-export const getInitialVerse = () => ({
-  key: generateUniqueKey(),
-  name: "",
-  values: [getInitialLyric()],
-});
 
 export const getVerseName = (verses: Verse[], index: number | null) => {
   if (index === null) return "";

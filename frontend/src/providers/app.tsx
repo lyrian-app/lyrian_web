@@ -4,7 +4,7 @@ import { useReducer } from "react";
 import { MarkovContext, LyricsContext, ToasterContext } from "./context";
 import { useToast } from "../hooks";
 import { markovUpdate, PartOfSpeech } from "../hooks/markov";
-import { lyricsUpdate } from "../hooks/lyrics";
+import { lyricsUpdate, getInitialVerse } from "../hooks/lyrics";
 
 import { Toaster } from "../components/toast";
 
@@ -18,6 +18,7 @@ const markovInitValue = {
 
 const lyricsInitValue = {
   contents: "",
+  verses: [getInitialVerse()],
 };
 
 type AppProviderProps = {
@@ -30,8 +31,12 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const { toasts, bake, eat } = useToast();
 
   return (
-    <MarkovContext.Provider value={{ markov: markov, dispatch: mkvDispatch }}>
-      <LyricsContext.Provider value={{ lyrics: lyrics, dispatch: lyrDispatch }}>
+    <MarkovContext.Provider
+      value={{ markov: markov, mkvDispatch: mkvDispatch }}
+    >
+      <LyricsContext.Provider
+        value={{ lyrics: lyrics, lyrDispatch: lyrDispatch }}
+      >
         <ToasterContext.Provider value={{ bake: bake }}>
           {children}
           <Toaster toasts={toasts} eat={eat} />

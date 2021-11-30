@@ -14,7 +14,7 @@ import { Discription, H2 } from "../../components/text";
 import style from "./style.module.scss";
 
 export const Fix = () => {
-  const { markov, dispatch } = useContext(MarkovContext)!;
+  const { markov, mkvDispatch } = useContext(MarkovContext)!;
   const navigate = useNavigate();
 
   const idxes = getUnknownTokenIdxs(markov);
@@ -61,7 +61,7 @@ export const Fix = () => {
         return { tokenIndex: tokenIndex, token: newToken };
       });
       tokenSummaries.forEach((summary) =>
-        dispatch({
+        mkvDispatch({
           type: "TokenUpdatedMsg",
           index: summary.tokenIndex,
           token: summary.token,

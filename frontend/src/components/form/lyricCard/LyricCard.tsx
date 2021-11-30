@@ -1,12 +1,11 @@
 import React from "react";
 
 import { useBoolState } from "../../../hooks";
+import { MoraOrSyllable } from "../../../hooks/lyrics";
 
 import { IconBtn } from "../../buttons";
 import { TextInput, Select, Option, NumberInput } from "..";
 import style from "./lyricCard.module.scss";
-
-export type MoraOrSyllable = "モーラ" | "シラブル";
 
 interface LyricCardProps {
   lyric?: string;

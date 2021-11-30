@@ -21,7 +21,7 @@ export const Start = () => {
   const [learningData, setText] = useState("");
   const jsonRef: React.RefObject<HTMLInputElement> = React.createRef();
   const navigate = useNavigate();
-  const dispatch = useContext(MarkovContext)!.dispatch;
+  const { mkvDispatch } = useContext(MarkovContext)!;
 
   const onTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.currentTarget.value);
@@ -31,7 +31,7 @@ export const Start = () => {
     await fetchMarkovModel(learningData)
       .then((text) => {
         const model: MarkovState = JSON.parse(text);
-        dispatch({ type: "MarkovGeneratedMsg", model: model });
+        mkvDispatch({ type: "MarkovGeneratedMsg", model: model });
         navigate("/fix");
       })
       .catch((status) => errorAlert(status));
@@ -44,7 +44,7 @@ export const Start = () => {
     fr.addEventListener("load", (e) => {
       try {
         const model = Convert.toMarkovState(e.target?.result as string);
-        dispatch({ type: "MarkovGeneratedMsg", model: model });
+        mkvDispatch({ type: "MarkovGeneratedMsg", model: model });
         navigate("/fix");
       } catch (e) {
         alert(`不正なファイルが入力されました。\n${e}`);
