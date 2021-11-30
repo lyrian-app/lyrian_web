@@ -1,0 +1,11 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Drum</title>
+  <desc>A line styled icon from Orion Icon Library.</desc>
+  <path d="M2 5l24 16M62 5L38 21"
+  stroke-width="2" stroke-miterlimit="10" stroke="#FDFCF5" fill="none" data-name="layer2"
+  stroke-linejoin="round" stroke-linecap="round"></path>
+  <path d="M8 61h48M8 29h48m-2 0v32m-44 0V29m12 32l10-32m0 0l10 32m0 0l12-32m-44 0l12 32"
+  stroke-width="2" stroke-miterlimit="10" stroke="#FDFCF5" fill="none" data-name="layer1"
+  stroke-linejoin="round" stroke-linecap="round"></path>
+</svg>
