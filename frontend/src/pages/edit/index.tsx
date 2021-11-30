@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useBoolState } from "../../hooks";
 import { MoraOrSyllable } from "../../hooks/lyrics";
-import { MarkovContext, LyricsContext } from "../../providers";
+import { MarkovContext, LyricsContext, ToasterContext } from "../../providers";
 import { getVerseName, LyricValueGenerator } from "./util";
 
 import { IconBtn, RectBtn } from "../../components/buttons";
@@ -17,6 +17,7 @@ import style from "./style.module.scss";
 export const Edit = () => {
   const { markov } = useContext(MarkovContext)!;
   const { lyrics, lyrDispatch } = useContext(LyricsContext)!;
+  const { bake } = useContext(ToasterContext)!;
   const [delTarget, setDelTarget] = useState<number | null>(0);
   const [isOpen, toggleModal] = useBoolState(false);
   const navigate = useNavigate();
@@ -35,7 +36,9 @@ export const Edit = () => {
         newValue: newValue,
       });
     } catch (e) {
-      alert(e);
+      if (e instanceof Error) {
+        bake({ type: "error", value: e.message })
+      }
     }
   };
 

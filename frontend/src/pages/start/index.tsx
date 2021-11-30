@@ -2,11 +2,10 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { fetchMarkovModel } from "../../api";
-import { MarkovContext } from "../../providers";
+import { MarkovContext, ToasterContext } from "../../providers";
 import { useBoolState } from "../../hooks";
 import { MarkovState } from "../../hooks/markov";
 import { Convert } from "../../utils/convert";
-import { errorAlert } from "../../utils/errorAlert";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -22,6 +21,7 @@ export const Start = () => {
   const jsonRef: React.RefObject<HTMLInputElement> = React.createRef();
   const navigate = useNavigate();
   const { mkvDispatch } = useContext(MarkovContext)!;
+  const { bake } = useContext(ToasterContext)!;
 
   const onTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.currentTarget.value);
@@ -34,7 +34,12 @@ export const Start = () => {
         mkvDispatch({ type: "MarkovGeneratedMsg", model: model });
         navigate("/fix");
       })
-      .catch((status) => errorAlert(status));
+      .catch((status) =>
+        bake({
+          type: "error",
+          value: `サーバー通信時にエラーが発生しました。\nステータス: ${status}`,
+        })
+      );
 
     return false;
   };
@@ -46,13 +51,17 @@ export const Start = () => {
         const model = Convert.toMarkovState(e.target?.result as string);
         mkvDispatch({ type: "MarkovGeneratedMsg", model: model });
         navigate("/fix");
-      } catch (e) {
-        alert(`不正なファイルが入力されました。\n${e}`);
+      } catch (_) {
+        bake({
+          type: "error",
+          value: "不正なファイル、または破損したファイルが入力されました。",
+        });
       }
     });
 
     const target = jsonRef.current as HTMLInputElement;
     fr.readAsText(target.files![0]);
+    toggleModal();
     return false;
   };
 
