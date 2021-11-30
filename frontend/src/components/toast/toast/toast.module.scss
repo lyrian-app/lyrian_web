@@ -3,6 +3,8 @@
 .toast {
   display: inline-flex;
   align-items: center;
+
+  max-width: 33vw;
   border-radius: 0.5rem;
   color: $white;
   user-select: none;
