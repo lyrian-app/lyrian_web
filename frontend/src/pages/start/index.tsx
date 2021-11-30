@@ -62,7 +62,6 @@ export const Start = () => {
     const target = jsonRef.current as HTMLInputElement;
     fr.readAsText(target.files![0]);
     toggleModal();
-    return false;
   };
 
   return (

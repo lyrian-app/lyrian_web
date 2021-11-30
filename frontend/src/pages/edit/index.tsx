@@ -37,7 +37,7 @@ export const Edit = () => {
       });
     } catch (e) {
       if (e instanceof Error) {
-        bake({ type: "error", value: e.message })
+        bake({ type: "error", value: e.message });
       }
     }
   };
@@ -114,7 +114,6 @@ export const Edit = () => {
   const onSubmit = () => {
     lyrDispatch({ type: "LyricsGeneratedMsg" });
     navigate("/lyrics");
-    return false;
   };
 
   return (

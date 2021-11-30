@@ -50,29 +50,23 @@ export const Fix = () => {
     };
 
   const onFix = () => {
-    try {
-      const tokenSummaries = idxes.map((tokenIndex, i) => {
-        let newToken: Token = {
-          ...markov.state_space[tokenIndex],
-          mora: moras[i],
-          syllable: syllables[i],
-          part_of_speech: stringToParts(parts[i]),
-        };
-        return { tokenIndex: tokenIndex, token: newToken };
-      });
-      tokenSummaries.forEach((summary) =>
-        mkvDispatch({
-          type: "TokenUpdatedMsg",
-          index: summary.tokenIndex,
-          token: summary.token,
-        })
-      );
-      navigate("/edit");
-    } catch (e) {
-      alert(`エラーが発生しました。\n${e}`);
-    } finally {
-      return false;
-    }
+    const tokenSummaries = idxes.map((tokenIndex, i) => {
+      let newToken: Token = {
+        ...markov.state_space[tokenIndex],
+        mora: moras[i],
+        syllable: syllables[i],
+        part_of_speech: stringToParts(parts[i]),
+      };
+      return { tokenIndex: tokenIndex, token: newToken };
+    });
+    tokenSummaries.forEach((summary) =>
+      mkvDispatch({
+        type: "TokenUpdatedMsg",
+        index: summary.tokenIndex,
+        token: summary.token,
+      })
+    );
+    navigate("/edit");
   };
 
   return (
