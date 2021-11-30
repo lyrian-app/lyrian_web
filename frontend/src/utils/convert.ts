@@ -1,4 +1,4 @@
-import { MarkovState, PartOfSpeech } from "../hooks";
+import { MarkovState, PartOfSpeech } from "../hooks/markov";
 
 export const stringToParts = (s: string) => {
   switch (s) {

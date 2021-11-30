@@ -1,4 +1,4 @@
-import { MarkovState } from "../hooks";
+import { MarkovState } from "../hooks/markov";
 import { Random, WaightedRand } from "./random";
 
 export class MarkovChain {

@@ -1,4 +1,4 @@
-import { MarkovState, PartOfSpeech } from "../../hooks";
+import { MarkovState, PartOfSpeech } from "../../hooks/markov";
 
 export const getUnknownTokenIdxs = (state: MarkovState) => {
   return new Array(state.state_space.length)

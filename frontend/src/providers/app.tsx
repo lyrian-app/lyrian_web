@@ -2,7 +2,9 @@ import React from "react";
 import { useReducer } from "react";
 
 import { MarkovContext, LyricsContext, ToasterContext } from "./context";
-import { lyricsUpdate, markovUpdate, PartOfSpeech, useToast } from "../hooks";
+import { useToast } from "../hooks";
+import { markovUpdate, PartOfSpeech } from "../hooks/markov";
+import { lyricsUpdate } from "../hooks/lyrics";
 
 import { Toaster } from "../components/toast";
 

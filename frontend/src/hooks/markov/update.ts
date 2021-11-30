@@ -1,4 +1,4 @@
-import { Token, MarkovState, LyricsState } from "./types";
+import { Token, MarkovState } from "./types";
 
 type MarkovGeneratedMsg = {
   type: "MarkovGeneratedMsg";
@@ -11,14 +11,7 @@ type TokenFixedMsg = {
   token: Token;
 };
 
-type LyricsGeneretedMsg = {
-  type: "LyricsGeneratedMsg";
-  lyrics: string;
-};
-
 export type MarkovMsg = MarkovGeneratedMsg | TokenFixedMsg;
-
-export type LyricsMsg = LyricsGeneretedMsg;
 
 export const markovUpdate = (state: MarkovState, msg: MarkovMsg) => {
   switch (msg.type) {
@@ -29,12 +22,5 @@ export const markovUpdate = (state: MarkovState, msg: MarkovMsg) => {
       let newTokens = state.state_space;
       newTokens[msg.index] = msg.token;
       return { ...state, state_space: newTokens };
-  }
-};
-
-export const lyricsUpdate = (_state: LyricsState, msg: LyricsMsg) => {
-  switch (msg.type) {
-    case "LyricsGeneratedMsg":
-      return { contents: msg.lyrics };
   }
 };

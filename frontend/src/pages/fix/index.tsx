@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Token } from "../../hooks";
+import { Token } from "../../hooks/markov";
 import { MarkovContext } from "../../providers";
 import { stringToParts } from "../../utils/convert";
 import { getUnknownTokenIdxs } from "./utils";

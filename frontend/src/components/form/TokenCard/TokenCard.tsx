@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PartOfSpeech } from "../../../hooks";
+import { PartOfSpeech } from "../../../hooks/markov";
 
 import { TextInput, Option, Select } from "..";
 import { Grid } from "../../layout";

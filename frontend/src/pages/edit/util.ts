@@ -1,7 +1,7 @@
 import { Lyric, Section } from "./types";
 import { generateUniqueKey } from "../../utils/key";
 import { MoraOrSyllable } from "../../components/form";
-import { MarkovState, PartOfSpeech } from "../../hooks";
+import { MarkovState, PartOfSpeech } from "../../hooks/markov";
 import { calcWordLen } from "../../utils/wordLength";
 import { MarkovChain } from "../../utils/markov";
 import { SYMBOLS } from "../../utils/chars";

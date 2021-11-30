@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  LyricsState,
-  MarkovState,
-  LyricsMsg,
-  MarkovMsg,
-  ToastDough,
-} from "../hooks";
+import { ToastDough } from "../hooks";
+import { MarkovState, MarkovMsg } from "../hooks/markov";
+import { LyricsState, LyricsMsg } from "../hooks/lyrics";
 
 interface LyricsContextValues {
   lyrics: LyricsState;

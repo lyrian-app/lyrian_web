@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { fetchMarkovModel } from "../../api";
 import { MarkovContext } from "../../providers";
-import { MarkovState, useBoolState } from "../../hooks";
+import { useBoolState } from "../../hooks";
+import { MarkovState } from "../../hooks/markov";
 import { Convert } from "../../utils/convert";
 import { errorAlert } from "../../utils/errorAlert";
 

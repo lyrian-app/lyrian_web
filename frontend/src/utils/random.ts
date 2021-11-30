@@ -1,4 +1,4 @@
-import { WaTable } from "../hooks";
+import { WaTable } from "../hooks/markov";
 
 export class Random {
   public static randIntRange(min: number, max: number) {
