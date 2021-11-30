@@ -16,8 +16,7 @@ export const hasUnknownTokens = (tokens: Token[]) => {
 };
 
 export const getUnknownTokenIdxes = (tokens: Token[]) => {
-  return new Array(tokens.length)
-    .fill(0)
+  return tokens
     .map((_, i) => i)
     .filter(
       (i) =>
