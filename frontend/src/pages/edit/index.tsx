@@ -120,7 +120,11 @@ export const Edit = () => {
     <div className={style.edit}>
       <Main>
         <H2>歌詞作成</H2>
-        <Discription>hogehoge</Discription>
+        <Discription>
+          以下のフォームを入力して、歌詞を生成しましょう。
+          <br />
+          更新ボタンを押すことで、設定に合わせて歌詞を自動生成します。
+        </Discription>
         <Form onSubmit={onSubmit}>
           {lyrics.verses.map((verse, i) => (
             <div className={style.lyricList} key={verse.key}>
@@ -166,7 +170,7 @@ export const Edit = () => {
             color="black"
             onClick={addNewVerse}
           />
-          <RectBtn value="hoge" size="medium" type="submit" />
+          <RectBtn value="完成" size="large" type="submit" />
         </Form>
       </Main>
 
