@@ -1,6 +1,6 @@
 import { Lyric, Verse } from "../../hooks/lyrics";
 import { MarkovState, PartOfSpeech } from "../../hooks/markov";
-import { calcWordLen } from "../../utils/wordLength";
+import { calcWordLen } from "../../utils/token";
 import { MarkovChain } from "../../utils/markov";
 import { SYMBOLS } from "../../utils/chars";
 
