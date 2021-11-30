@@ -5,7 +5,7 @@ import { MarkovChain } from "../../utils/markov";
 import { SYMBOLS } from "../../utils/chars";
 
 export const getVerseName = (verses: Verse[], index: number | null) => {
-  if (index === null) return "";
+  if (index === null || verses.length === 0) return "";
   if (verses[index].name === "") return "無名のセクション";
   return `${verses[index].name}セクション`;
 };
