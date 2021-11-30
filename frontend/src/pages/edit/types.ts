@@ -10,5 +10,5 @@ export interface Lyric {
 export interface Section {
   key: string;
   name: string;
-  verse: Lyric[];
+  values: Lyric[];
 }

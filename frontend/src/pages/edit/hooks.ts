@@ -66,25 +66,25 @@ export const updateSections = (state: Section[], msg: Msg) => {
 
   switch (msg.type) {
     case "NewLyricAddedMsg":
-      if (msg.newLyricIdx === newState[msg.sectionIdx].verse.length) {
-        newState[msg.sectionIdx].verse.push(getInitialLyric());
+      if (msg.newLyricIdx === newState[msg.sectionIdx].values.length) {
+        newState[msg.sectionIdx].values.push(getInitialLyric());
       }
       break;
 
     case "LyricValueChangedMsg":
-      newState[msg.sectionIdx].verse[msg.lyricIdx].value = msg.newValue;
+      newState[msg.sectionIdx].values[msg.lyricIdx].value = msg.newValue;
       break;
 
     case "NotesChangedMsg":
-      newState[msg.sectionIdx].verse[msg.lyricIdx].notes = msg.newNotes;
+      newState[msg.sectionIdx].values[msg.lyricIdx].notes = msg.newNotes;
       break;
 
     case "UnitChangedMsg":
-      newState[msg.sectionIdx].verse[msg.lyricIdx].unit = msg.newUnit;
+      newState[msg.sectionIdx].values[msg.lyricIdx].unit = msg.newUnit;
       break;
 
     case "LyricRemovedMsg":
-      newState[msg.sectionIdx].verse = newState[msg.sectionIdx].verse.filter(
+      newState[msg.sectionIdx].values = newState[msg.sectionIdx].values.filter(
         (lyric) => lyric.key !== msg.key
       );
       break;

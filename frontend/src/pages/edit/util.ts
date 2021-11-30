@@ -16,7 +16,7 @@ export const getInitialLyric = () => ({
 export const getInitialSection = () => ({
   key: generateUniqueKey(),
   name: "",
-  verse: [getInitialLyric()],
+  values: [getInitialLyric()],
 });
 
 export const getSectionName = (sections: Section[], index: number | null) => {

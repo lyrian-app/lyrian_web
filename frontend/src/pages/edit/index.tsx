@@ -31,7 +31,7 @@ export const Edit = () => {
 
   const onLyricGenerate = (i: number) => (j: number) => () => {
     try {
-      let generator = new LyricValueGenerator(sections[i].verse[j], markov);
+      let generator = new LyricValueGenerator(sections[i].values[j], markov);
       const newValue = generator.generate();
       sectionDispatch({
         type: "LyricValueChangedMsg",
@@ -82,7 +82,7 @@ export const Edit = () => {
     sectionDispatch({
       type: "NewLyricAddedMsg",
       sectionIdx: i,
-      newLyricIdx: sections[i].verse.length,
+      newLyricIdx: sections[i].values.length,
     });
   };
 
@@ -112,7 +112,7 @@ export const Edit = () => {
 
   const onSubmit = () => {
     const newLyrics = sections.reduce<string>((sectionAcc, sectionCur) => {
-      const newLyric = sectionCur.verse.reduce<string>(
+      const newLyric = sectionCur.values.reduce<string>(
         (lyricAcc, lyricCur) => lyricAcc + lyricCur.value + "\n",
         ""
       );
@@ -135,7 +135,7 @@ export const Edit = () => {
                 defaultValue={section.name}
                 onChange={onSectionNameChanged(i)}
               />
-              {section.verse.map((lyric, j) => (
+              {section.values.map((lyric, j) => (
                 <LyricCard
                   key={lyric.key}
                   lyric={lyric.value}
