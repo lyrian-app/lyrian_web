@@ -8,8 +8,8 @@ export const Footer = () => {
   return (
     <footer className={style.footer}>
       <div className={style.iconBtns}>
-        <IconBtn iconName="icon-twitter" size="large" color="white" />
-        <IconBtn iconName="icon-github-circled" size="large" color="white" />
+        <IconBtn iconName="icon-twitter" size="xlarge" color="white" />
+        <IconBtn iconName="icon-github-circled" size="xlarge" color="white" />
       </div>
 
       <div className={style.links}>

@@ -5,7 +5,7 @@ import style from "./iconBtn.module.scss";
 interface IconBtnProps {
   iconName: string;
   type?: "button" | "submit" | "reset";
-  size: "small" | "medium" | "large";
+  size: "small" | "medium" | "large" | "xlarge";
   color: "black" | "white";
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
