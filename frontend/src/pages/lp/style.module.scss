@@ -42,13 +42,55 @@
   }
 
   .usageBox {
-    width: 100%;
-    border: 1px solid #000;
+    width: 70%;
+    margin-top: 1rem;
 
     .usageItem {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
       width: 100%;
       height: 20vh;
-      border: 1px solid #000;
+      border-radius: 1rem;
+      padding: 1rem;
+      color: $white;
+      box-shadow: 5px 5px 10px 0 rgba($color: #000000, $alpha: 0.2);
+
+      .explain {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        p {
+          font-size: $font-s;
+          width: 100%;
+        }
+      }
+
+      .img {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &.model {
+          background-image: url("../../assets/imgs/matrix.svg");
+        }
+        &.pen {
+          background-image: url("../../assets/imgs/pen.svg");
+        }
+        &.lyrics {
+          background-image: url("../../assets/imgs/lyrics.svg");
+        }
+      }
+
+      &:nth-of-type(1) {
+        background-color: $blue;
+      }
+      &:nth-of-type(2) {
+        background-color: $green;
+      }
+      &:nth-of-type(3) {
+        background-color: $orange;
+      }
     }
   }
 }
