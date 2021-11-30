@@ -1,6 +1,18 @@
-import { Token } from "../hooks/markov";
+import { Token, PartOfSpeech } from "../hooks/markov";
 import { MoraOrSyllable } from "../hooks/lyrics";
 import { LOWER_CASE, SYLLABLE_CHARS, SYMBOLS } from "./chars";
+
+export const getUnknownTokenIdxes = (tokens: Token[]) => {
+  return new Array(tokens.length)
+    .fill(0)
+    .map((_, i) => i)
+    .filter(
+      (i) =>
+        tokens[i].mora === "unknown" ||
+        tokens[i].syllable === "unknown" ||
+        tokens[i].part_of_speech === PartOfSpeech.unknown
+    );
+};
 
 export const calcWordLen = (token: Token, unit: MoraOrSyllable) => {
   let soundLen;

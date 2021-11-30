@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Token } from "../../hooks/markov";
 import { MarkovContext } from "../../providers";
 import { stringToParts } from "../../utils/convert";
-import { getUnknownTokenIdxs } from "./utils";
+import { getUnknownTokenIdxes } from "../../utils/token";
 
 import { RectBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -17,7 +17,7 @@ export const Fix = () => {
   const { markov, mkvDispatch } = useContext(MarkovContext)!;
   const navigate = useNavigate();
 
-  const idxes = getUnknownTokenIdxs(markov);
+  const idxes = getUnknownTokenIdxes(markov.state_space);
   const [moras, setMoras] = React.useState(
     Array<string>(idxes.length).fill("")
   );
