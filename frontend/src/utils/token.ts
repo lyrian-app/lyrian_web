@@ -2,6 +2,19 @@ import { Token, PartOfSpeech } from "../hooks/markov";
 import { MoraOrSyllable } from "../hooks/lyrics";
 import { LOWER_CASE, SYLLABLE_CHARS, SYMBOLS } from "./chars";
 
+export const hasUnknownTokens = (tokens: Token[]) => {
+  return tokens.reduce<boolean>((acc, cur) => {
+    if (!acc) {
+      return (
+        cur.mora === "unknown" ||
+        cur.syllable === "unknown" ||
+        cur.part_of_speech === PartOfSpeech.unknown
+      );
+    }
+    return acc;
+  }, false);
+};
+
 export const getUnknownTokenIdxes = (tokens: Token[]) => {
   return new Array(tokens.length)
     .fill(0)

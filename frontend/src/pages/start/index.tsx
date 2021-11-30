@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { fetchMarkovModel } from "../../api";
 import { MarkovContext, ToasterContext } from "../../providers";
 import { useBoolState } from "../../hooks";
-import { MarkovState } from "../../hooks/markov";
+import { MarkovState, Token } from "../../hooks/markov";
 import { Convert } from "../../utils/convert";
+import { hasUnknownTokens } from "../../utils/token";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
 import { Footer } from "../../components/footer";
@@ -27,21 +28,27 @@ export const Start = () => {
     setText(e.currentTarget.value);
   };
 
+  const jumpFixOfEdit = (tokens: Token[]) => {
+    if (hasUnknownTokens(tokens)) {
+      navigate("/fix");
+    } else {
+      navigate("/edit");
+    }
+  };
+
   const onSubmit = async () => {
     await fetchMarkovModel(learningData)
       .then((text) => {
         const model: MarkovState = JSON.parse(text);
         mkvDispatch({ type: "MarkovGeneratedMsg", model: model });
-        navigate("/fix");
+        jumpFixOfEdit(model.state_space);
       })
       .catch((status) =>
         bake({
           type: "error",
-          value: `サーバー通信時にエラーが発生しました。\nステータス: ${status}`,
+          value: `サーバー通信時にエラーが発生しました。(${status})`,
         })
       );
-
-    return false;
   };
 
   const readJson = () => {
@@ -50,7 +57,7 @@ export const Start = () => {
       try {
         const model = Convert.toMarkovState(e.target?.result as string);
         mkvDispatch({ type: "MarkovGeneratedMsg", model: model });
-        navigate("/fix");
+        jumpFixOfEdit(model.state_space);
       } catch (_) {
         bake({
           type: "error",
