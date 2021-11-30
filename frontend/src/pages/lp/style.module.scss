@@ -1,5 +1,13 @@
 @import "../../styles/var";
 
+.lp {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
 .top,
 .whatIs,
 .feature,
@@ -9,15 +17,16 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  gap: 1rem;
+  width: 70%;
+  min-height: 100vh;
   color: $black;
 }
 
 .top {
-  .description {
-    font-size: $font-m;
-    margin-bottom: $font-m;
+  .subtitle {
+    font-size: $font-l;
+    margin-bottom: 2rem;
   }
 
   .scrollBtn {
@@ -27,15 +36,13 @@
 }
 
 .whatIs {
-  .description {
-    width: 60%;
-    margin-top: 1rem;
-    font-size: $font-s;
+  .discription {
+    width: 80%;
+    font-size: $font-m;
   }
 
   .usageBox {
-    width: 70%;
-    margin-top: $font-m;
+    width: 100%;
     border: 1px solid #000;
 
     .usageItem {
@@ -48,8 +55,7 @@
 
 .feature {
   .featBox {
-    width: 70%;
-    margin-top: $font-m;
+    width: 100%;
     border: 1px solid #000;
 
     .featItem {
@@ -57,11 +63,5 @@
       height: 60vh;
       border: 1px solid #000;
     }
-  }
-}
-
-.bottom {
-  .startBtn {
-    margin-top: 1rem;
   }
 }
