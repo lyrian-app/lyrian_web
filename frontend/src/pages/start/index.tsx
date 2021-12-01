@@ -9,7 +9,6 @@ import { Convert } from "../../utils/convert";
 import { hasUnknownTokens } from "../../utils/token";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
-import { Footer } from "../../components/footer";
 import { Form, Textarea } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalOverlay, ModalContent } from "../../components/modal";
@@ -117,8 +116,6 @@ export const Start = () => {
           </Form>
         </ModalContent>
       </Modal>
-
-      <Footer />
     </div>
   );
 };

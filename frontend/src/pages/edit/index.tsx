@@ -7,7 +7,6 @@ import { MarkovContext, LyricsContext, ToasterContext } from "../../providers";
 import { getVerseName, LyricValueGenerator } from "./util";
 
 import { IconBtn, RectBtn } from "../../components/buttons";
-import { Footer } from "../../components/footer";
 import { Form, LyricCard, TitleInput } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalContent, ModalOverlay } from "../../components/modal";
@@ -184,8 +183,6 @@ export const Edit = () => {
           <RectBtn value="削除" size="medium" onClick={deleteVerse} />
         </ModalContent>
       </Modal>
-
-      <Footer />
     </div>
   );
 };

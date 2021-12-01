@@ -7,7 +7,6 @@ import { stringToParts } from "../../utils/convert";
 import { getUnknownTokenIdxes } from "../../utils/token";
 
 import { RectBtn } from "../../components/buttons";
-import { Footer } from "../../components/footer";
 import { Form, TokenCard } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Discription, H2 } from "../../components/text";
@@ -100,8 +99,6 @@ export const Fix = () => {
           <RectBtn value="決定" size="large" type="submit" />
         </Form>
       </Main>
-
-      <Footer />
     </div>
   );
 };

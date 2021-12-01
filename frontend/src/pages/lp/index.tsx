@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { RectBtn, ScrollBtn } from "../../components/buttons";
-import { Footer } from "../../components/footer";
 import { Grid } from "../../components/layout";
 import { H1, H2, H3 } from "../../components/text";
 import style from "./style.module.scss";
@@ -107,8 +106,6 @@ export const LandingPage = () => {
         <H2>さあ、はじめよう。</H2>
         <RectBtn value="はじめる" size="large" onClick={toStartPage} />
       </div>
-
-      <Footer />
     </div>
   );
 };

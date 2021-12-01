@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { LyricsContext, ToasterContext } from "../../providers";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
-import { Footer } from "../../components/footer";
 import { Textarea } from "../../components/form";
 import { Main } from "../../components/layout";
 import { H2 } from "../../components/text";
@@ -37,8 +36,6 @@ export const Lyrics = () => {
           <StrBtn value="前のページに戻る" onClick={onBackClick} />
         </div>
       </Main>
-
-      <Footer />
     </div>
   );
 };
