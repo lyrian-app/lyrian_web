@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useBoolState } from "../../hooks";
@@ -11,15 +11,27 @@ import { Form, LyricCard, TitleInput } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalContent, ModalOverlay } from "../../components/modal";
 import { Discription, H2, H3 } from "../../components/text";
+import {
+  MountStatus,
+  Transition,
+  TRANSITION_TIME,
+} from "../../components/transition";
 import style from "./style.module.scss";
 
 export const Edit = () => {
   const { markov } = useContext(MarkovContext)!;
   const { lyrics, lyrDispatch } = useContext(LyricsContext)!;
   const { bake } = useContext(ToasterContext)!;
+
   const [delTarget, setDelTarget] = useState<number | null>(0);
   const [isOpen, toggleModal] = useBoolState(false);
+  const [status, setStatus] = useState<MountStatus>("willMount");
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (status === "willMount") setStatus("mounted");
+  }, [status]);
 
   const onLyricGenerate = (i: number) => (j: number) => () => {
     try {
@@ -111,78 +123,81 @@ export const Edit = () => {
   };
 
   const onSubmit = () => {
+    setStatus("willUnmount");
     lyrDispatch({ type: "LyricsGeneratedMsg" });
-    navigate("/lyrics");
+    setTimeout(() => navigate("/lyrics"), TRANSITION_TIME, false);
   };
 
   return (
-    <div className={style.edit}>
-      <Main>
-        <H2>歌詞作成</H2>
-        <Discription>
-          以下のフォームを入力して、歌詞を生成しましょう。
-          <br />
-          更新ボタンを押すことで、設定に合わせて歌詞を自動生成します。
-        </Discription>
-        <Form onSubmit={onSubmit}>
-          {lyrics.verses.map((verse, i) => (
-            <div className={style.lyricList} key={verse.key}>
-              <TitleInput
-                defaultValue={verse.name}
-                onChange={onVerseNameChanged(i)}
-              />
-              {verse.values.map((lyric, j) => (
-                <LyricCard
-                  key={lyric.key}
-                  lyric={lyric.value}
-                  notes={lyric.notes}
-                  unit={lyric.unit as MoraOrSyllable}
-                  onLyricGenerate={onLyricGenerate(i)(j)}
-                  onLyricChange={onLyricChange(i)(j)}
-                  onNotesChange={onNotesChange(i)(j)}
-                  onUnitChange={onUnitChange(i)(j)}
-                  onClose={onCardClose(i)(lyric.key)}
+    <Transition status={status}>
+      <div className={style.edit}>
+        <Main>
+          <H2>歌詞作成</H2>
+          <Discription>
+            以下のフォームを入力して、歌詞を生成しましょう。
+            <br />
+            更新ボタンを押すことで、設定に合わせて歌詞を自動生成します。
+          </Discription>
+          <Form onSubmit={onSubmit}>
+            {lyrics.verses.map((verse, i) => (
+              <div className={style.lyricList} key={verse.key}>
+                <TitleInput
+                  defaultValue={verse.name}
+                  onChange={onVerseNameChanged(i)}
                 />
-              ))}
-              <IconBtn
-                iconName="icon-plus"
-                type="button"
-                size="small"
-                color="black"
-                onClick={addNewLyricCard(i)}
-              />
-              <div className={style.verseClose}>
+                {verse.values.map((lyric, j) => (
+                  <LyricCard
+                    key={lyric.key}
+                    lyric={lyric.value}
+                    notes={lyric.notes}
+                    unit={lyric.unit as MoraOrSyllable}
+                    onLyricGenerate={onLyricGenerate(i)(j)}
+                    onLyricChange={onLyricChange(i)(j)}
+                    onNotesChange={onNotesChange(i)(j)}
+                    onUnitChange={onUnitChange(i)(j)}
+                    onClose={onCardClose(i)(lyric.key)}
+                  />
+                ))}
                 <IconBtn
-                  iconName="icon-cancel"
+                  iconName="icon-plus"
                   type="button"
                   size="small"
                   color="black"
-                  onClick={onVerseClose(i)}
+                  onClick={addNewLyricCard(i)}
                 />
+                <div className={style.verseClose}>
+                  <IconBtn
+                    iconName="icon-cancel"
+                    type="button"
+                    size="small"
+                    color="black"
+                    onClick={onVerseClose(i)}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-          <IconBtn
-            iconName="icon-plus"
-            type="button"
-            size="medium"
-            color="black"
-            onClick={addNewVerse}
-          />
-          <RectBtn value="完成" size="large" type="submit" />
-        </Form>
-      </Main>
+            ))}
+            <IconBtn
+              iconName="icon-plus"
+              type="button"
+              size="medium"
+              color="black"
+              onClick={addNewVerse}
+            />
+            <RectBtn value="完成" size="large" type="submit" />
+          </Form>
+        </Main>
 
-      <Modal isOpen={isOpen}>
-        <ModalOverlay onClick={toggleModal} />
-        <ModalContent>
-          <H3>{getVerseName(lyrics.verses, delTarget)}を削除しますか？</H3>
-          <Discription>
-            一度削除した要素を復元することはできません。
-          </Discription>
-          <RectBtn value="削除" size="medium" onClick={deleteVerse} />
-        </ModalContent>
-      </Modal>
-    </div>
+        <Modal isOpen={isOpen}>
+          <ModalOverlay onClick={toggleModal} />
+          <ModalContent>
+            <H3>{getVerseName(lyrics.verses, delTarget)}を削除しますか？</H3>
+            <Discription>
+              一度削除した要素を復元することはできません。
+            </Discription>
+            <RectBtn value="削除" size="medium" onClick={deleteVerse} />
+          </ModalContent>
+        </Modal>
+      </div>
+    </Transition>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { fetchMarkovModel } from "../../api";
@@ -13,26 +13,40 @@ import { Form, Textarea } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalOverlay, ModalContent } from "../../components/modal";
 import { Discription, H2, H3 } from "../../components/text";
+import {
+  MountStatus,
+  Transition,
+  TRANSITION_TIME,
+} from "../../components/transition";
 import style from "./style.module.scss";
 
 export const Start = () => {
-  const [isOpen, toggleModal] = useBoolState(false);
-  const [learningData, setText] = useState("");
-  const jsonRef: React.RefObject<HTMLInputElement> = React.createRef();
-  const navigate = useNavigate();
   const { mkvDispatch } = useContext(MarkovContext)!;
   const { bake } = useContext(ToasterContext)!;
 
-  const onTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.currentTarget.value);
-  };
+  const [status, setStatus] = useState<MountStatus>("willMount");
+  const [learningData, setText] = useState("");
+  const [isOpen, toggleModal] = useBoolState(false);
+
+  const jsonRef: React.RefObject<HTMLInputElement> = React.createRef();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (status === "willMount") setStatus("mounted");
+  }, [status]);
 
   const jumpFixOfEdit = (tokens: Token[]) => {
+    setStatus("willUnmount");
     if (hasUnknownTokens(tokens)) {
-      navigate("/fix");
+      setTimeout(() => navigate("/fix"), TRANSITION_TIME, false);
     } else {
-      navigate("/edit");
+      setTimeout(() => navigate("/edit"), TRANSITION_TIME, false);
     }
+  };
+
+  const onTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setText(e.currentTarget.value);
   };
 
   const onSubmit = async () => {
@@ -71,51 +85,63 @@ export const Start = () => {
   };
 
   return (
-    <div className={style.start}>
-      <Main>
-        <H2>モデルの作成</H2>
+    <Transition status={status}>
+      <div className={style.start}>
+        <Main>
+          <H2>モデルの作成</H2>
 
-        <Discription>
-          Lyrianに学習させる文章を入力してください。
-          <br />
-          制作している楽曲の雰囲気に合わせた文章を入力することで、その雰囲気に近い歌詞を生成します。
-        </Discription>
+          <Discription>
+            Lyrianに学習させる文章を入力してください。
+            <br />
+            制作している楽曲の雰囲気に合わせた文章を入力することで、その雰囲気に近い歌詞を生成します。
+          </Discription>
 
-        <Form onSubmit={onSubmit}>
-          <div className={style.textarea}>
-            <Textarea
-              placeholder="文章を入力してください。"
-              value={learningData}
-              onChange={onTextareaChange}
-              required={true}
-            />
-          </div>
-
-          <p className={style.notice}>
-            ※ 使用する文章の著作権にご注意ください。
-          </p>
-
-          <div className={style.genModelBtn}>
-            <RectBtn value="作成" size="large" type="submit" />
-          </div>
-        </Form>
-
-        <StrBtn value="既にモデルをお持ちの方はこちら" onClick={toggleModal} />
-      </Main>
-
-      <Modal isOpen={isOpen}>
-        <ModalOverlay onClick={toggleModal} />
-        <ModalContent>
-          <H3>モデルのインポート</H3>
-          <Discription>作成したモデルファイルを選択してください。</Discription>
-          <Form onSubmit={readJson}>
-            <div className={style.fileInput}>
-              <input type="file" accept=".json" ref={jsonRef} required={true} />
+          <Form onSubmit={onSubmit}>
+            <div className={style.textarea}>
+              <Textarea
+                placeholder="文章を入力してください。"
+                value={learningData}
+                onChange={onTextareaChange}
+                required={true}
+              />
             </div>
-            <RectBtn value="読み込み" size="medium" type="submit" />
+
+            <p className={style.notice}>
+              ※ 使用する文章の著作権にご注意ください。
+            </p>
+
+            <div className={style.genModelBtn}>
+              <RectBtn value="作成" size="large" type="submit" />
+            </div>
           </Form>
-        </ModalContent>
-      </Modal>
-    </div>
+
+          <StrBtn
+            value="既にモデルをお持ちの方はこちら"
+            onClick={toggleModal}
+          />
+        </Main>
+
+        <Modal isOpen={isOpen}>
+          <ModalOverlay onClick={toggleModal} />
+          <ModalContent>
+            <H3>モデルのインポート</H3>
+            <Discription>
+              作成したモデルファイルを選択してください。
+            </Discription>
+            <Form onSubmit={readJson}>
+              <div className={style.fileInput}>
+                <input
+                  type="file"
+                  accept=".json"
+                  ref={jsonRef}
+                  required={true}
+                />
+              </div>
+              <RectBtn value="読み込み" size="medium" type="submit" />
+            </Form>
+          </ModalContent>
+        </Modal>
+      </div>
+    </Transition>
   );
 };
