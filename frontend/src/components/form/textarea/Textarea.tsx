@@ -6,6 +6,7 @@ interface TextareaProps {
   name?: string;
   ref?: React.RefObject<HTMLTextAreaElement>;
   value?: string;
+  defaultValue?: string;
   placeholder?: string;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
   readOnly?: boolean;
