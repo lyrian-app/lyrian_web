@@ -30,6 +30,29 @@ button {
   user-select: none;
 }
 
+.bgImg,
+.bgFilter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bgImg {
+  background-image: url("../assets/imgs/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(1rem);
+  z-index: -10001;
+}
+
+.bgFilter {
+  background-color: $white;
+  opacity: 0.9;
+  z-index: -10000;
+}
+
 /*
   The following code is a copy of "/dist/reset.css" in andy-piccalilli/modern-css-reset.
 
