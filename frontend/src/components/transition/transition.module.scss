@@ -1,0 +1,12 @@
+@import "../../styles/var";
+
+.transition {
+  visibility: hidden;
+  transition-property: opacity visibility;
+  opacity: 0;
+
+  &.mounted {
+    visibility: visible;
+    opacity: 1;
+  }
+}
