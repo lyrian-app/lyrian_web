@@ -163,7 +163,7 @@ export const Edit = () => {
 
           <Form onSubmit={onSubmit}>
             <Toolbar>
-              <StrBtn size="medium" onClick={onSave}>
+              <StrBtn size="medium" type="button" onClick={onSave}>
                 <i className="icon-download" />
                 編集中のデータをダウンロード
               </StrBtn>
