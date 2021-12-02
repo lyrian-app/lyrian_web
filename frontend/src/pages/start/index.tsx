@@ -2,10 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { fetchMarkovModel } from "../../api";
-import { MarkovContext, ToasterContext } from "../../providers";
+import { LyricsContext, MarkovContext, ToasterContext } from "../../providers";
 import { useBoolState } from "../../hooks";
 import { MarkovState, Token } from "../../hooks/markov";
-import { Convert } from "../../utils/convert";
 import { hasUnknownTokens } from "../../utils/token";
 
 import { RectBtn, StrBtn } from "../../components/buttons";
@@ -20,9 +19,11 @@ import {
   TRANSITION_TIME,
 } from "../../components/transition";
 import style from "./style.module.scss";
+import { SaveData } from "../../types";
 
 export const Start = () => {
   const { mkvDispatch } = useContext(MarkovContext)!;
+  const { lyrDispatch } = useContext(LyricsContext)!;
   const { bake } = useContext(ToasterContext)!;
 
   const [status, setStatus] = useState<MountStatus>("willMount");
@@ -74,10 +75,11 @@ export const Start = () => {
     let fr = new FileReader();
     fr.addEventListener("load", (e) => {
       try {
-        const model = Convert.toMarkovState(e.target?.result as string);
-        mkvDispatch({ type: "MarkovGeneratedMsg", model: model });
+        const json: SaveData = JSON.parse(e.target?.result as string);
+        mkvDispatch({ type: "MarkovGeneratedMsg", model: json.markov });
+        lyrDispatch({ type: "LyricsReadedMsg", newLyrics: json.lyrics });
         setStatus("willUnmount");
-        jumpFixOfEdit(model.state_space);
+        jumpFixOfEdit(json.markov.state_space);
       } catch (_) {
         bake({
           type: "error",
@@ -125,16 +127,16 @@ export const Start = () => {
             </Form>
 
             <StrBtn size="small" onClick={toggleModal}>
-              既に編集データをお持ちの方はこちら
+              編集中のデータをお持ちの方はこちら
             </StrBtn>
           </Main>
 
           <Modal isOpen={isOpen}>
             <ModalOverlay onClick={toggleModal} />
             <ModalContent>
-              <H3>モデルのインポート</H3>
+              <H3>編集データのインポート</H3>
               <Discription>
-                作成したモデルファイルを選択してください。
+                ダウンロードした編集データを選択してください。
               </Discription>
               <Form onSubmit={readJson}>
                 <div className={style.fileInput}>

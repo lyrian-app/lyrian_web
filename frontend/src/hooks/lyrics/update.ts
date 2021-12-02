@@ -2,6 +2,11 @@ import { getInitialLyric, getInitialVerse } from "./init";
 import { LyricsState, MoraOrSyllable } from "./types";
 import { cloneObj } from "../../utils/clone";
 
+type LyricsReadedMsg = {
+  type: "LyricsReadedMsg";
+  newLyrics: LyricsState;
+};
+
 type TitleChangedMsg = {
   type: "TitleChangedMsg";
   newTitle: string;
@@ -61,6 +66,7 @@ type LyricsGeneretedMsg = {
 };
 
 export type LyricsMsg =
+  | LyricsReadedMsg
   | TitleChangedMsg
   | NewLyricAddedMsg
   | LyricValueChangedMsg
@@ -76,6 +82,10 @@ export const lyricsUpdate = (state: LyricsState, msg: LyricsMsg) => {
   let newState = cloneObj(state);
 
   switch (msg.type) {
+    case "LyricsReadedMsg":
+      newState = msg.newLyrics;
+      break;
+
     case "TitleChangedMsg":
       newState.title = msg.newTitle;
       break;
