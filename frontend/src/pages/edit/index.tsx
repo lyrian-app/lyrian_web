@@ -40,7 +40,7 @@ export const Edit = () => {
       lyrics: lyrics,
     });
     const title = lyrics.title === undefined ? "タイトル" : lyrics.title;
-    const blob = new Blob([jsonStr], { type: "text/plain"});
+    const blob = new Blob([jsonStr], { type: "text/plain" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download = `${title}_${currentTime()}.json`;
