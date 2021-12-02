@@ -12,6 +12,7 @@ import { Form, LyricCard, TitleInput } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalContent, ModalOverlay } from "../../components/modal";
 import { Discription, H2, H3 } from "../../components/text";
+import { Toolbar } from "../../components/toolbar";
 import {
   MountStatus,
   Transition,
@@ -158,20 +159,16 @@ export const Edit = () => {
             以下のフォームを入力して、歌詞を生成しましょう。
             <br />
             更新ボタンを押すことで、設定に合わせて歌詞を自動生成します。
-            <br />
-            下記のボタンをクリックすることで、編集中のデータを保存することができます。
           </Discription>
-          <div className={style.saveBtn}>
-            <StrBtn size="medium" onClick={onSave}>
-              <i className="icon-download" />
-              編集中のデータを保存
-            </StrBtn>
-          </div>
-
-          <hr className={style.hr} />
 
           <Form onSubmit={onSubmit}>
-            <TitleInput 
+            <Toolbar>
+              <StrBtn size="medium" onClick={onSave}>
+                <i className="icon-download" />
+                編集中のデータをダウンロード
+              </StrBtn>
+            </Toolbar>
+            <TitleInput
               defaultValue={lyrics.title}
               onChange={onTitleChange}
               placeholder="タイトル"
