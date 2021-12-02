@@ -126,10 +126,12 @@ export const lyricsUpdate = (state: LyricsState, msg: LyricsMsg) => {
           (lyricAcc, lyric) => lyricAcc + lyric.value + "\n",
           ""
         );
-        return verseAcc + newValue + "\n";
+        const section = verse.name === "" ? "セクション" : verse.name;
+        return `${verseAcc}## ${section}\n\n${newValue}\n`;
       }, "");
 
-      newState.contents = newContents;
+      const title = state.title === "" ? "タイトル" : state.title;
+      newState.contents = `# ${title}\n\n${newContents}`;
       break;
   }
 
