@@ -1,26 +1,26 @@
 import React from "react";
 
-import { ToastDough } from "../../../hooks";
+import { Bread } from "../../../hooks";
 
 import { Toast } from "..";
 import style from "./toaster.module.scss";
 
 interface ToasterProps {
-  toasts: ToastDough[];
-  eat: (card: ToastDough) => void;
+  breads: Bread[];
+  eat: (toastKey: string) => void;
 }
 
 export const Toaster = (props: ToasterProps) => {
-  const onToastClick = (card: ToastDough) => () => props.eat(card);
+  const onToastClick = (key: string) => () => props.eat(key);
 
   return (
     <div className={style.toaster}>
-      {props.toasts.map((t) => (
+      {props.breads.map((b) => (
         <Toast
-          key={t.key}
-          type={t.type}
-          value={t.value}
-          onClick={onToastClick(t)}
+          key={b.key}
+          type={b.type}
+          value={b.value}
+          onClick={onToastClick(b.key!)}
         />
       ))}
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ToastDough } from "../hooks";
+import { Bread } from "../hooks";
 import { MarkovState, MarkovMsg } from "../hooks/markov";
 import { LyricsState, LyricsMsg } from "../hooks/lyrics";
 
@@ -14,7 +14,7 @@ interface MarkovContextValues {
 }
 
 interface ToasterContextValue {
-  bake: (dough: ToastDough) => void;
+  bake: (bread: Bread) => void;
 }
 
 export const LyricsContext = React.createContext<

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { ToastDough } from ".";
+import { Bread } from ".";
 import { generateUniqueKey } from "../utils/key";
 
 export const useBoolState = (initValue: boolean): [boolean, () => void] => {
@@ -10,18 +10,18 @@ export const useBoolState = (initValue: boolean): [boolean, () => void] => {
 };
 
 export const useToast = () => {
-  const [toasts, setToasts] = useState<ToastDough[]>([]);
+  const [breads, setBreads] = useState<Bread[]>([]);
 
-  const bake = (card: ToastDough) => {
-    let newToasts = toasts.map((t) => t);
-    newToasts.push({ ...card, key: generateUniqueKey() });
-    setToasts(newToasts);
+  const bake = (bread: Bread) => {
+    let newBreads = breads.map((t) => t);
+    newBreads.push({ ...bread, key: generateUniqueKey() });
+    setBreads(newBreads);
   };
 
-  const eat = (card: ToastDough) => {
-    let newToasts = toasts.filter((t) => t.key !== card.key);
-    setToasts(newToasts);
+  const eat = (toastKey: string) => {
+    const newBreads = breads.filter((b) => b.key !== toastKey);
+    setBreads(newBreads);
   };
 
-  return { toasts, bake, eat };
+  return { breads, bake, eat };
 };

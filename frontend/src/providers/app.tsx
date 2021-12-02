@@ -29,7 +29,7 @@ type AppProviderProps = {
 export const AppProvider = ({ children }: AppProviderProps) => {
   const [markov, mkvDispatch] = useReducer(markovUpdate, markovInitValue);
   const [lyrics, lyrDispatch] = useReducer(lyricsUpdate, lyricsInitValue);
-  const { toasts, bake, eat } = useToast();
+  const { breads, bake, eat } = useToast();
 
   return (
     <MarkovContext.Provider
@@ -40,7 +40,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
       >
         <ToasterContext.Provider value={{ bake: bake }}>
           {children}
-          <Toaster toasts={toasts} eat={eat} />
+          <Toaster breads={breads} eat={eat} />
         </ToasterContext.Provider>
       </LyricsContext.Provider>
     </MarkovContext.Provider>
