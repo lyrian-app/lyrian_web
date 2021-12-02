@@ -3,21 +3,22 @@ import React from "react";
 import style from "./titleInput.module.scss";
 
 interface TitleInputProps {
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  size: "small" | "medium" | "large" | "xlarge";
   defaultValue?: string;
   placeholder?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export const TitleInput = (props: TitleInputProps) => {
+  const className = `${style.titleInput} ${style[props.size]}`;
+
   return (
-    <div className={style.titleInput}>
       <input
-        className={style.input}
+        className={className}
         type="text"
         defaultValue={props.defaultValue}
         placeholder={props.placeholder}
         onChange={props.onChange}
       />
-    </div>
   );
 };

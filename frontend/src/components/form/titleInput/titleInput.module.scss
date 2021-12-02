@@ -1,32 +1,37 @@
 @import "../../../styles/var";
 
 .titleInput {
-  position: relative;
-  width: 100%;
-  height: $font-l;
-  margin-bottom: 1rem;
-}
-
-.input {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  border: 1px solid rgba($color: $dark-gray, $alpha: 0);
   outline: 0;
-  font-size: $font-l;
+  border: 1px solid;
+  border-color: rgba($color: $dark-gray, $alpha: 0);
+  border-radius: 1rem;
   font-weight: bold;
   text-align: center;
-  border-radius: 1rem;
   background: none;
   transition: 0.1s;
 
+  &.small {
+    font-size: $font-s;
+  }
+
+  &.medium {
+    font-size: $font-m;
+  }
+
+  &.large {
+    font-size: $font-l;
+  }
+
+  &.xlarge {
+    font-size: 4rem;
+  }
+
   &:hover {
-    border: 1px solid $dark-gray;
+    border-color: $dark-gray;
   }
 
   &:focus {
-    border: 1px solid $main-color;
+    border-color: $main-color;
     box-shadow: 0 0 1px 1px $main-color;
   }
 }

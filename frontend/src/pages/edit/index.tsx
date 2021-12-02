@@ -169,6 +169,7 @@ export const Edit = () => {
               </StrBtn>
             </Toolbar>
             <TitleInput
+              size="xlarge"
               defaultValue={lyrics.title}
               onChange={onTitleChange}
               placeholder="タイトル"
@@ -176,6 +177,7 @@ export const Edit = () => {
             {lyrics.verses.map((verse, i) => (
               <div className={style.lyricList} key={verse.key}>
                 <TitleInput
+                  size="large"
                   defaultValue={verse.name}
                   onChange={onVerseNameChanged(i)}
                   placeholder="セクション"
