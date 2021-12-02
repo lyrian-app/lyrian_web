@@ -13,12 +13,12 @@ export const TitleInput = (props: TitleInputProps) => {
   const className = `${style.titleInput} ${style[props.size]}`;
 
   return (
-      <input
-        className={className}
-        type="text"
-        defaultValue={props.defaultValue}
-        placeholder={props.placeholder}
-        onChange={props.onChange}
-      />
+    <input
+      className={className}
+      type="text"
+      defaultValue={props.defaultValue}
+      placeholder={props.placeholder}
+      onChange={props.onChange}
+    />
   );
 };
