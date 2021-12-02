@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useBoolState } from "../../hooks";
 import { MoraOrSyllable } from "../../hooks/lyrics";
 import { MarkovContext, LyricsContext, ToasterContext } from "../../providers";
+import { currentTime } from "../../utils/time";
 import { getVerseName, LyricValueGenerator } from "./util";
 
-import { IconBtn, RectBtn } from "../../components/buttons";
+import { IconBtn, RectBtn, StrBtn } from "../../components/buttons";
 import { Form, LyricCard, TitleInput } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalContent, ModalOverlay } from "../../components/modal";
@@ -32,6 +33,19 @@ export const Edit = () => {
   useEffect(() => {
     if (status === "willMount") setStatus("mounted");
   }, [status]);
+
+  const onSave = () => {
+    const jsonStr = JSON.stringify({
+      markov: markov,
+      lyrics: lyrics,
+    });
+    const title = lyrics.title === undefined ? "タイトル" : lyrics.title;
+    const blob = new Blob([jsonStr], { type: "text/plain"});
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${title}_${currentTime()}.json`;
+    link.click();
+  };
 
   const onLyricGenerate = (i: number) => (j: number) => () => {
     try {
@@ -137,7 +151,15 @@ export const Edit = () => {
             以下のフォームを入力して、歌詞を生成しましょう。
             <br />
             更新ボタンを押すことで、設定に合わせて歌詞を自動生成します。
+            <br />
+            下記のボタンをクリックすることで、編集中のデータを保存することができます。
           </Discription>
+          <div className={style.saveBtn}>
+            <StrBtn size="medium" onClick={onSave}>
+              <i className="icon-download" />
+              編集中のデータを保存
+            </StrBtn>
+          </div>
           <Form onSubmit={onSubmit}>
             {lyrics.verses.map((verse, i) => (
               <div className={style.lyricList} key={verse.key}>
