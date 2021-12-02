@@ -5,6 +5,15 @@
   height: 100%;
 }
 
+.shareBtns {
+  width: 20%;
+
+  .btn {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .textarea {
   width: 70%;
   height: 40vh;

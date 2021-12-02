@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { LyricsContext, ToasterContext } from "../../providers";
 
-import { RectBtn, StrBtn } from "../../components/buttons";
+import { CircleIconBtn, RectBtn, StrBtn } from "../../components/buttons";
 import { Textarea } from "../../components/form";
-import { Main } from "../../components/layout";
+import { Grid, Main } from "../../components/layout";
 import { H2 } from "../../components/text";
 import {
   MountStatus,
@@ -22,9 +22,29 @@ export const Lyrics = () => {
 
   const navigate = useNavigate();
 
+  let text = `Lyrian Web β - マルコフ連鎖を用いた日本語の歌詞生成アプリケーション。\n『${lyrics.title}』の歌詞をLyrianで制作しました。`;
+
   useEffect(() => {
     if (status === "willMount") setStatus("mounted");
   }, [status]);
+
+  const onTwitterClick = () => {
+    window.open(
+      `https://twitter.com/share?url=${window.location.origin}&text=${text}`
+    );
+  };
+
+  const onFacebookClick = () => {
+    window.open(
+      `http://www.facebook.com/sharer.php?u=${window.location.origin}&t=${text}`
+    );
+  };
+
+  const onPocketClick = () => {
+    window.open(
+      `http://getpocket.com/edit?url=${window.location.origin}&title=${text}`
+    );
+  };
 
   const onCopyClick = () => {
     navigator.clipboard.writeText(lyrics.contents);
@@ -43,7 +63,35 @@ export const Lyrics = () => {
     <Transition status={status}>
       <div className={style.lyrics}>
         <Main>
-          <H2>歌詞が完成しました</H2>
+          <H2>歌詞が完成しました！</H2>
+          <div className={style.shareBtns}>
+            <Grid cols={3}>
+              <div className={style.btn}>
+                <CircleIconBtn
+                  iconName="icon-twitter"
+                  size="large"
+                  bgColor="twitter"
+                  onClick={onTwitterClick}
+                />
+              </div>
+              <div className={style.btn}>
+                <CircleIconBtn
+                  iconName="icon-facebook-official"
+                  size="large"
+                  bgColor="facebook"
+                  onClick={onFacebookClick}
+                />
+              </div>
+              <div className={style.btn}>
+                <CircleIconBtn
+                  iconName="icon-get-pocket"
+                  size="large"
+                  bgColor="pocket"
+                  onClick={onPocketClick}
+                />
+              </div>
+            </Grid>
+          </div>
           <div className={style.textarea}>
             <Textarea value={lyrics.contents} />
           </div>
