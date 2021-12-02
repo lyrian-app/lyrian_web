@@ -45,7 +45,7 @@ export const Lyrics = () => {
         <Main>
           <H2>歌詞が完成しました</H2>
           <div className={style.textarea}>
-            <Textarea defaultValue={lyrics.contents} />
+            <Textarea value={lyrics.contents} />
           </div>
           <RectBtn value="コピー" size="large" onClick={onCopyClick} />
           <div className={style.back}>
