@@ -6,7 +6,7 @@ interface CircleIconBtnProps {
   iconName: string;
   type?: "button" | "submit" | "reset";
   size: "small" | "medium" | "large" | "xlarge";
-  bgColor: "pink" | "green";
+  bgColor: "pink" | "green" | "twitter" | "facebook" | "pocket";
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
