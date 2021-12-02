@@ -60,12 +60,14 @@ export const Start = () => {
         mkvDispatch({ type: "MarkovGeneratedMsg", model: model });
         jumpFixOfEdit(model.state_space);
       })
-      .catch((status) =>
+      .catch((status) => {
         bake({
           type: "error",
           value: `サーバー通信時にエラーが発生しました。(${status})`,
-        })
-      );
+        });
+        setStatus("mounted");
+        setLoading(false);
+      });
   };
 
   const readJson = () => {
