@@ -47,6 +47,13 @@ export const Edit = () => {
     link.click();
   };
 
+  const onTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    lyrDispatch({
+      type: "TitleChangedMsg",
+      newTitle: e.currentTarget.value,
+    });
+  };
+
   const onLyricGenerate = (i: number) => (j: number) => () => {
     try {
       let generator = new LyricValueGenerator(
@@ -160,7 +167,15 @@ export const Edit = () => {
               編集中のデータを保存
             </StrBtn>
           </div>
+
+          <hr className={style.hr} />
+
           <Form onSubmit={onSubmit}>
+            <TitleInput 
+              defaultValue={lyrics.title}
+              onChange={onTitleChange}
+              placeholder="タイトル"
+            />
             {lyrics.verses.map((verse, i) => (
               <div className={style.lyricList} key={verse.key}>
                 <TitleInput
