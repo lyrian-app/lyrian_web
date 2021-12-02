@@ -12,6 +12,10 @@ interface FormProps {
 export const Form = (props: FormProps) => {
   const { bake } = React.useContext(ToasterContext)!;
 
+  const onKeypress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") e.preventDefault();
+  };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     try {
       if (props.onSubmit !== undefined) props.onSubmit(e);
@@ -24,7 +28,12 @@ export const Form = (props: FormProps) => {
 
   return (
     <>
-      <form className={style.form} target="avoid" onSubmit={onSubmit}>
+      <form
+        className={style.form}
+        target="avoid"
+        onKeyPress={onKeypress}
+        onSubmit={onSubmit}
+      >
         {props.children}
       </form>
       <iframe className={style.avoid} name="avoid" title="avoid" />
