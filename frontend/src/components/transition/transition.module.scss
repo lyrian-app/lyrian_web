@@ -1,9 +1,14 @@
 @import "../../styles/var";
 
 .transition {
-  visibility: hidden;
   transition-property: opacity visibility;
-  opacity: 0;
+
+  &.willMount,
+  &.willUnmount {
+    visibility: hidden;
+    opacity: 0;
+    padding-top: 3rem;
+  }
 
   &.mounted {
     visibility: visible;
