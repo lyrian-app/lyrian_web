@@ -5,7 +5,7 @@ import { IconBtn } from "../buttons";
 import style from "./footer.module.scss";
 
 export const Footer = () => {
-  const onTwitterClick = () => window.open("https://twitter.com");
+  const onTwitterClick = () => window.open("https://twitter.com/ichi_h3");
 
   const onGitHubClick = () =>
     window.open("https://github.com/lyrian-app/lyrian_web");
