@@ -40,7 +40,7 @@ export const Edit = () => {
       markov: markov,
       lyrics: lyrics,
     });
-    const title = lyrics.title === undefined ? "タイトル" : lyrics.title;
+    const title = lyrics.title === "" ? "タイトル" : lyrics.title;
     const blob = new Blob([jsonStr], { type: "text/plain" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
