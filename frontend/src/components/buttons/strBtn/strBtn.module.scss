@@ -5,9 +5,24 @@
   background: none;
   cursor: pointer;
   transition: 0.1s;
-  font-size: $font-xs;
   color: inherit;
-  text-decoration: underline;
+  border-bottom: 1px dashed;
+
+  &.small {
+    font-size: $font-s;
+  }
+
+  &.medium {
+    font-size: $font-m;
+  }
+
+  &.large {
+    font-size: $font-l;
+  }
+
+  &.xlarge {
+    font-size: 4rem;
+  }
 
   &:hover {
     color: $main-color;

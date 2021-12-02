@@ -49,7 +49,9 @@ export const Lyrics = () => {
           </div>
           <RectBtn value="コピー" size="large" onClick={onCopyClick} />
           <div className={style.back}>
-            <StrBtn value="前のページに戻る" onClick={onBackClick} />
+            <StrBtn size="small" onClick={onBackClick}>
+              前のページに戻る
+            </StrBtn>
           </div>
         </Main>
       </div>

@@ -124,10 +124,9 @@ export const Start = () => {
               </div>
             </Form>
 
-            <StrBtn
-              value="既にモデルをお持ちの方はこちら"
-              onClick={toggleModal}
-            />
+            <StrBtn size="small" onClick={toggleModal}>
+              既に編集データをお持ちの方はこちら
+            </StrBtn>
           </Main>
 
           <Modal isOpen={isOpen}>
