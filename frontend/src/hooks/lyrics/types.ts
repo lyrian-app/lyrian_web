@@ -17,6 +17,7 @@ export interface Verse {
  * A state of Lyrics.
  */
 export interface LyricsState {
+  title: string;
   contents: string;
   verses: Verse[];
 }

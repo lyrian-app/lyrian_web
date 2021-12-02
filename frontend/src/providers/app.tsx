@@ -17,6 +17,7 @@ const markovInitValue = {
 };
 
 const lyricsInitValue = {
+  title: "",
   contents: "",
   verses: [getInitialVerse()],
 };
