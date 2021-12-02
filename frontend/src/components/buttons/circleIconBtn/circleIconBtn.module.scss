@@ -1,0 +1,63 @@
+@import "../../../styles/var";
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 0;
+  background: none;
+  border: 3px solid;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.1s;
+
+  &.small {
+    width: $font-s;
+    height: $font-s;
+    font-size: $font-s;
+    padding: $font-s;
+  }
+
+  &.medium {
+    width: $font-m;
+    height: $font-m;
+    font-size: $font-m;
+    padding: $font-m;
+  }
+
+  &.large {
+    width: $font-l;
+    height: $font-l;
+    font-size: $font-l;
+    padding: $font-l;
+  }
+
+  &.xlarge {
+    width: 4rem;
+    height: 4rem;
+    font-size: 4rem;
+    padding: 4rem;
+  }
+
+  &.pink {
+    color: $pink;
+    border-color: $pink;
+
+    &:hover {
+      background-color: $pink;
+    }
+  }
+
+  &.green {
+    color: $green;
+    border-color: $green;
+
+    &:hover {
+      background-color: $green;
+    }
+  }
+
+  &:hover {
+    color: $white;
+  }
+}
