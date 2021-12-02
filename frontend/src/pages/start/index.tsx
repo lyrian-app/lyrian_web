@@ -76,11 +76,17 @@ export const Start = () => {
     fr.addEventListener("load", (e) => {
       try {
         const json: SaveData = JSON.parse(e.target?.result as string);
+        if (json.markov === undefined || json.lyrics === undefined) {
+          throw Error("Invalid json file was input.");
+        }
+
         mkvDispatch({ type: "MarkovReadedMsg", model: json.markov });
         lyrDispatch({ type: "LyricsReadedMsg", newLyrics: json.lyrics });
+
         setStatus("willUnmount");
         jumpFixOfEdit(json.markov.state_space);
       } catch (_) {
+        setStatus("mounted");
         bake({
           type: "error",
           value: "不正なファイル、または破損したファイルが入力されました。",
