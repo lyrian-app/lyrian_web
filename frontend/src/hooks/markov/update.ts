@@ -1,7 +1,7 @@
 import { Token, MarkovState } from "./types";
 
-type MarkovGeneratedMsg = {
-  type: "MarkovGeneratedMsg";
+type MarkovReadedMsg = {
+  type: "MarkovReadedMsg";
   model: MarkovState;
 };
 
@@ -11,11 +11,11 @@ type TokenFixedMsg = {
   token: Token;
 };
 
-export type MarkovMsg = MarkovGeneratedMsg | TokenFixedMsg;
+export type MarkovMsg = MarkovReadedMsg | TokenFixedMsg;
 
 export const markovUpdate = (state: MarkovState, msg: MarkovMsg) => {
   switch (msg.type) {
-    case "MarkovGeneratedMsg":
+    case "MarkovReadedMsg":
       return msg.model;
 
     case "TokenUpdatedMsg":

@@ -58,7 +58,7 @@ export const Start = () => {
     await fetchMarkovModel(learningData)
       .then((text) => {
         const model: MarkovState = JSON.parse(text);
-        mkvDispatch({ type: "MarkovGeneratedMsg", model: model });
+        mkvDispatch({ type: "MarkovReadedMsg", model: model });
         jumpFixOfEdit(model.state_space);
       })
       .catch((status) => {
@@ -76,7 +76,7 @@ export const Start = () => {
     fr.addEventListener("load", (e) => {
       try {
         const json: SaveData = JSON.parse(e.target?.result as string);
-        mkvDispatch({ type: "MarkovGeneratedMsg", model: json.markov });
+        mkvDispatch({ type: "MarkovReadedMsg", model: json.markov });
         lyrDispatch({ type: "LyricsReadedMsg", newLyrics: json.lyrics });
         setStatus("willUnmount");
         jumpFixOfEdit(json.markov.state_space);
