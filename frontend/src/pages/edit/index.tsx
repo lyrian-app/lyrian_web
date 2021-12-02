@@ -166,6 +166,7 @@ export const Edit = () => {
                 <TitleInput
                   defaultValue={verse.name}
                   onChange={onVerseNameChanged(i)}
+                  placeholder="セクション"
                 />
                 {verse.values.map((lyric, j) => (
                   <LyricCard

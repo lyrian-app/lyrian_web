@@ -5,6 +5,7 @@ import style from "./titleInput.module.scss";
 interface TitleInputProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   defaultValue?: string;
+  placeholder?: string;
 }
 
 export const TitleInput = (props: TitleInputProps) => {
@@ -14,7 +15,7 @@ export const TitleInput = (props: TitleInputProps) => {
         className={style.input}
         type="text"
         defaultValue={props.defaultValue}
-        placeholder="セクション名"
+        placeholder={props.placeholder}
         onChange={props.onChange}
       />
     </div>
