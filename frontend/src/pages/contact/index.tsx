@@ -22,7 +22,17 @@ export const Contact = () => {
           <div className={content.content}>
             <h1>お問い合わせ</h1>
 
-            <p>ご連絡は以下のメールアドレス、または <a href="https://twitter.com/ichi_h3" target="_blank" rel="noopener noreferrer">Twitter</a> からお気軽にお問い合わせください（メールからのご連絡の方が確実です）。</p>
+            <p>
+              ご連絡は以下のメールアドレス、または{" "}
+              <a
+                href="https://twitter.com/ichi_h3"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Twitter
+              </a>{" "}
+              からお気軽にお問い合わせください（メールからのご連絡の方が確実です）。
+            </p>
 
             <div className={style.email}>
               <img src={mailImg} alt="email" />
@@ -32,5 +42,4 @@ export const Contact = () => {
       </div>
     </Transition>
   );
-
 };
