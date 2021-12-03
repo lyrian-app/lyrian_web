@@ -69,7 +69,11 @@ export const Footer = () => {
         </a>
       </div>
 
-      <p className={style.copyright}>
+      <p className={style.text}>
+        Background photo by <a href="https://unsplash.com/@adigold1?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Adi Goldstein</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+      </p>
+
+      <p className={style.text}>
         Copyright © 2021 Ichi Hazuki and the Lyrian Project contributors.
       </p>
     </footer>
