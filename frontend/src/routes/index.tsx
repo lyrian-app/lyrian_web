@@ -12,6 +12,7 @@ import { NotFound } from "../pages/notFound";
 import { QA } from "../pages/q_a";
 import { Release } from "../pages/release";
 import { Start } from "../pages/start";
+import { Tos } from "../pages/tos";
 
 export const AppRoute = () => {
   return (
@@ -26,6 +27,7 @@ export const AppRoute = () => {
         <Route path="/q_a" element={<QA />} />
         <Route path="/release" element={<Release />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/tos" element={<Tos />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
