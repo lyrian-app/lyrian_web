@@ -2,12 +2,13 @@
 .icon-ok:before { content: '\e800'; } /* '' */
 .icon-arrows-cw:before { content: '\e801'; } /* '' */
 .icon-download:before { content: '\e802'; } /* '' */
-.icon-cancel:before { content: '\e803'; } /* '' */
 .icon-plus:before { content: '\e804'; } /* '' */
 .icon-warning:before { content: '\e805'; } /* '' */
 .icon-down-open:before { content: '\e806'; } /* '' */
 .icon-up-open:before { content: '\e807'; } /* '' */
 .icon-error:before { content: '\e808'; } /* '' */
+.icon-cancel:before { content: '\e809'; } /* '' */
+.icon-link-ext:before { content: '\f08e'; } /* '' */
 .icon-twitter:before { content: '\f099'; } /* '' */
 .icon-github-circled:before { content: '\f09b'; } /* '' */
 .icon-left-circled:before { content: '\f0a8'; } /* '' */
