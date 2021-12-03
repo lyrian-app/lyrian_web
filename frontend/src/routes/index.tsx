@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { Docs } from "../pages/docs";
 import { Edit } from "../pages/edit";
 import { Fix } from "../pages/fix";
 import { LandingPage } from "../pages/lp";
@@ -16,6 +17,7 @@ export const AppRoute = () => {
         <Route path="/fix" element={<Fix />} />
         <Route path="/edit" element={<Edit />} />
         <Route path="/lyrics" element={<Lyrics />} />
+        <Route path="/docs" element={<Docs />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
