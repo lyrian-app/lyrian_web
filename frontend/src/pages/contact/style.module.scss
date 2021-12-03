@@ -1,0 +1,19 @@
+@import "../../styles/var";
+
+.contact {
+  width: 100%;
+  min-width: 100vh;
+  padding: 3rem 0;
+}
+
+.email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  img {
+    width: 50%;
+    box-shadow: none !important;
+  }
+}
