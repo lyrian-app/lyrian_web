@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { RectBtn, ScrollBtn } from "../../components/buttons";
+import { RectBtn, ScrollBtn, StrBtn } from "../../components/buttons";
 import { Grid } from "../../components/layout";
 import { H1, H2, H3 } from "../../components/text";
 import {
@@ -28,6 +28,8 @@ export const LandingPage = () => {
     setStatus("willUnmount");
     setTimeout(() => navigate("/start"), TRANSITION_TIME, false);
   };
+
+  const toDocsPage = () => window.open("/docs");
 
   return (
     <Transition status={status}>
@@ -83,6 +85,9 @@ export const LandingPage = () => {
               </div>
             </Grid>
           </div>
+          <StrBtn size="medium" onClick={toDocsPage}>
+            <i className="icon-link-ext" /> 詳しい使い方はこちら
+          </StrBtn>
           <ScrollBtn jumpToRef={feat} arrow="down" />
         </div>
 
