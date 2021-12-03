@@ -10,6 +10,7 @@ import { LandingPage } from "../pages/lp";
 import { Lyrics } from "../pages/lyrics";
 import { NotFound } from "../pages/notFound";
 import { QA } from "../pages/q_a";
+import { Release } from "../pages/release";
 import { Start } from "../pages/start";
 
 export const AppRoute = () => {
@@ -23,6 +24,7 @@ export const AppRoute = () => {
         <Route path="/lyrics" element={<Lyrics />} />
         <Route path="/docs" element={<Docs />} />
         <Route path="/q_a" element={<QA />} />
+        <Route path="/release" element={<Release />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
