@@ -35,6 +35,10 @@ export const Footer = () => {
       </div>
 
       <div className={style.links}>
+        <Link to="/" onClick={scollTop}>
+          ホーム
+        </Link>
+        <span className={style.bar}>|</span>
         <Link to="/docs" onClick={scollTop}>
           ドキュメント
         </Link>
