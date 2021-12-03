@@ -47,7 +47,7 @@ export const LandingPage = () => {
           <H2>Lyrianとは？</H2>
           <p className={style.discription}>
             Lyrianとは、マルコフ連鎖を用いて日本語の歌詞の生成を行うアプリケーションです。
-            ユーザーが予め入力した文章の中から単語をランダムに選択し、歌詞生成を行います。
+            ユーザーが予め入力した文章の中から単語をランダムに組み合わせ、歌詞生成を行います。
           </p>
           <div className={style.usageBox}>
             <Grid gap="2rem">
