@@ -20,7 +20,7 @@ export const Release = () => {
           <div className={content.content}>
             <h1>リリースノート</h1>
 
-            <h3>0.1.0_b - Unreleased</h3>
+            <h3>0.1.0_b - 2021-12-5</h3>
             <ul>
               <li>ベータ版の公開。</li>
             </ul>
