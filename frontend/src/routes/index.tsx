@@ -4,6 +4,7 @@ import { Edit } from "../pages/edit";
 import { Fix } from "../pages/fix";
 import { LandingPage } from "../pages/lp";
 import { Lyrics } from "../pages/lyrics";
+import { NotFound } from "../pages/notFound";
 import { Start } from "../pages/start";
 
 export const AppRoute = () => {
@@ -15,6 +16,7 @@ export const AppRoute = () => {
         <Route path="/fix" element={<Fix />} />
         <Route path="/edit" element={<Edit />} />
         <Route path="/lyrics" element={<Lyrics />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
