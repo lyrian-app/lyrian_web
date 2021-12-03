@@ -12,7 +12,6 @@ interface CircleIconBtnProps {
 
 export const CircleIconBtn = (props: CircleIconBtnProps) => {
   const btnClass = `${style.btn} ${style[props.bgColor]} ${style[props.size]}`;
-  const iClass = `${props.iconName} ${style.icon}`;
 
   return (
     <button className={btnClass} type={props.type} onClick={props.onClick}>
