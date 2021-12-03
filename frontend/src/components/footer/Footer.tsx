@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { IconBtn } from "../buttons";
 
@@ -9,6 +10,12 @@ export const Footer = () => {
 
   const onGitHubClick = () =>
     window.open("https://github.com/lyrian-app/lyrian_web");
+
+  const scollTop = () =>
+    window.scrollTo({
+      behavior: "smooth",
+      top: 0,
+    });
 
   return (
     <footer className={style.footer}>
@@ -28,45 +35,25 @@ export const Footer = () => {
       </div>
 
       <div className={style.links}>
-        <a
-          href="https://github.com/lyrian-app/lyrian_web/wiki/1.-%E4%BD%BF%E3%81%84%E6%96%B9"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link to="/docs" onClick={scollTop}>
           ドキュメント
-        </a>
+        </Link>
         <span className={style.bar}>|</span>
-        <a
-          href="https://github.com/lyrian-app/lyrian_web/wiki/2.-Q-&-A"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link to="/q_a" onClick={scollTop}>
           Q & A
-        </a>
+        </Link>
         <span className={style.bar}>|</span>
-        <a
-          href="https://github.com/lyrian-app/lyrian_web/blob/main/CHANGELOG.md"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link to="/release" onClick={scollTop}>
           リリースノート
-        </a>
+        </Link>
         <span className={style.bar}>|</span>
-        <a
-          href="mailto:ichi.h3@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link to="/contact" onClick={scollTop}>
           お問い合わせ
-        </a>
+        </Link>
         <span className={style.bar}>|</span>
-        <a
-          href="https://github.com/lyrian-app/lyrian_web/wiki/3.-%E5%88%A9%E7%94%A8%E8%A6%8F%E7%B4%84"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <Link to="/tos" onClick={scollTop}>
           利用規約
-        </a>
+        </Link>
       </div>
 
       <p className={style.text}>

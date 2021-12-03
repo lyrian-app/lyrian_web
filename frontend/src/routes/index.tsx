@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { Footer } from "../components/footer";
+
 import { Docs } from "../pages/docs";
 import { Edit } from "../pages/edit";
 import { Fix } from "../pages/fix";
@@ -20,6 +22,7 @@ export const AppRoute = () => {
         <Route path="/docs" element={<Docs />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
