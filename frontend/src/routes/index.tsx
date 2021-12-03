@@ -8,6 +8,7 @@ import { Fix } from "../pages/fix";
 import { LandingPage } from "../pages/lp";
 import { Lyrics } from "../pages/lyrics";
 import { NotFound } from "../pages/notFound";
+import { QA } from "../pages/q_a";
 import { Start } from "../pages/start";
 
 export const AppRoute = () => {
@@ -20,6 +21,7 @@ export const AppRoute = () => {
         <Route path="/edit" element={<Edit />} />
         <Route path="/lyrics" element={<Lyrics />} />
         <Route path="/docs" element={<Docs />} />
+        <Route path="/q_a" element={<QA />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
