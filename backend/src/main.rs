@@ -1,3 +1,4 @@
+use actix_files::Files;
 use actix_web::{middleware, web, App, HttpResponse, HttpServer, Result};
 use lyrian::model::LyrianModel;
 use serde::{Deserialize, Serialize};
@@ -22,15 +23,9 @@ async fn main() -> std::io::Result<()> {
 fn app_config(config: &mut web::ServiceConfig) {
     config.service(
         web::scope("")
-            .service(web::resource("/").route(web::get().to(index)))
-            .service(web::resource("/api/create_model").route(web::post().to(create_model))),
+            .service(web::resource("/api/create_model").route(web::post().to(create_model)))
+            .service(Files::new("/", "/frontend/build").index_file("index.html")),
     );
-}
-
-async fn index() -> Result<HttpResponse> {
-    Ok(HttpResponse::Ok()
-        .content_type("text/html; charset=utf-8")
-        .body(include_str!("./form.html")))
 }
 
 async fn create_model(form: web::Form<LearningData>) -> Result<HttpResponse> {
