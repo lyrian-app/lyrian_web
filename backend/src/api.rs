@@ -9,7 +9,7 @@ pub struct LearningData {
     pub contents: String,
 }
 
-pub async fn create_model(form: web::Form<LearningData>) -> Result<HttpResponse, ApiErrorResponse> {
+pub async fn create_model(form: web::Json<LearningData>) -> Result<HttpResponse, ApiErrorResponse> {
     match LyrianModel::from_str(&*form.contents) {
         Ok(model) => match model.to_json_str() {
             Ok(json) => Ok(HttpResponse::Ok()
@@ -27,7 +27,7 @@ mod test {
 
     use actix_web::body::{Body, ResponseBody};
     use actix_web::http::{header::CONTENT_TYPE, HeaderValue, StatusCode};
-    use actix_web::web::Form;
+    use actix_web::web::Json;
 
     trait BodyTest {
         fn as_str(&self) -> &str;
@@ -52,7 +52,7 @@ mod test {
 
     #[actix_rt::test]
     async fn create_model_unit_test() {
-        let params = Form(LearningData {
+        let params = Json(LearningData {
             contents: String::from("テスト"),
         });
         let resp = create_model(params).await.unwrap();
