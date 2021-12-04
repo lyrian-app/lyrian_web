@@ -8,8 +8,9 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - "./frontend:/lyrian_web"
-      - modules-cache:/lyrian_web/node_modules
+      - "./frontend:/frontend"
+      - build-cache:/frontend/build
+      - modules-cache:/frontend/node_modules
     command: /bin/sh -c "yarn start"
   backend:
     build:
@@ -18,12 +19,16 @@ services:
     ports:
       - "8088:8088"
     volumes:
-      - ./backend:/lyrian_web
+      - ./backend:/backend
+      - build-cache:/frontend/build
       - cargo-cache:/usr/local/cargo/registry
-      - target-cache:/lyrian_web/target
+      - target-cache:/backend/target
+    depends_on:
+      - frontend
     command: /bin/sh -c "cargo watch -x run"
 
 volumes:
   modules-cache:
+  build-cache:
   cargo-cache:
   target-cache:

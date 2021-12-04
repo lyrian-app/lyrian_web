@@ -1,6 +1,6 @@
 # dev
 FROM rust:1.56.1-buster as dev-stage
-WORKDIR /lyrian_web
+WORKDIR /backend
 RUN cargo install cargo-watch
 COPY . .
 
@@ -10,6 +10,6 @@ RUN cargo build --release
 
 # production
 FROM debian:buster-slim
-COPY --from=build-stage /lyrian_web/target/release/lyrian_web /usr/local/bin/
+COPY --from=build-stage /backend/target/release/lyrian_web /usr/local/bin/
 EXPOSE 8088
 CMD ["lyrian_web"]
