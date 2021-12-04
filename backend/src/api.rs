@@ -2,22 +2,23 @@ use actix_web::{web, HttpResponse, Result};
 use lyrian::model::LyrianModel;
 use serde::{Deserialize, Serialize};
 
+use crate::errors::ApiErrorResponse;
+
 #[derive(Deserialize, Serialize)]
 pub struct LearningData {
     pub contents: String,
 }
 
-pub async fn create_model(form: web::Form<LearningData>) -> Result<HttpResponse> {
-    let res = match LyrianModel::from_str(&*form.contents) {
+pub async fn create_model(form: web::Form<LearningData>) -> Result<HttpResponse, ApiErrorResponse> {
+    match LyrianModel::from_str(&*form.contents) {
         Ok(model) => match model.to_json_str() {
-            Ok(json) => json,
-            Err(e) => e,
+            Ok(json) => Ok(HttpResponse::Ok()
+                .content_type("text/plain; charset=utf-8")
+                .body(json)),
+            Err(_) => Err(ApiErrorResponse::JsonStringifyError),
         },
-        Err(e) => e,
-    };
-    Ok(HttpResponse::Ok()
-        .content_type("text/plain; charset=utf-8")
-        .body(res))
+        Err(_) => Err(ApiErrorResponse::LyrianModelGenerationError),
+    }
 }
 
 #[cfg(test)]
