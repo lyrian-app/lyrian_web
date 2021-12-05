@@ -11,5 +11,3 @@ RUN cargo build --release
 # production
 FROM debian:buster-slim
 COPY --from=build-stage /backend/target/release/lyrian_web /usr/local/bin/
-EXPOSE 8088
-CMD ["lyrian_web"]
