@@ -10,10 +10,6 @@ docker-compose up -d frontend
 
 # backend
 docker-compose up -d backend
-
-# production
-docker-compose up -d production
-
 ```
 
 ### Use shell

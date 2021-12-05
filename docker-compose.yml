@@ -32,15 +32,6 @@ services:
     depends_on:
       - frontend
     command: /bin/sh -c "cargo watch -x run"
-  production:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-      target: "production"
-    image: production
-    container_name: production
-    ports:
-      - "8088:8088"
 
 volumes:
   modules-cache:
