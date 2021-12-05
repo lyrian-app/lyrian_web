@@ -1,11 +1,16 @@
 use actix_files::NamedFile;
-use actix_web::{middleware, web, App, HttpServer, Result};
+use actix_web::{get, middleware, web, App, HttpServer, Result};
 
 pub mod api;
 pub mod errors;
 pub mod routes;
 
 use routes::routes;
+
+#[get("/favicon")]
+async fn favicon() -> Result<NamedFile> {
+    Ok(NamedFile::open("/frontend/build/favicon.ico")?)
+}
 
 async fn index() -> Result<NamedFile> {
     Ok(NamedFile::open("/frontend/build/index.html")?)
