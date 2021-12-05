@@ -5,21 +5,18 @@ COPY ./frontend/ .
 RUN yarn
 RUN yarn build
 
-# backend build stage
-FROM rust:1.56.1-buster as back-build
+# backend dev stage
+FROM rust:1.56.1-buster as back-dev
 WORKDIR /backend
-COPY /backend/ .
+COPY ./backend/ .
+RUN cargo install cargo-watch
+
+# backend build stage
+FROM back-dev as back-build
 RUN cargo build --release
 
 # production
 FROM debian:buster-slim as production
 COPY --from=front-dev /frontend/build/ /frontend/build/
-COPY --from=back-build /backend/target/release/lyrian_web /usr/local/bin/
-EXPOSE 8088
-CMD ["lyrian_web"]
-
-# backend dev stage
-FROM rust:1.56.1-buster as back-dev
-WORKDIR /backend
-RUN cargo install cargo-watch
-COPY /backend/ .
+COPY --from=back-build /backend/target/release/lyrian_web .
+CMD ["./lyrian_web"]
