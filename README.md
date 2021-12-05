@@ -2,10 +2,18 @@
 
 ## Usage
 
-### Launch development environment
+### Launch service
 
-```
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+```sh
+# frontend
+docker-compose up -d frontend
+
+# backend
+docker-compose up -d backend
+
+# production
+docker-compose up -d production
+
 ```
 
 ### Use shell
@@ -20,10 +28,4 @@ docker exec -it frontend_dev ash
 ```
 docker logs -f backend_dev
 docker logs -f frontend_dev
-```
-
-### Launch production environment
-
-```
-docker-compose -f docker-compose.yml up -d
 ```
