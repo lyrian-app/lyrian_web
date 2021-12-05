@@ -25,3 +25,10 @@ docker exec -it frontend_dev ash
 docker logs -f backend_dev
 docker logs -f frontend_dev
 ```
+
+### Launch production container
+
+```
+docker build ./-t lyrian_web_app
+docker run -d -p 8088:8088 lyrian_web_app
+```
