@@ -1,4 +1,5 @@
-use actix_web::{middleware, App, HttpServer};
+use actix_files::NamedFile;
+use actix_web::{middleware, web, App, HttpServer, Result};
 
 pub mod api;
 pub mod errors;
@@ -6,12 +7,17 @@ pub mod routes;
 
 use routes::routes;
 
+async fn index() -> Result<NamedFile> {
+    Ok(NamedFile::open("/frontend/build/index.html")?)
+}
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
             .wrap(middleware::Logger::default())
             .configure(routes)
+            .default_service(web::route().to(index))
     })
     .bind(("0.0.0.0", 8088))?
     .run()
