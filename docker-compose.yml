@@ -3,25 +3,47 @@ version: '3.7'
 services:
   frontend:
     build:
-      context: ./frontend
-    image: frontend_production
-    container_name: frontend_production
+      context: .
+      dockerfile: ./Dockerfile
+      target: "front-dev"
+    image: frontend_dev
+    container_name: frontend_dev
+    ports:
+      - "3000:3000"
     volumes:
       - "./frontend:/frontend"
       - build-cache:/frontend/build
+      - modules-cache:/frontend/node_modules
+    command: /bin/sh -c "yarn start"
   backend:
     build:
-      context: ./backend
-    image: backend_production
-    container_name: backend_production
+      context: .
+      dockerfile: ./Dockerfile
+      target: "back-dev"
+    image: backend_dev
+    container_name: backend_dev
     ports:
       - "8088:8088"
     volumes:
       - ./backend:/backend
       - build-cache:/frontend/build
+      - cargo-cache:/usr/local/cargo/registry
+      - target-cache:/backend/target
     depends_on:
       - frontend
-    command: /bin/sh -c "lyrian_web"
+    command: /bin/sh -c "cargo watch -x run"
+  production:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: "production"
+    image: production
+    container_name: production
+    ports:
+      - "8088:8088"
 
 volumes:
+  modules-cache:
   build-cache:
+  cargo-cache:
+  target-cache:
