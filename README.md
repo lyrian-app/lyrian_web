@@ -5,25 +5,25 @@
 ### Launch development environment
 
 ```
-docker-compose up -d
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
 ### Use shell
 
 ```
-docker exec -it lyrian_web_backend_1 ash
-docker exec -it lyrian_web_frontend_1 ash
+docker exec -it backend_dev bash
+docker exec -it frontend_dev ash
 ```
 
 ### Display logs
 
 ```
-docker logs -f lyrian_web_backend_1
-docker logs -f lyrian_web_frontend_1
+docker logs -f backend_dev
+docker logs -f frontend_dev
 ```
 
-### Build
+### Launch production environment
 
 ```
-docker build -t backend_production ./backend
+docker-compose -f docker-compose.yml up -d
 ```
