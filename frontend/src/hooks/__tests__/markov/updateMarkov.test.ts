@@ -2,13 +2,13 @@ import React from "react";
 import { RenderResult, renderHook, act } from "@testing-library/react-hooks";
 import { useReducer } from "react";
 import {
-  markovUpdate,
+  updateMarkov,
   MarkovState,
   MarkovMsg,
   PartOfSpeech,
 } from "../../markov";
 
-describe("markovUpdate", () => {
+describe("updateMarkov", () => {
   let result: RenderResult<[MarkovState, React.Dispatch<MarkovMsg>]>;
 
   beforeEach(() => {
@@ -24,7 +24,7 @@ describe("markovUpdate", () => {
       wa_table: [{ aliases: [0], probs: [0.0] }],
       prev_index: 1,
     };
-    result = renderHook(() => useReducer(markovUpdate, markov)).result;
+    result = renderHook(() => useReducer(updateMarkov, markov)).result;
   });
 
   it("Read MarkovState", () => {
