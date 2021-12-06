@@ -78,7 +78,7 @@ export type LyricsMsg =
   | VerseRemovedMsg
   | LyricsGeneretedMsg;
 
-export const lyricsUpdate = (state: LyricsState, msg: LyricsMsg) => {
+export const updateLyrics = (state: LyricsState, msg: LyricsMsg) => {
   let newState = cloneObj(state);
 
   switch (msg.type) {
