@@ -18,15 +18,24 @@
   }
 
   .links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
     font-size: $font-s;
 
-    .bar {
-      margin: 0 1rem;
-      user-select: none;
+    @media screen and (max-width: $mobile) {
+      gap: 1rem;
+      width: 90%;
+      font-size: $font-xs;
     }
   }
 
   .text {
     font-size: $font-s;
+
+    @media screen and (max-width: $mobile) {
+      font-size: $font-xs;
+    }
   }
 }

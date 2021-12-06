@@ -11,9 +11,18 @@
   box-shadow: 5px 5px 10px 0 rgba($color: #000000, $alpha: 0.1);
   padding: 5rem;
 
+  @media screen and (max-width: $mobile) {
+    width: 90vw;
+    padding: 3rem;
+  }
+
   h1 {
     text-align: center;
     font-size: $font-xl;
+
+    @media screen and (max-width: $mobile) {
+      font-size: $font-l;
+    }
   }
 
   h2 {
@@ -38,6 +47,16 @@
   ul,
   ol {
     font-size: $font-s;
+  }
+
+  ul,
+  ol {
+    padding-left: $font-s;
+
+    ul,
+    ol {
+      padding-left: $font-s * 1.5;
+    }
   }
 
   p {

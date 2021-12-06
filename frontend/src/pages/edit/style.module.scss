@@ -5,9 +5,13 @@
   height: 100%;
 }
 
-.hr {
-  width: 70%;
-  margin-bottom: 2rem;
+.lyricsTitle,
+.sectionTitle {
+  width: 90%;
+
+  @media screen and (min-width: $mobile) {
+    width: 50%;
+  }
 }
 
 .lyricList {
@@ -21,6 +25,10 @@
   background-color: $white;
   box-shadow: 5px 5px 10px 0 rgba($color: #000000, $alpha: 0.1);
   padding: 3rem;
+
+  @media screen and (max-width: $tablet) {
+    width: 80%;
+  }
 }
 
 .verseAdd {

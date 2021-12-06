@@ -2,13 +2,24 @@
 
 .headline1 {
   font-size: $font-xxl;
+
+  @media screen and (max-width: $mobile) {
+    font-size: $font-xl;
+  }
 }
 
 .headline2 {
   font-size: $font-xl;
+
+  @media screen and (max-width: $mobile) {
+    font-size: $font-l;
+  }
 }
 
 .headline3 {
   font-size: $font-m;
-  margin-bottom: 1rem;
+
+  @media screen and (max-width: $mobile) {
+    font-size: $font-s;
+  }
 }
