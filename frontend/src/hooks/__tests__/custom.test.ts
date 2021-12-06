@@ -30,7 +30,7 @@ describe("useToast", () => {
   });
 
   it("Initial state is empty", () => {
-    expect(result.current.breads).toStrictEqual([]);
+    expect(result.current.breads.length).toBe(0);
   });
 
   it("Bake bread", () => {
@@ -57,6 +57,6 @@ describe("useToast", () => {
 
     act(() => result.current.eat(result.current.breads[0].key!));
 
-    expect(result.current.breads).toStrictEqual([]);
+    expect(result.current.breads.length).toBe(0);
   });
 });
