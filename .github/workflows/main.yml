@@ -15,15 +15,11 @@ jobs:
       - name: Launch container
         run: docker-compose up -d
 
-      - name: Install node modules
-        run: docker-compose exec frontend_dev yarn
-
       - name: Build
         run: |
-          docker-compose exec backend_dev cargo build --verbose
-          docker-compose exec frontend_dev yarn build
+          docker-compose exec -T backend_dev cargo build --verbose
 
       - name: Test
         run: |
-          docker-compose exec backend_dev cargo test --verbose
-          docker-compose exec frontend_dev yarn test
+          docker-compose exec -T backend_dev cargo test --verbose
+          docker-compose exec -T frontend_dev yarn test
