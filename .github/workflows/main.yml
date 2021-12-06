@@ -1,0 +1,29 @@
+name: lyrian_web
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Launch container
+        run: docker-compose up -d
+
+      - name: Install node modules
+        run: docker-compose exec frontend_dev yarn
+
+      - name: Build
+        run: |
+          docker-compose exec backend_dev cargo build --verbose
+          docker-compose exec frontend_dev yarn build
+
+      - name: Test
+        run: |
+          docker-compose exec backend_dev cargo test --verbose
+          docker-compose exec frontend_dev yarn test
