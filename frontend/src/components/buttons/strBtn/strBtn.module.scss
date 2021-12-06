@@ -10,18 +10,34 @@
 
   &.small {
     font-size: $font-s;
+
+    @media screen and (max-width: $mobile) {
+      font-size: $font-xs;
+    }
   }
 
   &.medium {
     font-size: $font-m;
+
+    @media screen and (max-width: $mobile) {
+      font-size: $font-s;
+    }
   }
 
   &.large {
     font-size: $font-l;
+
+    @media screen and (max-width: $mobile) {
+      font-size: $font-m;
+    }
   }
 
   &.xlarge {
     font-size: 4rem;
+
+    @media screen and (max-width: $mobile) {
+      font-size: $font-l;
+    }
   }
 
   &:hover {

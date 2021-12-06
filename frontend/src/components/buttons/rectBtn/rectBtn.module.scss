@@ -33,6 +33,11 @@
     font-size: $font-s;
     padding: 0 $font-s;
 
+    @media screen and (max-width: $mobile) {
+      font-size: $font-xs;
+      padding: 0 $font-xs;
+    }
+
     &::before {
       margin-left: -$font-s;
     }
@@ -42,6 +47,11 @@
     font-size: $font-m;
     padding: 0 $font-m;
 
+    @media screen and (max-width: $mobile) {
+      font-size: $font-s;
+      padding: 0 $font-s;
+    }
+
     &::before {
       margin-left: -$font-m;
     }
@@ -50,6 +60,11 @@
   &.large {
     font-size: $font-l;
     padding: 0 $font-l;
+
+    @media screen and (max-width: $mobile) {
+      font-size: $font-m;
+      padding: 0 $font-m;
+    }
 
     &::before {
       margin-left: -$font-l;
