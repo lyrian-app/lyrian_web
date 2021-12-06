@@ -43,7 +43,7 @@ describe("updateMarkov", () => {
 
     act(() => result.current[1]({ type: "MarkovReadedMsg", model: markov }));
 
-    expect(result.current[0].state_space[0].word).toBe("テスト");
+    expect(result.current[0]).toStrictEqual(markov);
   });
 
   it("Update Token in MarkovState", () => {
@@ -58,6 +58,6 @@ describe("updateMarkov", () => {
       result.current[1]({ type: "TokenUpdatedMsg", index: 0, token: token })
     );
 
-    expect(result.current[0].state_space[0].word).toBe("更新");
+    expect(result.current[0].state_space[0]).toStrictEqual(token);
   });
 });
