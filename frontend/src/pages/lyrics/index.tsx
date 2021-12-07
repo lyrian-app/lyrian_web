@@ -6,7 +6,7 @@ import { LyricsContext, ToasterContext } from "../../providers";
 import { CircleIconBtn, RectBtn, StrBtn } from "../../components/buttons";
 import { Textarea } from "../../components/form";
 import { Grid, Main } from "../../components/layout";
-import { Discription, H2 } from "../../components/text";
+import { Description, H2 } from "../../components/text";
 import {
   MountStatus,
   Transition,
@@ -64,9 +64,9 @@ export const Lyrics = () => {
       <div className={style.lyrics}>
         <Main>
           <H2>歌詞が完成しました！</H2>
-          <Discription>
+          <Description>
             もしよければ、Lyrianを使ったことを共有しませんか？
-          </Discription>
+          </Description>
           <div className={style.shareBtns}>
             <Grid cols={3}>
               <div className={style.btn}>

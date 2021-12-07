@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { StrBtn } from "../../components/buttons";
 import { Main } from "../../components/layout";
-import { Discription, H2 } from "../../components/text";
+import { Description, H2 } from "../../components/text";
 import {
   MountStatus,
   Transition,
@@ -27,7 +27,7 @@ export const NotFound = () => {
     <Transition status={status}>
       <Main>
         <H2>404 - Page not found.</H2>
-        <Discription>お探しのページは見つかりませんでした。</Discription>
+        <Description>お探しのページは見つかりませんでした。</Description>
         <StrBtn size="medium" onClick={onClick}>
           <i className="icon-left-circled" /> ホームに戻る
         </StrBtn>

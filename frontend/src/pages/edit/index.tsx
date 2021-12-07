@@ -11,7 +11,7 @@ import { IconBtn, RectBtn, StrBtn } from "../../components/buttons";
 import { Form, LyricCard, TitleInput } from "../../components/form";
 import { Main } from "../../components/layout";
 import { Modal, ModalContent, ModalOverlay } from "../../components/modal";
-import { Discription, H2, H3 } from "../../components/text";
+import { Description, H2, H3 } from "../../components/text";
 import { Toolbar } from "../../components/toolbar";
 import {
   MountStatus,
@@ -155,11 +155,11 @@ export const Edit = () => {
       <div className={style.edit}>
         <Main>
           <H2>歌詞作成</H2>
-          <Discription>
+          <Description>
             以下のフォームを入力して、歌詞を生成しましょう。
             <br />
             更新ボタンを押すことで、設定に合わせて歌詞を自動生成します。
-          </Discription>
+          </Description>
 
           <Form onSubmit={onSubmit}>
             <Toolbar>
@@ -232,9 +232,9 @@ export const Edit = () => {
           <ModalOverlay onClick={toggleModal} />
           <ModalContent>
             <H3>{getVerseName(lyrics.verses, delTarget)}を削除しますか？</H3>
-            <Discription>
+            <Description>
               一度削除した要素を復元することはできません。
-            </Discription>
+            </Description>
             <RectBtn value="削除" size="medium" onClick={deleteVerse} />
           </ModalContent>
         </Modal>
