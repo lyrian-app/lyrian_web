@@ -3,7 +3,6 @@ import React from "react";
 import { PartOfSpeech } from "../../../hooks/markov";
 
 import { TextInput, Option, Select } from "..";
-import { Grid } from "../../layout";
 import style from "./tokenCard.module.scss";
 
 interface TokenCardProps {
