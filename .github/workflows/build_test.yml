@@ -1,4 +1,4 @@
-name: lyrian_web
+name: Build and test
 
 on:
   push:
