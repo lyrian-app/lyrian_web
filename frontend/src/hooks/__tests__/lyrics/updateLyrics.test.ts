@@ -9,10 +9,6 @@ import {
   getInitialLyric,
 } from "../../lyrics";
 
-jest.mock("../../../utils/key", () => ({
-  generateUniqueKey: jest.fn(() => "something"),
-}));
-
 describe("updateLyrics", () => {
   let result: RenderResult<[LyricsState, React.Dispatch<LyricsMsg>]>;
 

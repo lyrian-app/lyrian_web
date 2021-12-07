@@ -52,5 +52,8 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "jest": {
+    "resetMocks": false
   }
 }
