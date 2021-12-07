@@ -1,6 +1,11 @@
 @import "../../../styles/var";
 
 .discription {
+  width: 80%;
   font-size: $font-m;
   text-align: center;
+
+  @media screen and (max-width: $mobile) {
+    font-size: $font-s;
+  }
 }

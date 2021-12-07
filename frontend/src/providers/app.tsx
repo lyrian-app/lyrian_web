@@ -3,8 +3,8 @@ import { useReducer } from "react";
 
 import { MarkovContext, LyricsContext, ToasterContext } from "./context";
 import { useToast } from "../hooks";
-import { markovUpdate, PartOfSpeech } from "../hooks/markov";
-import { lyricsUpdate, getInitialVerse } from "../hooks/lyrics";
+import { updateMarkov, PartOfSpeech } from "../hooks/markov";
+import { updateLyrics, getInitialVerse } from "../hooks/lyrics";
 
 import { Toaster } from "../components/toast";
 
@@ -27,8 +27,8 @@ type AppProviderProps = {
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  const [markov, mkvDispatch] = useReducer(markovUpdate, markovInitValue);
-  const [lyrics, lyrDispatch] = useReducer(lyricsUpdate, lyricsInitValue);
+  const [markov, mkvDispatch] = useReducer(updateMarkov, markovInitValue);
+  const [lyrics, lyrDispatch] = useReducer(updateLyrics, lyricsInitValue);
   const { breads, bake, eat } = useToast();
 
   return (

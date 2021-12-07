@@ -1,5 +1,40 @@
 @import "../../../styles/var";
 
+@mixin xsmall {
+  width: $font-xs;
+  height: $font-xs;
+  font-size: $font-xs;
+  padding: $font-xs;
+}
+
+@mixin small {
+  width: $font-s;
+  height: $font-s;
+  font-size: $font-s;
+  padding: $font-s;
+}
+
+@mixin medium {
+  width: $font-m;
+  height: $font-m;
+  font-size: $font-m;
+  padding: $font-m;
+}
+
+@mixin large {
+  width: $font-l;
+  height: $font-l;
+  font-size: $font-l;
+  padding: $font-l;
+}
+
+@mixin xlarge {
+  width: 4rem;
+  height: 4rem;
+  font-size: 4rem;
+  padding: 4rem;
+}
+
 .btn {
   display: flex;
   justify-content: center;
@@ -12,31 +47,35 @@
   transition: 0.1s;
 
   &.small {
-    width: $font-s;
-    height: $font-s;
-    font-size: $font-s;
-    padding: $font-s;
+    @include small();
+
+    @media screen and (max-width: $mobile) {
+      @include xsmall();
+    }
   }
 
   &.medium {
-    width: $font-m;
-    height: $font-m;
-    font-size: $font-m;
-    padding: $font-m;
+    @include medium();
+
+    @media screen and (max-width: $mobile) {
+      @include small();
+    }
   }
 
   &.large {
-    width: $font-l;
-    height: $font-l;
-    font-size: $font-l;
-    padding: $font-l;
+    @include large();
+
+    @media screen and (max-width: $mobile) {
+      @include medium();
+    }
   }
 
   &.xlarge {
-    width: 4rem;
-    height: 4rem;
-    font-size: 4rem;
-    padding: 4rem;
+    @include xlarge();
+
+    @media screen and (max-width: $mobile) {
+      @include large();
+    }
   }
 
   &.pink {

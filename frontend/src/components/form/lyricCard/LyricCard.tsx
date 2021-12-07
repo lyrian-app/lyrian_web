@@ -38,26 +38,32 @@ export const LyricCard = (props: LyricCardProps) => {
       </div>
 
       <div className={style.top}>
-        <IconBtn
-          iconName="icon-arrows-cw"
-          type="button"
-          size="medium"
-          color="black"
-          onClick={props.onLyricGenerate}
-        />
+        <div className={style.updateBox}>
+          <IconBtn
+            iconName="icon-arrows-cw"
+            type="button"
+            size="medium"
+            color="black"
+            onClick={props.onLyricGenerate}
+          />
+        </div>
 
-        <label className={style.label} htmlFor="notes">
-          音数
-        </label>
-        <NumberInput
-          name="notes"
-          defaultValue={props.notes}
-          max={20}
-          min={1}
-          onChange={props.onNotesChange}
-        />
+        <div className={style.notesBox}>
+          <label className={style.label} htmlFor="notes">
+            音数
+          </label>
+          <NumberInput
+            name="notes"
+            defaultValue={props.notes}
+            max={20}
+            min={1}
+            onChange={props.onNotesChange}
+          />
+        </div>
 
-        <TextInput value={props.lyric} onChange={props.onLyricChange} />
+        <div className={style.lyricBox}>
+          <TextInput value={props.lyric} onChange={props.onLyricChange} />
+        </div>
 
         <div className={style.accordionBtn}>
           <IconBtn

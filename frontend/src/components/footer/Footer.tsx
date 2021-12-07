@@ -38,23 +38,18 @@ export const Footer = () => {
         <Link to="/" onClick={scollTop}>
           ホーム
         </Link>
-        <span className={style.bar}>|</span>
         <Link to="/docs" onClick={scollTop}>
           ドキュメント
         </Link>
-        <span className={style.bar}>|</span>
         <Link to="/q_a" onClick={scollTop}>
           Q & A
         </Link>
-        <span className={style.bar}>|</span>
         <Link to="/release" onClick={scollTop}>
           リリースノート
         </Link>
-        <span className={style.bar}>|</span>
         <Link to="/contact" onClick={scollTop}>
           お問い合わせ
         </Link>
-        <span className={style.bar}>|</span>
         <Link to="/tos" onClick={scollTop}>
           利用規約
         </Link>

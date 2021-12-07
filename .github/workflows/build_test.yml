@@ -1,0 +1,25 @@
+name: Build and test
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Launch container
+        run: docker-compose up -d
+
+      - name: Build
+        run: |
+          docker-compose exec -T backend cargo build --verbose
+
+      - name: Test
+        run: |
+          docker-compose exec -T backend cargo test --verbose
+          docker-compose exec -T frontend yarn test --watchAll=false

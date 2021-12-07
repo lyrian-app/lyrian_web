@@ -3,7 +3,6 @@ import React from "react";
 import { PartOfSpeech } from "../../../hooks/markov";
 
 import { TextInput, Option, Select } from "..";
-import { Grid } from "../../layout";
 import style from "./tokenCard.module.scss";
 
 interface TokenCardProps {
@@ -23,32 +22,30 @@ export const TokenCard = (props: TokenCardProps) => {
 
   return (
     <div className={style.tokenCard}>
-      <Grid rows={2} cols={4} gap="1rem">
-        <p>表記</p>
-        <p>読み</p>
-        <p>発音</p>
-        <p>品詞</p>
-        <p>{props.word}</p>
-        <TextInput
-          required={true}
-          defaultValue={props.mora}
-          onChange={props.onMoraChange}
-        />
-        <TextInput
-          required={true}
-          defaultValue={props.syllable}
-          onChange={props.onSyllableChange}
-        />
-        <Select
-          defaultValue={props.partOfSpeech}
-          onChange={props.onPartChange}
-          required={true}
-        >
-          {parts.map((v) => (
-            <Option value={v}>{v}</Option>
-          ))}
-        </Select>
-      </Grid>
+      <p>表記</p>
+      <p>{props.word}</p>
+      <p>読み</p>
+      <TextInput
+        required={true}
+        defaultValue={props.mora}
+        onChange={props.onMoraChange}
+      />
+      <p>発音</p>
+      <TextInput
+        required={true}
+        defaultValue={props.syllable}
+        onChange={props.onSyllableChange}
+      />
+      <p>品詞</p>
+      <Select
+        defaultValue={props.partOfSpeech}
+        onChange={props.onPartChange}
+        required={true}
+      >
+        {parts.map((v) => (
+          <Option value={v}>{v}</Option>
+        ))}
+      </Select>
     </div>
   );
 };

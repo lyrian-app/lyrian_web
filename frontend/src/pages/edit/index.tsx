@@ -168,20 +168,24 @@ export const Edit = () => {
                 編集中のデータをダウンロード
               </StrBtn>
             </Toolbar>
-            <TitleInput
-              size="xlarge"
-              defaultValue={lyrics.title}
-              onChange={onTitleChange}
-              placeholder="タイトル"
-            />
+            <div className={style.lyricsTitle}>
+              <TitleInput
+                size="xlarge"
+                defaultValue={lyrics.title}
+                onChange={onTitleChange}
+                placeholder="タイトル"
+              />
+            </div>
             {lyrics.verses.map((verse, i) => (
               <div className={style.lyricList} key={verse.key}>
-                <TitleInput
-                  size="large"
-                  defaultValue={verse.name}
-                  onChange={onVerseNameChanged(i)}
-                  placeholder="セクション"
-                />
+                <div className={style.sectionTitle}>
+                  <TitleInput
+                    size="large"
+                    defaultValue={verse.name}
+                    onChange={onVerseNameChanged(i)}
+                    placeholder="セクション"
+                  />
+                </div>
                 {verse.values.map((lyric, j) => (
                   <LyricCard
                     key={lyric.key}

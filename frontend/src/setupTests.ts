@@ -5,6 +5,10 @@
 import "@testing-library/jest-dom";
 import { server } from "./mocks/server.js";
 
+jest.mock("./utils/key", () => ({
+  generateUniqueKey: jest.fn(() => "something"),
+}));
+
 // Establish API mocking before all tests.
 beforeAll(() => server.listen());
 

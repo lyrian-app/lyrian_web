@@ -73,7 +73,7 @@ mod test {
         let mut app = test::init_service(App::new().configure(routes)).await;
         let xhr = test::TestRequest::post()
             .uri("/api/create_model")
-            .set_form(&LearningData {
+            .set_json(&LearningData {
                 contents: String::from("テスト"),
             })
             .to_request();

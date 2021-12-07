@@ -13,6 +13,10 @@
     display: flex;
     justify-content: center;
   }
+
+  @media screen and (max-width: $mobile) {
+    width: 50%;
+  }
 }
 
 .textarea {
@@ -20,6 +24,10 @@
   height: 40vh;
   font-size: $font-s;
   margin: 2rem 0;
+
+  @media screen and (max-width: $mobile) {
+    width: 90%;
+  }
 }
 
 .back {

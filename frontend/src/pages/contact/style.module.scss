@@ -2,7 +2,7 @@
 
 .contact {
   width: 100%;
-  min-width: 100vh;
+  min-height: 100vh;
 }
 
 .email {
@@ -14,5 +14,9 @@
   img {
     width: 50%;
     box-shadow: none !important;
+
+    @media screen and (max-width: $mobile) {
+      width: 100%;
+    }
   }
 }

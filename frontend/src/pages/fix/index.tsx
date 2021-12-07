@@ -82,7 +82,7 @@ export const Fix = () => {
     <Transition status={status}>
       <div className={style.fix}>
         <Main>
-          <H2>言葉の読み方を教えてください。</H2>
+          <H2>単語の修正</H2>
           <Discription>
             読みや発音、品詞が不明な単語が見つかりました。
             <br />

@@ -37,6 +37,18 @@ export const Contact = () => {
             <div className={style.email}>
               <img src={mailImg} alt="email" />
             </div>
+
+            <p>
+              また、GitHubアカウントをお持ちの方で、アプリケーションのバグ等が見つかった場合は、
+              <a
+                href="https://github.com/lyrian-app/lyrian_web/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Issues
+              </a>{" "}
+              よりご報告ください（日本語可）。
+            </p>
           </div>
         </Main>
       </div>
