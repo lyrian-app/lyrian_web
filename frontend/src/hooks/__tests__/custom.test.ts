@@ -34,29 +34,25 @@ describe("useToast", () => {
   });
 
   it("Bake bread", () => {
-    act(() =>
-      result.current.bake({
-        type: "ok",
-        value: "Croissant",
-      })
-    );
-
-    const bread = result.current.breads[0];
-    expect(bread.type).toBe("ok");
-    expect(bread.value).toBe("Croissant");
-    expect(bread.key !== undefined).toBe(true);
+    const bread: Bread = {
+      type: "ok",
+      value: "Hello!",
+    };
+    act(() => result.current.bake(bread));
+    expect(result.current.breads[0]).toStrictEqual({
+      ...bread,
+      key: "something",
+    });
   });
 
   it("Eat toast", () => {
     act(() =>
       result.current.bake({
         type: "ok",
-        value: "Baguette",
+        value: "Hello!",
       })
     );
-
     act(() => result.current.eat(result.current.breads[0].key!));
-
     expect(result.current.breads.length).toBe(0);
   });
 });
