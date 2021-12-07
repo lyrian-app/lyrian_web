@@ -15,7 +15,7 @@ export const Toast = (props: ToastProps) => {
   return (
     <div className={toastClass} onClick={props.onClick}>
       <i className={iconClass} />
-      <p className={style.discription}>{props.value}</p>
+      <p className={style.description}>{props.value}</p>
     </div>
   );
 };

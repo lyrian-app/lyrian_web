@@ -1,2 +1,2 @@
-export * from "./discription/Discription";
+export * from "./description/Description";
 export * from "./headline/headline";

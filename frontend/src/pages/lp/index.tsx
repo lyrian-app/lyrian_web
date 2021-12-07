@@ -45,7 +45,7 @@ export const LandingPage = () => {
 
         <div className={style.whatIs} ref={whatIsRef}>
           <H2>Lyrianとは？</H2>
-          <p className={style.discription}>
+          <p className={style.description}>
             Lyrianとは、マルコフ連鎖を用いて日本語の歌詞の生成を行うアプリケーションです。
             ユーザーが予め入力した文章の中から単語をランダムに組み合わせ、歌詞生成を行います。
           </p>
@@ -99,7 +99,7 @@ export const LandingPage = () => {
                 <div className={`${style.svgImg} ${style.random}`} />
               </div>
               <H3>ランダム性</H3>
-              <p className={style.discription}>
+              <p className={style.description}>
                 Lyrian
                 はマルコフ連鎖を用いて歌詞を生成するため、単語同士の組み合わせはランダムに決定します。
                 これにより、入力した文章の雰囲気を継承しつつ、通常では思いつかないユニークなフレーズを作成することに長けています。
@@ -110,7 +110,7 @@ export const LandingPage = () => {
                 <div className={`${style.svgImg} ${style.rhythm}`} />
               </div>
               <H3>リズミカル</H3>
-              <p className={style.discription}>
+              <p className={style.description}>
                 日本語で歌詞を作成する場合、その言語の特性上、歌ったときのリズムが平坦になりやすいという特徴があります。
                 Lyrian
                 では音符に言葉を割り当てる際に、その音節や無声音などを考慮することで、

@@ -9,7 +9,7 @@ import { getUnknownTokenIdxes } from "../../utils/token";
 import { RectBtn } from "../../components/buttons";
 import { Form, TokenCard } from "../../components/form";
 import { Main } from "../../components/layout";
-import { Discription, H2 } from "../../components/text";
+import { Description, H2 } from "../../components/text";
 import {
   MountStatus,
   Transition,
@@ -83,13 +83,13 @@ export const Fix = () => {
       <div className={style.fix}>
         <Main>
           <H2>単語の修正</H2>
-          <Discription>
+          <Description>
             読みや発音、品詞が不明な単語が見つかりました。
             <br />
             以下の例に従って情報を追記してください。
             <br />
             例：大空 → 読み「オオゾラ」、発音「オーゾラ」、品詞「名詞」
-          </Discription>
+          </Description>
 
           <Form onSubmit={onFix}>
             <div className={style.tokenList}>

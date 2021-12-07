@@ -13,6 +13,11 @@
   cursor: pointer;
   transition: 0.1s;
 
+  @media screen and (max-width: $mobile) {
+    max-width: none;
+    width: 90vw;
+  }
+
   &:hover {
     transform: scale(1.05);
   }
@@ -40,6 +45,6 @@
   margin-right: 0.3rem;
 }
 
-.discription {
+.description {
   font-size: $font-m;
 }
