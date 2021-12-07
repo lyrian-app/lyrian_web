@@ -1,4 +1,4 @@
-name: lyrian_web
+name: Build and test
 
 on:
   push:
@@ -22,4 +22,4 @@ jobs:
       - name: Test
         run: |
           docker-compose exec -T backend cargo test --verbose
-          docker-compose exec -T frontend yarn test
+          docker-compose exec -T frontend yarn test --watchAll=false
