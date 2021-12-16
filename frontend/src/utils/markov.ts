@@ -1,5 +1,5 @@
 import { MarkovState } from "../hooks/markov";
-import { Random, WaightedRand } from "./random";
+import { Random, WeightedRand } from "./random";
 
 export class MarkovChain {
   private markov: MarkovState;
@@ -20,7 +20,7 @@ export class MarkovChain {
       return this.prevIdx;
     })();
 
-    let waRand = new WaightedRand(this.markov.wa_table[row]);
+    let waRand = new WeightedRand(this.markov.wa_table[row]);
     const elemIdx = waRand.next();
 
     this.prevIdx = elemIdx;

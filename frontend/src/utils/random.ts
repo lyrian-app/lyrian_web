@@ -10,7 +10,7 @@ export class Random {
   }
 }
 
-export class WaightedRand {
+export class WeightedRand {
   private aliases;
   private probs;
 
