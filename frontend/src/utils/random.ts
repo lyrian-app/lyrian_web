@@ -20,7 +20,7 @@ export class WeightedRand {
   }
 
   public next() {
-    const i = Random.randIntRange(0, this.probs.length - 1);
+    const i = Random.randIntRange(0, this.probs.length);
     const r = Random.randFloat();
     if (r < this.probs[i]) {
       return this.aliases[i];
