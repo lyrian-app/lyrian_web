@@ -10,15 +10,19 @@ pub struct LearningData {
 }
 
 pub async fn create_model(form: web::Json<LearningData>) -> Result<HttpResponse, ApiErrorResponse> {
-    match LyrianModel::from_str(&*form.contents) {
-        Ok(model) => match model.to_json_str() {
-            Ok(json) => Ok(HttpResponse::Ok()
-                .content_type("text/plain; charset=utf-8")
-                .body(json)),
-            Err(_) => Err(ApiErrorResponse::JsonStringifyError),
-        },
-        Err(_) => Err(ApiErrorResponse::LyrianModelGenerationError),
-    }
+    let model = match LyrianModel::from_str(&*form.contents) {
+        Ok(model) => model,
+        Err(_) => return Err(ApiErrorResponse::JsonStringifyError),
+    };
+
+    let json = match model.to_json_str() {
+        Ok(v) => v,
+        Err(_) => return Err(ApiErrorResponse::JsonStringifyError),
+    };
+
+    Ok(HttpResponse::Ok()
+        .content_type("text/plain; charset=utf-8")
+        .body(json))
 }
 
 #[cfg(test)]
